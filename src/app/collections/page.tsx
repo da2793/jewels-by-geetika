@@ -10,6 +10,7 @@ function CollectionsContent() {
   const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState<Category | "all">("all");
   const [showNewOnly, setShowNewOnly] = useState(false);
+  const [showBestsellers, setShowBestsellers] = useState(false);
   const [sortBy, setSortBy] = useState<"default" | "price-low" | "price-high">("default");
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function CollectionsContent() {
     const filter = searchParams.get("filter");
     if (cat) setActiveCategory(cat);
     if (filter === "new") setShowNewOnly(true);
+    if (filter === "bestsellers") setShowBestsellers(true);
   }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
@@ -29,6 +31,10 @@ function CollectionsContent() {
       filtered = filtered.filter((p) => p.isNew);
     }
 
+    if (showBestsellers) {
+      filtered = filtered.filter((p) => p.isBestseller);
+    }
+
     if (sortBy === "price-low") {
       filtered = [...filtered].sort((a, b) => a.price - b.price);
     } else if (sortBy === "price-high") {
@@ -36,7 +42,7 @@ function CollectionsContent() {
     }
 
     return filtered;
-  }, [activeCategory, showNewOnly, sortBy]);
+  }, [activeCategory, showNewOnly, showBestsellers, sortBy]);
 
   return (
     <>
@@ -49,7 +55,7 @@ function CollectionsContent() {
       >
         <div className="flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { setActiveCategory("all"); setShowNewOnly(false); }}
+            onClick={() => { setActiveCategory("all"); setShowNewOnly(false); setShowBestsellers(false); }}
             className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
               activeCategory === "all" && !showNewOnly
                 ? "bg-charcoal-800 text-white"
@@ -59,7 +65,7 @@ function CollectionsContent() {
             All
           </button>
           <button
-            onClick={() => { setShowNewOnly(!showNewOnly); setActiveCategory("all"); }}
+            onClick={() => { setShowNewOnly(!showNewOnly); setShowBestsellers(false); setActiveCategory("all"); }}
             className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
               showNewOnly
                 ? "bg-gold-600 text-white"
@@ -68,10 +74,20 @@ function CollectionsContent() {
           >
             ✦ New In
           </button>
+          <button
+            onClick={() => { setShowBestsellers(!showBestsellers); setShowNewOnly(false); setActiveCategory("all"); }}
+            className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
+              showBestsellers
+                ? "bg-gold-600 text-white"
+                : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+            }`}
+          >
+            ✦ Bestsellers
+          </button>
           {categories.map((cat) => (
             <button
               key={cat.slug}
-              onClick={() => { setActiveCategory(cat.slug); setShowNewOnly(false); }}
+              onClick={() => { setActiveCategory(cat.slug); setShowNewOnly(false); setShowBestsellers(false); }}
               className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
                 activeCategory === cat.slug
                   ? "bg-charcoal-800 text-white"

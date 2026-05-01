@@ -4,193 +4,199 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 
-// Stagger container for cinematic entrance
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.12, delayChildren: 0.3 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.9, ease: "easeOut" as const },
+    transition: { duration: 0.7, ease: "easeOut" as const },
   },
 };
 
-// Particle data — varied sizes and positions for depth
-const particles = [
-  { x: "8%", y: "12%", size: 3, delay: 0, duration: 6 },
-  { x: "15%", y: "65%", size: 2, delay: 1.2, duration: 7 },
-  { x: "25%", y: "30%", size: 4, delay: 0.5, duration: 5 },
-  { x: "35%", y: "75%", size: 2, delay: 2, duration: 8 },
-  { x: "50%", y: "18%", size: 3, delay: 0.8, duration: 6 },
-  { x: "60%", y: "55%", size: 2, delay: 1.5, duration: 7 },
-  { x: "72%", y: "25%", size: 3, delay: 0.3, duration: 5.5 },
-  { x: "80%", y: "70%", size: 4, delay: 1, duration: 6.5 },
-  { x: "88%", y: "40%", size: 2, delay: 2.2, duration: 7.5 },
-  { x: "45%", y: "85%", size: 3, delay: 0.7, duration: 6 },
-  { x: "92%", y: "15%", size: 2, delay: 1.8, duration: 5 },
-  { x: "5%", y: "45%", size: 3, delay: 0.4, duration: 7 },
-];
-
 export default function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -50]);
+  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -40]);
 
   return (
     <section
-      ref={ref}
-      className="relative h-screen flex items-center justify-center overflow-hidden bg-cream-100"
+      ref={sectionRef}
+      className="relative h-screen overflow-hidden bg-cream-100 grid grid-cols-1 lg:grid-cols-2"
     >
-      {/* Background Image with Parallax */}
-      <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=1920&h=1080&fit=crop')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-cream-100/50 via-cream-100/20 to-cream-100" />
-        <div className="absolute inset-0 bg-white/25" />
-      </motion.div>
-
-      {/* Animated gold particles */}
-      {particles.map((p, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full bg-gold-400/25"
-          style={{
-            left: p.x,
-            top: p.y,
-            width: p.size,
-            height: p.size,
-          }}
-          animate={{
-            y: [-20, 20, -20],
-            x: [-8, 8, -8],
-            opacity: [0.1, 0.5, 0.1],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: p.delay,
-          }}
-        />
-      ))}
-
-      {/* Subtle rotating gold ring — decorative, not distracting */}
-      <motion.div
-        className="absolute w-[500px] h-[500px] md:w-[650px] md:h-[650px] rounded-full border border-gold-400/[0.07] pointer-events-none"
-        style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className="absolute w-[400px] h-[400px] md:w-[520px] md:h-[520px] rounded-full border border-dashed border-gold-400/[0.05] pointer-events-none"
-        style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* Content with cinematic stagger */}
+      {/* ── LEFT PANEL — Content ── */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+        className="relative z-10 flex flex-col justify-center px-8 md:px-16 lg:px-20 py-24"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Tagline */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-block text-gold-600 uppercase tracking-[0.4em] text-xs md:text-sm font-sans font-light border-b border-gold-400/30 pb-2">
+          {/* Eyebrow */}
+          <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
+            <div className="w-8 h-[0.5px] bg-gold-500" />
+            <span className="text-gold-600 uppercase tracking-[0.4em] text-[10px] font-light">
               Hand-Curated Jewellery
             </span>
           </motion.div>
 
-          {/* Heading — each line staggers in */}
-          <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-[1.1]">
-            <motion.span variants={itemVariants} className="block">
-              <span className="text-charcoal-800">Where </span>
-              <span className="text-gold-gradient italic">Elegance</span>
-            </motion.span>
-            <motion.span variants={itemVariants} className="block">
-              <span className="text-charcoal-800">Meets </span>
-              <span className="text-gold-gradient italic">Craft</span>
-            </motion.span>
+          {/* Heading */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl md:text-5xl lg:text-6xl font-serif font-light leading-[1.1] mb-5 text-charcoal-800"
+          >
+            Where{" "}
+            <span className="text-gold-gradient italic">Elegance</span>
+            <br />
+            Meets{" "}
+            <span className="text-gold-gradient italic">Craft</span>
           </motion.h1>
 
-          {/* Description */}
+          {/* Divider */}
+          <motion.div variants={itemVariants}>
+            <div className="w-12 h-[0.5px] bg-gold-400/50 mb-5" />
+          </motion.div>
+
+          {/* Value Proposition — the missing piece */}
           <motion.p
             variants={itemVariants}
-            className="text-charcoal-400 text-base md:text-lg max-w-xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-charcoal-500 text-sm md:text-base max-w-sm leading-relaxed font-light mb-4"
           >
-            Exquisite AD, kundan &amp; gold replica jewellery — each piece
-            hand-curated to bring timeless beauty to your everyday moments.
+            Anti-tarnish, everyday jewellery designed for the modern woman —
+            AD, kundan &amp; gold replicas that look luxurious without the
+            luxury price tag.
+          </motion.p>
+
+          {/* Trust line */}
+          <motion.p
+            variants={itemVariants}
+            className="text-charcoal-300 text-xs font-light mb-10 flex items-center gap-2"
+          >
+            <span className="text-gold-500">✦</span>
+            Trusted by 500+ women across India
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-wrap gap-4"
           >
             <Link href="/collections">
               <motion.span
-                whileHover={{ scale: 1.03, boxShadow: "0 10px 40px rgba(184, 148, 31, 0.2)" }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-block px-10 py-4 bg-charcoal-800 text-white font-light uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors duration-500 cursor-pointer rounded-full"
+                className="inline-block px-9 py-3.5 bg-charcoal-800 text-white font-light uppercase tracking-[0.2em] text-xs hover:bg-gold-600 transition-colors duration-500 cursor-pointer rounded-full"
               >
-                Explore Collections
+                Explore Collection
               </motion.span>
             </Link>
-            <Link href="/collections?category=bridal-sets">
+            <Link href="/collections?filter=bestsellers">
               <motion.span
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-block px-10 py-4 border border-gold-500/40 text-gold-700 font-light uppercase tracking-[0.2em] text-sm hover:bg-gold-500/10 hover:border-gold-500 transition-all duration-500 cursor-pointer rounded-full"
+                className="inline-block px-9 py-3.5 border border-charcoal-200 text-charcoal-600 font-light uppercase tracking-[0.2em] text-xs hover:border-gold-500 hover:text-gold-600 transition-all duration-500 cursor-pointer rounded-full"
               >
-                Bridal Collection
+                Shop Bestsellers
               </motion.span>
             </Link>
           </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* ── RIGHT PANEL — Image ── */}
+      <div className="relative hidden lg:block overflow-hidden">
+        <motion.div
+          style={{ y: bgY }}
+          className="absolute inset-[-5%]"
+        >
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=1200&h=1400&fit=crop')",
+            }}
+          />
+        </motion.div>
+
+        {/* Left-edge fade to cream */}
+        <div className="absolute inset-0 bg-gradient-to-r from-cream-100 via-cream-100/10 to-transparent pointer-events-none z-10" />
+
+        {/* Floating price badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="absolute bottom-12 right-8 z-20 bg-white/90 backdrop-blur-md border border-gold-200/50 rounded-2xl px-5 py-4 shadow-sm"
+        >
+          <p className="text-[9px] uppercase tracking-[0.25em] text-charcoal-300 mb-1">
+            Bestseller
+          </p>
+          <p className="font-serif text-xl text-charcoal-800 leading-none">
+            ₹2,499
+          </p>
+          <p className="text-xs text-charcoal-400 mt-1 font-light">
+            Kundan Choker Set
+          </p>
+        </motion.div>
+
+        {/* New Arrivals tag */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.5 }}
+          className="absolute top-12 right-8 z-20"
+        >
+          <span className="bg-gold-600 text-white text-[9px] uppercase tracking-[0.2em] px-4 py-2 rounded-full font-medium">
+            New Arrivals
+          </span>
+        </motion.div>
+      </div>
+
+      {/* ── MOBILE BACKGROUND ── */}
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 lg:hidden -z-0"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=1200&h=1400&fit=crop')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-cream-100/70 via-cream-100/50 to-cream-100" />
+      </motion.div>
+
+      {/* ── SCROLL INDICATOR ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 lg:left-[25%]"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center space-y-2"
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2"
         >
-          <span className="text-charcoal-300 text-[10px] uppercase tracking-[0.3em]">
+          <span className="text-charcoal-300 text-[9px] uppercase tracking-[0.35em]">
             Scroll
           </span>
-          <div className="w-[1px] h-8 bg-gradient-to-b from-gold-400/50 to-transparent" />
+          <div className="w-[0.5px] h-8 bg-gradient-to-b from-gold-400/50 to-transparent" />
         </motion.div>
       </motion.div>
     </section>
