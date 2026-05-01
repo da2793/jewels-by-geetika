@@ -1,19 +1,33 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { Suspense, useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { products, categories, Category } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 
-export default function CollectionsPage() {
+function CollectionsContent() {
+  const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState<Category | "all">("all");
+  const [showNewOnly, setShowNewOnly] = useState(false);
   const [sortBy, setSortBy] = useState<"default" | "price-low" | "price-high">("default");
+
+  useEffect(() => {
+    const cat = searchParams.get("category") as Category | null;
+    const filter = searchParams.get("filter");
+    if (cat) setActiveCategory(cat);
+    if (filter === "new") setShowNewOnly(true);
+  }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
     let filtered =
       activeCategory === "all"
         ? products
         : products.filter((p) => p.category === activeCategory);
+
+    if (showNewOnly) {
+      filtered = filtered.filter((p) => p.isNew);
+    }
 
     if (sortBy === "price-low") {
       filtered = [...filtered].sort((a, b) => a.price - b.price);
@@ -22,8 +36,99 @@ export default function CollectionsPage() {
     }
 
     return filtered;
-  }, [activeCategory, sortBy]);
+  }, [activeCategory, showNewOnly, sortBy]);
 
+  return (
+    <>
+      {/* Filters */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="flex flex-col md:flex-row justify-between items-center mb-12 space-y-4 md:space-y-0"
+      >
+        <div className="flex flex-wrap justify-center gap-2">
+          <button
+            onClick={() => { setActiveCategory("all"); setShowNewOnly(false); }}
+            className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
+              activeCategory === "all" && !showNewOnly
+                ? "bg-charcoal-800 text-white"
+                : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => { setShowNewOnly(!showNewOnly); setActiveCategory("all"); }}
+            className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
+              showNewOnly
+                ? "bg-gold-600 text-white"
+                : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+            }`}
+          >
+            ✦ New In
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat.slug}
+              onClick={() => { setActiveCategory(cat.slug); setShowNewOnly(false); }}
+              className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
+                activeCategory === cat.slug
+                  ? "bg-charcoal-800 text-white"
+                  : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+          className="bg-white border border-charcoal-100 text-charcoal-500 px-4 py-2 text-sm rounded-full focus:outline-none focus:border-gold-400"
+        >
+          <option value="default">Sort by: Default</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </motion.div>
+
+      {/* Products Grid */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory + String(showNewOnly) + sortBy}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
+        >
+          {filteredProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+            >
+              <ProductCard product={product} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+
+      {filteredProducts.length === 0 && (
+        <div className="text-center py-20">
+          <p className="text-charcoal-300 text-lg font-light">
+            No products found in this category yet. Check back soon!
+          </p>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default function CollectionsPage() {
   return (
     <div className="pt-28 pb-16 bg-cream-100 min-h-screen">
       {/* Page Header */}
@@ -46,82 +151,15 @@ export default function CollectionsPage() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col md:flex-row justify-between items-center mb-12 space-y-4 md:space-y-0"
+        <Suspense
+          fallback={
+            <div className="text-center py-20">
+              <div className="inline-block w-8 h-8 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" />
+            </div>
+          }
         >
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2">
-            <button
-              onClick={() => setActiveCategory("all")}
-              className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
-                activeCategory === "all"
-                  ? "bg-charcoal-800 text-white"
-                  : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
-              }`}
-            >
-              All
-            </button>
-            {categories.map((cat) => (
-              <button
-                key={cat.slug}
-                onClick={() => setActiveCategory(cat.slug)}
-                className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
-                  activeCategory === cat.slug
-                    ? "bg-charcoal-800 text-white"
-                    : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
-                }`}
-              >
-                {cat.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Sort */}
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="bg-white border border-charcoal-100 text-charcoal-500 px-4 py-2 text-sm rounded-full focus:outline-none focus:border-gold-400"
-          >
-            <option value="default">Sort by: Default</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-          </select>
-        </motion.div>
-
-        {/* Products Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory + sortBy}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
-          >
-            {filteredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-charcoal-300 text-lg font-light">
-              No products found in this category yet. Check back soon!
-            </p>
-          </div>
-        )}
+          <CollectionsContent />
+        </Suspense>
       </div>
     </div>
   );

@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/collections", label: "Collections" },
+  { href: "/collections?filter=new", label: "New In" },
+  { href: "/collections?category=bridal-sets", label: "Bridal" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -38,10 +39,10 @@ export default function Navbar() {
           <Logo variant="dark" />
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
             {navLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.href + link.label}
                 href={link.href}
                 className="relative text-charcoal-500 hover:text-gold-600 transition-colors duration-300 text-[13px] uppercase tracking-[0.2em] group"
               >
@@ -53,7 +54,7 @@ export default function Navbar() {
               href="https://www.instagram.com/jewelsbygeetika/"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 px-6 py-2.5 bg-charcoal-800 text-white text-[12px] uppercase tracking-[0.2em] hover:bg-gold-600 transition-all duration-300 rounded-full"
+              className="ml-2 px-6 py-2.5 bg-charcoal-800 text-white text-[12px] uppercase tracking-[0.2em] hover:bg-gold-600 transition-all duration-300 rounded-full"
             >
               Shop Now
             </a>
@@ -94,10 +95,10 @@ export default function Navbar() {
             <div className="px-6 py-8 space-y-6">
               {navLinks.map((link, i) => (
                 <motion.div
-                  key={link.href}
+                  key={link.href + link.label}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.08 }}
                 >
                   <Link
                     href={link.href}
@@ -111,7 +112,7 @@ export default function Navbar() {
               <motion.a
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 href="https://www.instagram.com/jewelsbygeetika/"
                 target="_blank"
                 rel="noopener noreferrer"
