@@ -118,15 +118,15 @@ export default function ComingSoonOverlay() {
           variants={itemVariants}
           className="text-3xl md:text-4xl font-serif text-charcoal-800 mb-4"
         >
-          Something <span className="text-gold-gradient italic">Beautiful</span> is Brewing
+          Something <span className="text-gold-gradient italic">Beautiful</span> is Being Curated
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
           className="text-charcoal-400 font-light mb-10 leading-relaxed"
         >
-          Stay tuned — we&apos;re curating an exquisite collection of hand-picked
-          jewellery just for you. Launching soon.
+          Stay tuned — an exquisite collection of hand-curated
+          jewellery is on its way to you. Launching soon.
         </motion.p>
 
         {/* Instagram CTA */}
@@ -149,16 +149,16 @@ export default function ComingSoonOverlay() {
           </a>
         </motion.div>
 
-        {/* WhatsApp link */}
+        {/* Email link */}
         <motion.div variants={itemVariants} className="mt-5">
           <a
-            href="https://wa.me/919999999999?text=Hi%20Geetika!%20I%20saw%20your%20website%20and%20I%27d%20love%20to%20know%20when%20you%20launch!"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:contact@jewelsbygeetika.com"
             className="text-charcoal-400 text-sm font-light hover:text-gold-600 transition-colors inline-flex items-center space-x-2"
           >
-            <span>or say hi on WhatsApp</span>
-            <span>→</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>contact@jewelsbygeetika.com</span>
           </a>
         </motion.div>
       </motion.div>
