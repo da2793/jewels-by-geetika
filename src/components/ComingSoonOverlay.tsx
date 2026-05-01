@@ -71,15 +71,15 @@ export default function ComingSoonOverlay() {
         className="relative z-10 text-center px-6 max-w-2xl mx-auto"
       >
         {/* Diamond icon */}
-        <motion.div variants={itemVariants} className="mb-8">
+        <motion.div variants={itemVariants} className="mb-4">
           <motion.div
             animate={{ y: [-5, 5, -5] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="inline-block"
           >
             <svg
-              width="48"
-              height="48"
+              width="32"
+              height="32"
               viewBox="0 0 48 48"
               fill="none"
               className="mx-auto"
@@ -96,7 +96,7 @@ export default function ComingSoonOverlay() {
           <img
             src="/logo.jpeg"
             alt="Jewels by Geetika"
-            className="h-14 md:h-16 w-auto object-contain mx-auto"
+            className="h-24 md:h-28 w-auto object-contain mx-auto"
           />
         </motion.div>
 
