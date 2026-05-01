@@ -42,7 +42,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/jewelsbygeetika/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold-600 hover:text-white transition-all duration-300"

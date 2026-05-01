@@ -41,7 +41,7 @@ export default function InstagramCTA() {
           {instagramImages.map((img, index) => (
             <motion.a
               key={index}
-              href="https://instagram.com"
+              href="https://www.instagram.com/jewelsbygeetika/"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -80,7 +80,7 @@ export default function InstagramCTA() {
           className="text-center mt-10"
         >
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/jewelsbygeetika/"
             target="_blank"
             rel="noopener noreferrer"
           >
