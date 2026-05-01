@@ -4,12 +4,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/products";
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+  };
+
   return (
     <Link href={`/product/${product.id}`}>
       <motion.div
@@ -43,9 +52,12 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Quick View */}
           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-            <span className="block text-center py-3 bg-white/90 backdrop-blur-sm text-charcoal-700 text-xs font-medium uppercase tracking-[0.15em] rounded-full">
-              View Details
-            </span>
+            <button
+              onClick={handleAddToCart}
+              className="block w-full text-center py-3 bg-white/90 backdrop-blur-sm text-charcoal-700 text-xs font-medium uppercase tracking-[0.15em] rounded-full hover:bg-charcoal-800 hover:text-white transition-colors"
+            >
+              Add to Bag
+            </button>
           </div>
         </div>
 

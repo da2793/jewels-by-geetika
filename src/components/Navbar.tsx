@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { href: "/collections", label: "Collections" },
@@ -16,6 +17,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openCart, totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -58,6 +60,24 @@ export default function Navbar() {
             >
               Shop Now
             </a>
+            <button
+              onClick={openCart}
+              className="relative ml-2 p-2 text-charcoal-500 hover:text-gold-600 transition-colors"
+              aria-label="Open cart"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              {totalItems > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-gold-600 text-white text-[10px] font-medium rounded-full flex items-center justify-center"
+                >
+                  {totalItems}
+                </motion.span>
+              )}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}

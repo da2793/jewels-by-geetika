@@ -3,7 +3,9 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import InstagramFloater from "@/components/InstagramFloater";
+import CartSidebar from "@/components/CartSidebar";
+import { CartProvider } from "@/context/CartContext";
 import { Analytics } from "@vercel/analytics/react";
 
 const playfair = Playfair_Display({
@@ -50,11 +52,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-sans antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <Analytics />
+        <CartProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <CartSidebar />
+          <InstagramFloater />
+          <Analytics />
+        </CartProvider>
       </body>
     </html>
   );
