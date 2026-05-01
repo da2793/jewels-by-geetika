@@ -13,7 +13,7 @@ const items = [
 
 export default function MarqueeStrip() {
   return (
-    <div className="bg-gold-100 border-y border-gold-400/20 py-3 overflow-hidden">
+    <div className="bg-cream-300 border-y border-gold-400/15 py-3 overflow-hidden">
       <div className="marquee flex whitespace-nowrap">
         {[...items, ...items].map((item, i) => (
           <span

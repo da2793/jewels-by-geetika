@@ -43,7 +43,7 @@ export default function ContactPage() {
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center px-4 mb-16">
         <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Get In Touch</span>
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
-          Contact <span className="italic text-gold-gradient">Us</span>
+          Contact <span className="text-gold-gradient">Us</span>
         </h1>
         <p className="text-charcoal-400 max-w-lg mx-auto font-light">
           Have a question about a piece? Want to place a custom order? We&apos;d love to hear from you.
@@ -69,7 +69,7 @@ export default function ContactPage() {
         <div className="max-w-2xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-3xl font-serif text-charcoal-800">
-              Send Us a <span className="italic text-gold-gradient">Message</span>
+              Send Us a <span className="text-gold-gradient">Message</span>
             </h2>
           </motion.div>
 

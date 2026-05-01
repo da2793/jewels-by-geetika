@@ -11,11 +11,11 @@ const config: Config = {
       colors: {
         cream: {
           50: "#FFFFFF",
-          100: "#FAFAFA",
-          200: "#F5F5F5",
-          300: "#EBEBEB",
-          400: "#D6D6D6",
-          500: "#C2C2C2",
+          100: "#FDFCFA",
+          200: "#F9F6F1",
+          300: "#F3E9DC",   // Champagne Beige — primary accent bg
+          400: "#E8D9C5",
+          500: "#D4C4AB",
         },
         gold: {
           50: "#FFFBEE",
@@ -41,24 +41,17 @@ const config: Config = {
           800: "#111111",
           900: "#050505",
         },
-        pearl: {
-          50: "#FFFFFF",
-          100: "#FEFEFE",
-          200: "#F8F7F5",
-          300: "#F0EDE8",
-          400: "#E8E4DC",
-          500: "#D8D2C8",
-        },
       },
       fontFamily: {
-        serif: ["Cormorant Garamond", "Playfair Display", "Georgia", "serif"],
-        sans: ["Jost", "Inter", "system-ui", "sans-serif"],
+        display: ["Cinzel", "Georgia", "serif"],
+        serif: ["Cormorant Garamond", "Georgia", "serif"],
+        sans: ["Jost", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        "pearl-sm": "0 1px 8px rgba(0,0,0,0.06)",
-        "pearl-md": "0 4px 20px rgba(0,0,0,0.07)",
-        "pearl-lg": "0 12px 40px rgba(0,0,0,0.08)",
-        "gold-glow": "0 0 0 1px rgba(200,168,75,0.25)",
+        "pearl-sm": "0 1px 8px rgba(0,0,0,0.05)",
+        "pearl-md": "0 4px 20px rgba(0,0,0,0.06)",
+        "pearl-lg": "0 12px 40px rgba(0,0,0,0.07)",
+        "gold-glow": "0 0 0 1px rgba(200,168,75,0.2)",
       },
     },
   },

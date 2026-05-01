@@ -21,7 +21,7 @@ export default function BrandStory() {
   const sectionOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="py-28 px-4 sm:px-6 lg:px-8 bg-pearl-200 overflow-hidden">
+    <section ref={sectionRef} className="py-28 px-4 sm:px-6 lg:px-8 bg-cream-300 overflow-hidden">
       <motion.div style={{ opacity: sectionOpacity }} className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image Collage */}
@@ -82,7 +82,7 @@ export default function BrandStory() {
               className="text-4xl md:text-5xl font-serif mt-4 mb-8 text-charcoal-800"
             >
               Crafted with{" "}
-              <span className="italic text-gold-gradient">Passion</span>
+              <span className="text-gold-gradient">Passion</span>
             </motion.h2>
 
             <motion.p

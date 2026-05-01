@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════
-   THEME: Pearl White & Gold
-   Mood : Minimal · Clean · High-End
+   THEME: White + Gold + Champagne Beige
+   Mood : Luxury · Warm · Premium
    ═══════════════════════════════════════════════ */
 
 :root {
   --color-bg-page:        #FFFFFF;
-  --color-bg-surface:     #FAFAFA;
-  --color-bg-subtle:      #F5F5F5;
-  --color-bg-pearl:       #F8F7F5;
+  --color-bg-surface:     #FDFCFA;
+  --color-bg-champagne:   #F3E9DC;
+  --color-bg-warm:        #F9F6F1;
 
   --color-gold-light:     #FFF3CC;
   --color-gold-mid:       #D4AF37;
@@ -25,12 +25,12 @@
 
   --color-border-subtle:  rgba(0, 0, 0, 0.06);
   --color-border-default: rgba(0, 0, 0, 0.10);
-  --color-border-gold:    rgba(200, 168, 75, 0.25);
+  --color-border-gold:    rgba(200, 168, 75, 0.2);
 
-  --shadow-sm:   0 1px 8px  rgba(0, 0, 0, 0.05);
-  --shadow-md:   0 4px 20px rgba(0, 0, 0, 0.07);
-  --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.08);
-  --shadow-gold: 0 0 0 1px  rgba(200, 168, 75, 0.25);
+  --shadow-sm:   0 1px 8px  rgba(0, 0, 0, 0.04);
+  --shadow-md:   0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.07);
+  --shadow-gold: 0 0 0 1px  rgba(200, 168, 75, 0.2);
 }
 
 html {
@@ -90,19 +90,6 @@ body {
 .elegant-card:hover {
   box-shadow: var(--shadow-lg), var(--shadow-gold);
   transform: translateY(-4px);
-}
-
-.pearl-card {
-  background: var(--color-bg-pearl);
-  border: 0.5px solid var(--color-border-subtle);
-  border-radius: 16px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pearl-card:hover {
-  background: var(--color-bg-page);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
 }
 
 /* Product card */

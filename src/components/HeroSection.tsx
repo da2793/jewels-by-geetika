@@ -70,13 +70,13 @@ export default function HeroSection() {
           {/* Heading */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-[1.1]"
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold mb-6 leading-[1.1] tracking-wide"
           >
             <span className="text-charcoal-800">Where </span>
-            <span className="text-gold-gradient italic">Elegance</span>
+            <span className="text-gold-gradient">Elegance</span>
             <br />
             <span className="text-charcoal-800">Meets </span>
-            <span className="text-gold-gradient italic">Craft</span>
+            <span className="text-gold-gradient">Craft</span>
           </motion.h1>
 
           {/* Divider */}

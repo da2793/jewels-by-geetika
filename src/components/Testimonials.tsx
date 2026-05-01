@@ -40,7 +40,7 @@ export default function Testimonials() {
           </span>
           <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">
             What Our Customers{" "}
-            <span className="italic text-gold-gradient">Say</span>
+            <span className="text-gold-gradient">Say</span>
           </h2>
           <div className="w-16 h-[1px] bg-gold-400/40 mx-auto" />
         </motion.div>

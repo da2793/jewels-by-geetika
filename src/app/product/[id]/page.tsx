@@ -206,7 +206,7 @@ export default function ProductDetailPage() {
               viewport={{ once: true }}
               className="text-3xl font-serif text-center mb-12 text-charcoal-800"
             >
-              You May Also <span className="italic text-gold-gradient">Love</span>
+              You May Also <span className="text-gold-gradient">Love</span>
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {related.map((p, i) => (

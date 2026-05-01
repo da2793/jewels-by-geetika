@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="relative z-10 text-center px-4">
           <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Our Story</motion.span>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-5xl md:text-7xl font-serif mt-4 text-charcoal-800">
-            About <span className="italic text-gold-gradient">Geetika</span>
+            About <span className="text-gold-gradient">Geetika</span>
           </motion.h1>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default function AboutPage() {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
             <h2 className="text-3xl md:text-4xl font-serif mb-6 text-charcoal-800">
-              A Passion Turned <span className="italic text-gold-gradient">Purpose</span>
+              A Passion Turned <span className="text-gold-gradient">Purpose</span>
             </h2>
             <div className="space-y-4 text-charcoal-400 leading-relaxed font-light">
               <p>Jewels by Geetika started with a simple belief — that every woman deserves to feel beautiful and confident, and that stunning jewellery shouldn&apos;t come with a stunning price tag.</p>
@@ -59,11 +59,11 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-pearl-200">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-cream-300">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">What We Stand For</span>
-            <h2 className="text-4xl md:text-5xl font-serif mt-4 text-charcoal-800">Our <span className="italic text-gold-gradient">Values</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif mt-4 text-charcoal-800">Our <span className="text-gold-gradient">Values</span></h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
@@ -82,7 +82,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Behind The Scenes</span>
-            <h2 className="text-4xl md:text-5xl font-serif mt-4 text-charcoal-800">Our <span className="italic text-gold-gradient">Process</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif mt-4 text-charcoal-800">Our <span className="text-gold-gradient">Process</span></h2>
           </motion.div>
           <div className="space-y-10">
             {processSteps.map((step, index) => (

@@ -158,7 +158,7 @@ export default function CollectionsPage() {
           Explore
         </span>
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
-          Our <span className="italic text-gold-gradient">Collections</span>
+          Our <span className="text-gold-gradient">Collections</span>
         </h1>
         <p className="text-charcoal-400 max-w-lg mx-auto font-light">
           Each piece is hand-curated to bring you the finest in imitation

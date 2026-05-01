@@ -12,9 +12,11 @@ export default function Logo({ variant = "dark", className = "" }: LogoProps) {
 
   return (
     <Link href="/" className={`inline-block group ${className}`} aria-label="Jewels by Geetika - Home">
-      <div className="text-2xl md:text-3xl font-serif font-bold tracking-wide">
-        <span className="text-gold-gradient italic">Jewels</span>
-        <span className={`${textColor} text-lg md:text-xl font-light ml-1`}>
+      <div className="tracking-wider">
+        <span className="text-gold-gradient font-display text-2xl md:text-3xl font-semibold">
+          Jewels
+        </span>
+        <span className={`${textColor} text-base md:text-lg font-sans font-light ml-1.5`}>
           by Geetika
         </span>
       </div>

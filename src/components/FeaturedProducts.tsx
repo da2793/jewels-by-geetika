@@ -22,7 +22,7 @@ export default function FeaturedProducts() {
           Curated For You
         </span>
         <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">
-          Featured <span className="italic text-gold-gradient">Collection</span>
+          Featured <span className="text-gold-gradient">Collection</span>
         </h2>
         <div className="w-16 h-[1px] bg-gold-400/40 mx-auto" />
       </motion.div>
