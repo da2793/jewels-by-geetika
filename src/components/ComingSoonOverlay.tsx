@@ -34,7 +34,7 @@ export default function ComingSoonOverlay() {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
       {/* Blurred background — the actual site shows through */}
-      <div className="absolute inset-0 backdrop-blur-md bg-cream-100/70" />
+      <div className="absolute inset-0 backdrop-blur-2xl bg-cream-100/80" />
 
       {/* Floating gold particles */}
       {particles.map((p, i) => (
