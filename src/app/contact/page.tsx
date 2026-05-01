@@ -22,8 +22,8 @@ const contactMethods = [
     icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
     title: "Email",
     description: "For bulk orders and collaborations",
-    action: "jewelsbygeetika@gmail.com",
-    href: "mailto:jewelsbygeetika@gmail.com",
+    action: "contact@jewelsbygeetika.com",
+    href: "mailto:contact@jewelsbygeetika.com",
   },
 ];
 
@@ -33,8 +33,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = encodeURIComponent(`Hi Geetika!\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nSubject: ${formData.subject}\n\nMessage: ${formData.message}`);
-    window.open(`https://wa.me/919999999999?text=${msg}`, "_blank");
+    const msg = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nSubject: ${formData.subject}\n\nMessage: ${formData.message}`);
+    window.open(`mailto:contact@jewelsbygeetika.com?subject=${encodeURIComponent(formData.subject || "Website Inquiry")}&body=${msg}`, "_self");
     setSubmitted(true);
   };
 
