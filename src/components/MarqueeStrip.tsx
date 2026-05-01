@@ -8,17 +8,17 @@ const items = [
   "✦ Bridal Sets",
   "✦ Free Shipping",
   "✦ Premium Quality",
-  "✦ Imitation Jewellery",
+  "✦ Anti-Tarnish",
 ];
 
 export default function MarqueeStrip() {
   return (
-    <div className="bg-charcoal-800 py-3 overflow-hidden">
+    <div className="bg-gold-100 border-y border-gold-400/20 py-3 overflow-hidden">
       <div className="marquee flex whitespace-nowrap">
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="text-cream-200/70 text-[11px] uppercase tracking-[0.3em] mx-8 font-light"
+            className="text-gold-700 text-[11px] uppercase tracking-[0.3em] mx-8 font-light"
           >
             {item}
           </span>

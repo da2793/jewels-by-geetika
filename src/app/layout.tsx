@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,15 +8,16 @@ import CartSidebar from "@/components/CartSidebar";
 import { CartProvider } from "@/context/CartContext";
 import { Analytics } from "@vercel/analytics/react";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-cormorant",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jost",
   display: "swap",
 });
 
@@ -50,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body className="font-sans antialiased">
         <CartProvider>
           <Navbar />

@@ -146,7 +146,7 @@ function CollectionsContent() {
 
 export default function CollectionsPage() {
   return (
-    <div className="pt-28 pb-16 bg-cream-100 min-h-screen">
+    <div className="pt-28 pb-16 bg-cream-50 min-h-screen">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

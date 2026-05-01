@@ -3,7 +3,6 @@ import MarqueeStrip from "@/components/MarqueeStrip";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import CategoriesSection from "@/components/CategoriesSection";
 import BrandStory from "@/components/BrandStory";
-import Testimonials from "@/components/Testimonials";
 import InstagramCTA from "@/components/InstagramCTA";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <FeaturedProducts />
       <CategoriesSection />
       <BrandStory />
-      <Testimonials />
       <InstagramCTA />
     </>
   );

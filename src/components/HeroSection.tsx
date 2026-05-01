@@ -87,20 +87,11 @@ export default function HeroSection() {
           {/* Value Proposition */}
           <motion.p
             variants={itemVariants}
-            className="text-charcoal-400 text-base md:text-lg max-w-xl mx-auto mb-4 leading-relaxed font-light"
+            className="text-charcoal-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed font-light"
           >
             Anti-tarnish, everyday jewellery designed for the modern woman —
             AD, kundan &amp; gold replicas that look luxurious without the
             luxury price tag.
-          </motion.p>
-
-          {/* Trust line */}
-          <motion.p
-            variants={itemVariants}
-            className="text-charcoal-300 text-xs font-light mb-10 flex items-center justify-center gap-2"
-          >
-            <span className="text-gold-500">✦</span>
-            Trusted by 500+ women across India
           </motion.p>
 
           {/* CTAs */}

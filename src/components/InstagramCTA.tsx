@@ -14,7 +14,7 @@ const instagramImages = [
 
 export default function InstagramCTA() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-cream-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

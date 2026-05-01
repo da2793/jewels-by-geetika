@@ -28,7 +28,7 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="pt-32 pb-16 text-center bg-cream-100 min-h-screen">
+      <div className="pt-32 pb-16 text-center bg-cream-50 min-h-screen">
         <div className="text-5xl mb-4">✦</div>
         <h1 className="text-2xl font-serif text-charcoal-700 mb-3">
           Your bag is empty
@@ -49,7 +49,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="pt-28 pb-16 bg-cream-100 min-h-screen">
+    <div className="pt-28 pb-16 bg-cream-50 min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
                       required
                       value={form.firstName}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                       placeholder="First name"
                     />
                   </div>
@@ -109,7 +109,7 @@ export default function CheckoutPage() {
                       required
                       value={form.lastName}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                       placeholder="Last name"
                     />
                   </div>
@@ -127,7 +127,7 @@ export default function CheckoutPage() {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
                       required
                       value={form.phone}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                       placeholder="+91 99999 99999"
                     />
                   </div>
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
                     required
                     value={form.address}
                     onChange={handleChange}
-                    className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                    className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                     placeholder="House no., Street, Locality"
                   />
                 </div>
@@ -176,7 +176,7 @@ export default function CheckoutPage() {
                       required
                       value={form.city}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                       placeholder="City"
                     />
                   </div>
@@ -190,7 +190,7 @@ export default function CheckoutPage() {
                       required
                       value={form.state}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                     >
                       <option value="">Select</option>
                       <option value="AN">Andaman and Nicobar Islands</option>
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
                       required
                       value={form.pincode}
                       onChange={handleChange}
-                      className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
+                      className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors"
                       placeholder="110001"
                       maxLength={6}
                     />

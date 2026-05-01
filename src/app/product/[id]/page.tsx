@@ -17,7 +17,7 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <div className="pt-32 pb-16 text-center bg-cream-100 min-h-screen">
+      <div className="pt-32 pb-16 text-center bg-cream-50 min-h-screen">
         <h1 className="text-3xl font-serif text-charcoal-700 mb-4">
           Product Not Found
         </h1>
@@ -37,7 +37,7 @@ export default function ProductDetailPage() {
   );
 
   return (
-    <div className="pt-28 pb-16 bg-cream-100 min-h-screen">
+    <div className="pt-28 pb-16 bg-cream-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <motion.div

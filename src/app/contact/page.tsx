@@ -39,7 +39,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-28 pb-16 bg-cream-100 min-h-screen">
+    <div className="pt-28 pb-16 bg-cream-50 min-h-screen">
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center px-4 mb-16">
         <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Get In Touch</span>
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
@@ -85,21 +85,21 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Name *</label>
-                  <input type="text" id="name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Your name" />
+                  <input type="text" id="name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Your name" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Email</label>
-                  <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="your@email.com" />
+                  <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="your@email.com" />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="phone" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Phone *</label>
-                  <input type="tel" id="phone" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="+91 99999 99999" />
+                  <input type="tel" id="phone" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="+91 99999 99999" />
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Subject</label>
-                  <select id="subject" value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })} className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors">
+                  <select id="subject" value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors">
                     <option value="">Select a topic</option>
                     <option value="product-inquiry">Product Inquiry</option>
                     <option value="custom-order">Custom Order</option>
@@ -111,7 +111,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <label htmlFor="message" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Message *</label>
-                <textarea id="message" required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full bg-cream-100 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors resize-none" placeholder="Tell us what you're looking for..." />
+                <textarea id="message" required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors resize-none" placeholder="Tell us what you're looking for..." />
               </div>
               <motion.button type="submit" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full py-4 bg-charcoal-800 text-white font-light uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full">
                 Send Message

@@ -4,9 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { number: "500+", label: "Happy Customers" },
   { number: "200+", label: "Unique Designs" },
   { number: "100%", label: "Handcrafted" },
+  { number: "✦", label: "Made in India" },
 ];
 
 export default function BrandStory() {
@@ -21,7 +21,7 @@ export default function BrandStory() {
   const sectionOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="py-28 px-4 sm:px-6 lg:px-8 bg-cream-100 overflow-hidden">
+    <section ref={sectionRef} className="py-28 px-4 sm:px-6 lg:px-8 bg-pearl-200 overflow-hidden">
       <motion.div style={{ opacity: sectionOpacity }} className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image Collage */}

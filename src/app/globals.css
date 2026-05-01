@@ -2,45 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
+/* ═══════════════════════════════════════════════
+   THEME: Pearl White & Gold
+   Mood : Minimal · Clean · High-End
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --color-bg-page:        #FFFFFF;
+  --color-bg-surface:     #FAFAFA;
+  --color-bg-subtle:      #F5F5F5;
+  --color-bg-pearl:       #F8F7F5;
+
+  --color-gold-light:     #FFF3CC;
+  --color-gold-mid:       #D4AF37;
+  --color-gold-main:      #C8A84B;
+  --color-gold-dark:      #A8881A;
+  --color-gold-deep:      #806610;
+
+  --color-text-primary:   #111111;
+  --color-text-secondary: #585858;
+  --color-text-muted:     #A0A0A0;
+
+  --color-border-subtle:  rgba(0, 0, 0, 0.06);
+  --color-border-default: rgba(0, 0, 0, 0.10);
+  --color-border-gold:    rgba(200, 168, 75, 0.25);
+
+  --shadow-sm:   0 1px 8px  rgba(0, 0, 0, 0.05);
+  --shadow-md:   0 4px 20px rgba(0, 0, 0, 0.07);
+  --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.08);
+  --shadow-gold: 0 0 0 1px  rgba(200, 168, 75, 0.25);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #FDFBF7;
-  color: #1a1a1a;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #FDFBF7;
-}
-
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg-page); }
 ::-webkit-scrollbar-thumb {
-  background: #C9A84C;
-  border-radius: 3px;
+  background: var(--color-gold-main);
+  border-radius: 4px;
 }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold-dark); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #B8941F;
+/* Selection */
+::selection {
+  background: rgba(200, 168, 75, 0.15);
+  color: var(--color-text-primary);
 }
 
 /* Gold gradient text */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #B8941F, #D4AF37, #C9A84C);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Rose gold gradient text */
-.text-rose-gradient {
-  background: linear-gradient(135deg, #B76E79, #E8B4B8, #B76E79);
+  background: linear-gradient(135deg, #A8881A 0%, #D4AF37 45%, #C8A84B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -52,7 +71,7 @@ body {
     90deg,
     transparent 0%,
     #D4AF37 25%,
-    #FFD966 50%,
+    #F5D36A 50%,
     #D4AF37 75%,
     transparent 100%
   );
@@ -60,17 +79,30 @@ body {
   animation: shimmer 3s linear infinite;
 }
 
-/* Elegant card */
+/* Cards */
 .elegant-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+  background: var(--color-bg-page);
+  border: 0.5px solid var(--color-border-default);
+  border-radius: 16px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .elegant-card:hover {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(201, 168, 76, 0.2);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
   transform: translateY(-4px);
+}
+
+.pearl-card {
+  background: var(--color-bg-pearl);
+  border: 0.5px solid var(--color-border-subtle);
+  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pearl-card:hover {
+  background: var(--color-bg-page);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 /* Product card */
@@ -80,14 +112,26 @@ body {
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Marquee animation */
+/* Marquee */
 .marquee {
   animation: marquee 30s linear infinite;
 }
 
+/* Swiper */
+.swiper-pagination-bullet {
+  background: var(--color-gold-main) !important;
+  opacity: 0.3 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: var(--color-gold-dark) !important;
+}
+
+/* Animations */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -96,26 +140,4 @@ body {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-}
-
-/* Swiper custom styles */
-.swiper-pagination-bullet {
-  background: #C9A84C !important;
-  opacity: 0.3 !important;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1 !important;
-  background: #B8941F !important;
-}
-
-/* Selection color */
-::selection {
-  background: rgba(201, 168, 76, 0.2);
-  color: #1a1a1a;
 }

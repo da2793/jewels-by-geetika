@@ -24,7 +24,7 @@ export default function AboutPage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
-    <div className="pt-20 bg-cream-100">
+    <div className="pt-20 bg-cream-50">
       {/* Hero */}
       <section ref={heroRef} className="relative h-[55vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
@@ -59,7 +59,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-pearl-200">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">What We Stand For</span>
