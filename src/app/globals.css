@@ -8,79 +8,114 @@ html {
 }
 
 body {
-  background-color: #0A0A0A;
-  color: #f5f5f5;
+  background-color: #FDFBF7;
+  color: #1a1a1a;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #FDFBF7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B8941F;
-  border-radius: 4px;
+  background: #C9A84C;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37;
+  background: #B8941F;
 }
 
-/* Gold gradient text utility */
+/* Gold gradient text */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #FFD966, #C9A84C, #FFD966);
+  background: linear-gradient(135deg, #B8941F, #D4AF37, #C9A84C);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Gold shimmer effect */
+/* Rose gold gradient text */
+.text-rose-gradient {
+  background: linear-gradient(135deg, #B76E79, #E8B4B8, #B76E79);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold shimmer line */
 .gold-shimmer {
   background: linear-gradient(
     90deg,
-    #8B7014 0%,
+    transparent 0%,
     #D4AF37 25%,
     #FFD966 50%,
     #D4AF37 75%,
-    #8B7014 100%
+    transparent 100%
   );
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
 
-/* Glass morphism card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
+/* Elegant card */
+.elegant-card {
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Product card hover effect */
+.elegant-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(201, 168, 76, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Product card */
 .product-card {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(201, 168, 76, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
-/* Swiper custom styles */
-.swiper-pagination-bullet {
-  background: #C9A84C !important;
-  opacity: 0.4 !important;
+/* Marquee animation */
+.marquee {
+  animation: marquee 30s linear infinite;
 }
 
-.swiper-pagination-bullet-active {
-  opacity: 1 !important;
-  background: #D4AF37 !important;
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  background: #C9A84C !important;
+  opacity: 0.3 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: #B8941F !important;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(201, 168, 76, 0.2);
+  color: #1a1a1a;
 }

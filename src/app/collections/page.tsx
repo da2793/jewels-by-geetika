@@ -25,7 +25,7 @@ export default function CollectionsPage() {
   }, [activeCategory, sortBy]);
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-28 pb-16 bg-cream-100 min-h-screen">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -33,14 +33,13 @@ export default function CollectionsPage() {
         transition={{ duration: 0.8 }}
         className="text-center px-4 mb-12"
       >
-        <span className="text-gold-400 uppercase tracking-[0.3em] text-sm">
+        <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
           Explore
         </span>
-        <h1 className="text-4xl md:text-6xl font-serif font-bold mt-4 mb-4">
-          <span className="text-white/90">Our </span>
-          <span className="text-gold-gradient">Collections</span>
+        <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
+          Our <span className="italic text-gold-gradient">Collections</span>
         </h1>
-        <p className="text-white/50 max-w-lg mx-auto">
+        <p className="text-charcoal-400 max-w-lg mx-auto font-light">
           Each piece is hand-curated to bring you the finest in imitation
           jewellery. Find your perfect match.
         </p>
@@ -58,10 +57,10 @@ export default function CollectionsPage() {
           <div className="flex flex-wrap justify-center gap-2">
             <button
               onClick={() => setActiveCategory("all")}
-              className={`px-4 py-2 text-sm uppercase tracking-wider transition-all duration-300 rounded-sm ${
+              className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
                 activeCategory === "all"
-                  ? "bg-gold-500 text-dark-500 font-semibold"
-                  : "border border-gold-500/30 text-gold-400/70 hover:border-gold-400 hover:text-gold-400"
+                  ? "bg-charcoal-800 text-white"
+                  : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
               }`}
             >
               All
@@ -70,10 +69,10 @@ export default function CollectionsPage() {
               <button
                 key={cat.slug}
                 onClick={() => setActiveCategory(cat.slug)}
-                className={`px-4 py-2 text-sm uppercase tracking-wider transition-all duration-300 rounded-sm ${
+                className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
                   activeCategory === cat.slug
-                    ? "bg-gold-500 text-dark-500 font-semibold"
-                    : "border border-gold-500/30 text-gold-400/70 hover:border-gold-400 hover:text-gold-400"
+                    ? "bg-charcoal-800 text-white"
+                    : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
                 }`}
               >
                 {cat.name}
@@ -85,7 +84,7 @@ export default function CollectionsPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="bg-dark-300 border border-gold-500/20 text-white/70 px-4 py-2 text-sm rounded-sm focus:outline-none focus:border-gold-400"
+            className="bg-white border border-charcoal-100 text-charcoal-500 px-4 py-2 text-sm rounded-full focus:outline-none focus:border-gold-400"
           >
             <option value="default">Sort by: Default</option>
             <option value="price-low">Price: Low to High</option>
@@ -101,7 +100,7 @@ export default function CollectionsPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
           >
             {filteredProducts.map((product, index) => (
               <motion.div
@@ -118,7 +117,7 @@ export default function CollectionsPage() {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-white/40 text-lg">
+            <p className="text-charcoal-300 text-lg font-light">
               No products found in this category yet. Check back soon!
             </p>
           </div>

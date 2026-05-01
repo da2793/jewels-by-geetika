@@ -18,18 +18,17 @@ export default function FeaturedProducts() {
         transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
-        <span className="text-gold-400 uppercase tracking-[0.3em] text-sm">
+        <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
           Curated For You
         </span>
-        <h2 className="text-4xl md:text-5xl font-serif font-bold mt-4 mb-6">
-          <span className="text-gold-gradient">Featured</span>{" "}
-          <span className="text-white/90">Collection</span>
+        <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">
+          Featured <span className="italic text-gold-gradient">Collection</span>
         </h2>
-        <div className="w-20 h-[1px] bg-gold-500/50 mx-auto" />
+        <div className="w-16 h-[1px] bg-gold-400/40 mx-auto" />
       </motion.div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {featured.map((product, index) => (
           <motion.div
             key={product.id}
@@ -48,14 +47,14 @@ export default function FeaturedProducts() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.4 }}
         className="text-center mt-16"
       >
         <Link href="/collections">
           <motion.span
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-4 border border-gold-500/50 text-gold-400 font-semibold uppercase tracking-widest text-sm hover:bg-gold-500/10 transition-colors duration-300 cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-block px-10 py-4 border border-charcoal-200 text-charcoal-600 font-light uppercase tracking-[0.2em] text-sm hover:border-gold-500 hover:text-gold-600 transition-all duration-500 cursor-pointer rounded-full"
           >
             View All Collections →
           </motion.span>

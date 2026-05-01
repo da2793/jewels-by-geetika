@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -28,44 +29,33 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-dark-500/95 backdrop-blur-md shadow-lg shadow-black/20"
-          : "bg-transparent"
+          ? "bg-white/90 backdrop-blur-md shadow-sm"
+          : "bg-cream-100/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl md:text-3xl font-serif font-bold tracking-wide"
-            >
-              <span className="text-gold-gradient">Jewels</span>
-              <span className="text-white/80 text-lg md:text-xl font-light ml-1">
-                by Geetika
-              </span>
-            </motion.div>
-          </Link>
+          <Logo variant="dark" />
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-white/70 hover:text-gold-400 transition-colors duration-300 text-sm uppercase tracking-widest group"
+                className="relative text-charcoal-500 hover:text-gold-600 transition-colors duration-300 text-[13px] uppercase tracking-[0.2em] group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-600 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 px-5 py-2 border border-gold-500/50 text-gold-400 text-sm uppercase tracking-widest hover:bg-gold-500/10 transition-all duration-300 rounded-sm"
+              className="ml-4 px-6 py-2.5 bg-charcoal-800 text-white text-[12px] uppercase tracking-[0.2em] hover:bg-gold-600 transition-all duration-300 rounded-full"
             >
-              Shop on Instagram
+              Shop Now
             </a>
           </div>
 
@@ -77,15 +67,15 @@ export default function Navbar() {
           >
             <motion.span
               animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              className="block w-6 h-[2px] bg-gold-400"
+              className="block w-6 h-[1.5px] bg-charcoal-700"
             />
             <motion.span
               animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block w-6 h-[2px] bg-gold-400"
+              className="block w-6 h-[1.5px] bg-charcoal-700"
             />
             <motion.span
               animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              className="block w-6 h-[2px] bg-gold-400"
+              className="block w-6 h-[1.5px] bg-charcoal-700"
             />
           </button>
         </div>
@@ -99,7 +89,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-dark-500/98 backdrop-blur-lg border-t border-gold-500/10"
+            className="md:hidden bg-white/98 backdrop-blur-lg border-t border-cream-400"
           >
             <div className="px-6 py-8 space-y-6">
               {navLinks.map((link, i) => (
@@ -112,7 +102,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-white/80 hover:text-gold-400 text-lg uppercase tracking-widest transition-colors"
+                    className="block text-charcoal-600 hover:text-gold-600 text-lg uppercase tracking-[0.15em] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -125,9 +115,9 @@ export default function Navbar() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center py-3 border border-gold-500/50 text-gold-400 uppercase tracking-widest hover:bg-gold-500/10 transition-all"
+                className="block text-center py-3 bg-charcoal-800 text-white uppercase tracking-[0.15em] rounded-full hover:bg-gold-600 transition-all"
               >
-                Shop on Instagram
+                Shop Now
               </motion.a>
             </div>
           </motion.div>

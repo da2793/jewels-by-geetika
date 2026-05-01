@@ -25,7 +25,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-cream-100">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -35,14 +35,14 @@ export default function Testimonials() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-gold-400 uppercase tracking-[0.3em] text-sm">
+          <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
             Love Letters
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mt-4 mb-6">
-            <span className="text-white/90">What Our </span>
-            <span className="text-gold-gradient">Customers Say</span>
+          <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">
+            What Our Customers{" "}
+            <span className="italic text-gold-gradient">Say</span>
           </h2>
-          <div className="w-20 h-[1px] bg-gold-500/50 mx-auto" />
+          <div className="w-16 h-[1px] bg-gold-400/40 mx-auto" />
         </motion.div>
 
         {/* Testimonials Grid */}
@@ -54,16 +54,16 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -5 }}
-              className="glass-card rounded-lg p-8 relative"
+              whileHover={{ y: -4 }}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-500 relative"
             >
               {/* Quote mark */}
-              <div className="text-gold-500/20 text-6xl font-serif absolute top-4 right-6">
+              <div className="text-gold-400/15 text-7xl font-serif absolute top-2 right-6 leading-none">
                 &ldquo;
               </div>
 
               {/* Stars */}
-              <div className="flex space-x-1 mb-4">
+              <div className="flex space-x-1 mb-5">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <svg
                     key={i}
@@ -76,13 +76,15 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-white/60 leading-relaxed mb-6 text-sm">
+              <p className="text-charcoal-400 leading-relaxed mb-6 text-sm font-light relative z-10">
                 {testimonial.text}
               </p>
 
-              <div>
-                <p className="text-white/90 font-semibold">{testimonial.name}</p>
-                <p className="text-gold-400/60 text-sm">{testimonial.location}</p>
+              <div className="border-t border-cream-300 pt-4">
+                <p className="text-charcoal-700 font-medium text-sm">
+                  {testimonial.name}
+                </p>
+                <p className="text-charcoal-300 text-xs">{testimonial.location}</p>
               </div>
             </motion.div>
           ))}

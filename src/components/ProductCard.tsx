@@ -13,57 +13,53 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/product/${product.id}`}>
       <motion.div
-        whileHover={{ y: -8 }}
-        className="product-card glass-card rounded-lg overflow-hidden group cursor-pointer"
+        whileHover={{ y: -6 }}
+        className="group cursor-pointer"
       >
         {/* Image Container */}
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream-200 mb-4">
           <Image
             src={product.images[0]}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 
-          {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-500/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Subtle overlay on hover */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
 
           {/* Badge */}
           {product.badge && (
-            <div className="absolute top-4 left-4 px-3 py-1 bg-gold-500 text-dark-500 text-xs font-bold uppercase tracking-wider">
+            <div className="absolute top-4 left-4 px-3 py-1.5 bg-white/90 backdrop-blur-sm text-charcoal-700 text-[10px] font-semibold uppercase tracking-[0.15em] rounded-full">
               {product.badge}
             </div>
           )}
           {product.isNew && !product.badge && (
-            <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 text-dark-500 text-xs font-bold uppercase tracking-wider">
+            <div className="absolute top-4 left-4 px-3 py-1.5 bg-gold-600 text-white text-[10px] font-semibold uppercase tracking-[0.15em] rounded-full">
               New
             </div>
           )}
 
-          {/* Quick View Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileHover={{ opacity: 1, y: 0 }}
-            className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500"
-          >
-            <span className="block text-center py-3 bg-gold-500/90 text-dark-500 text-sm font-semibold uppercase tracking-wider backdrop-blur-sm">
+          {/* Quick View */}
+          <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+            <span className="block text-center py-3 bg-white/90 backdrop-blur-sm text-charcoal-700 text-xs font-medium uppercase tracking-[0.15em] rounded-full">
               View Details
             </span>
-          </motion.div>
+          </div>
         </div>
 
         {/* Info */}
-        <div className="p-5">
-          <h3 className="text-white/90 font-serif text-lg mb-2 group-hover:text-gold-400 transition-colors">
+        <div className="px-1">
+          <h3 className="text-charcoal-700 font-serif text-lg mb-1 group-hover:text-gold-600 transition-colors">
             {product.name}
           </h3>
           <div className="flex items-center space-x-3">
-            <span className="text-gold-400 font-semibold text-lg">
+            <span className="text-charcoal-800 font-medium">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
             {product.originalPrice && (
-              <span className="text-white/30 line-through text-sm">
+              <span className="text-charcoal-300 line-through text-sm">
                 ₹{product.originalPrice.toLocaleString("en-IN")}
               </span>
             )}

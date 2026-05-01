@@ -16,35 +16,23 @@ export default function BrandStory() {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const leftX = useTransform(scrollYProgress, [0, 0.5], [-60, 0]);
+  const rightX = useTransform(scrollYProgress, [0, 0.5], [60, 0]);
+  const sectionOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <motion.div
-        style={{ y }}
-        className="absolute top-20 right-10 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"
-      />
-      <motion.div
-        style={{ y: useTransform(scrollYProgress, [0, 1], [-50, 50]) }}
-        className="absolute bottom-20 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl"
-      />
-
-      <div className="max-w-7xl mx-auto">
+    <section ref={sectionRef} className="py-28 px-4 sm:px-6 lg:px-8 bg-cream-100 overflow-hidden">
+      <motion.div style={{ opacity: sectionOpacity }} className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image Collage */}
-          <motion.div
-            style={{ opacity }}
-            className="relative"
-          >
+          <motion.div style={{ x: leftX }} className="relative">
             <div className="grid grid-cols-2 gap-4">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="aspect-[3/4] rounded-lg overflow-hidden mt-8"
+                className="aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-xl"
               >
                 <div
                   className="w-full h-full bg-cover bg-center"
@@ -55,11 +43,11 @@ export default function BrandStory() {
                 />
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="aspect-[3/4] rounded-lg overflow-hidden"
+                className="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl"
               >
                 <div
                   className="w-full h-full bg-cover bg-center"
@@ -70,18 +58,18 @@ export default function BrandStory() {
                 />
               </motion.div>
             </div>
-            {/* Gold accent line */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-[2px] gold-shimmer" />
+            {/* Gold accent */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-24 h-[2px] gold-shimmer rounded-full" />
           </motion.div>
 
           {/* Right - Text Content */}
-          <div>
+          <motion.div style={{ x: rightX }}>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-gold-400 uppercase tracking-[0.3em] text-sm"
+              className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light"
             >
               Our Story
             </motion.span>
@@ -91,10 +79,10 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-serif font-bold mt-4 mb-8"
+              className="text-4xl md:text-5xl font-serif mt-4 mb-8 text-charcoal-800"
             >
-              <span className="text-white/90">Crafted with </span>
-              <span className="text-gold-gradient">Passion</span>
+              Crafted with{" "}
+              <span className="italic text-gold-gradient">Passion</span>
             </motion.h2>
 
             <motion.p
@@ -102,7 +90,7 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white/60 leading-relaxed mb-6"
+              className="text-charcoal-400 leading-relaxed mb-6 font-light"
             >
               Jewels by Geetika was born from a love for beautiful jewellery and
               the belief that every woman deserves to feel extraordinary. Each
@@ -115,7 +103,7 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-white/60 leading-relaxed mb-10"
+              className="text-charcoal-400 leading-relaxed mb-12 font-light"
             >
               From stunning AD diamond pieces to regal kundan sets and elegant
               gold replicas, we bring you jewellery that looks and feels like
@@ -133,18 +121,18 @@ export default function BrandStory() {
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-3xl md:text-4xl font-serif font-bold text-gold-400 mb-1">
+                  <div className="text-3xl md:text-4xl font-serif text-gold-600 mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-white/40 text-xs uppercase tracking-wider">
+                  <div className="text-charcoal-300 text-[10px] uppercase tracking-[0.2em]">
                     {stat.label}
                   </div>
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

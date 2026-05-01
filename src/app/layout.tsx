@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "Indian jewellery online",
     "Jewels by Geetika",
   ],
+  icons: {
+    icon: "/icon.svg",
+  },
   openGraph: {
     title: "Jewels by Geetika | Hand-Curated Imitation Jewellery",
     description:
