@@ -89,7 +89,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-charcoal-700 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
           >
-            Anti-tarnish, everyday jewellery designed for the modern woman —
+            Premium, everyday jewellery designed for the modern woman —
             AD, kundan &amp; gold replicas that look luxurious without the
             luxury price tag.
           </motion.p>

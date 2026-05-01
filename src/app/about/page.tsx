@@ -14,9 +14,9 @@ const values = [
 
 const promises = [
   {
-    title: "Anti-Tarnish Guarantee",
-    description: "Every piece is treated to resist tarnishing, so your jewellery stays as beautiful as the day you received it.",
-    icon: "🛡️",
+    title: "Premium Quality",
+    description: "Every piece is crafted with the finest materials and finishes — designed to look and feel luxurious, with attention to every detail.",
+    icon: "💎",
   },
   {
     title: "Secure Packaging",
