@@ -30,7 +30,7 @@ export default function InstagramCTA() {
           <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-4 text-charcoal-800">
             @<span className="text-gold-gradient">jewelsbygeetika</span>
           </h2>
-          <p className="text-charcoal-600 max-w-lg mx-auto font-light">
+          <p className="text-charcoal-800 max-w-lg mx-auto font-light">
             Join our growing community on Instagram for new arrivals, styling
             tips, and exclusive offers.
           </p>

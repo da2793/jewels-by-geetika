@@ -49,7 +49,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-serif mb-6 text-charcoal-800">
               A Passion Turned <span className="text-gold-gradient">Purpose</span>
             </h2>
-            <div className="space-y-4 text-charcoal-600 leading-relaxed font-light">
+            <div className="space-y-4 text-charcoal-800 leading-relaxed font-light">
               <p>Jewels by Geetika started with a simple belief — that every woman deserves to feel beautiful and confident, and that stunning jewellery shouldn&apos;t come with a stunning price tag.</p>
               <p>What began as a personal passion for collecting and styling jewellery has grown into a curated collection loved by hundreds of women across India.</p>
               <p>From AD diamond pieces that sparkle like the real thing, to kundan sets that carry the weight of tradition, to gold replicas that exude timeless elegance — every item tells a story.</p>
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <motion.div key={value.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -4 }} className="bg-cream-100 rounded-2xl p-8 text-center transition-all duration-500">
                 <div className="text-3xl mb-4">{value.icon}</div>
                 <h3 className="text-charcoal-700 font-serif text-xl mb-3">{value.title}</h3>
-                <p className="text-charcoal-600 text-sm leading-relaxed font-light">{value.description}</p>
+                <p className="text-charcoal-800 text-sm leading-relaxed font-light">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-charcoal-700 font-serif text-xl mb-2">{step.title}</h3>
-                  <p className="text-charcoal-600 leading-relaxed font-light">{step.description}</p>
+                  <p className="text-charcoal-800 leading-relaxed font-light">{step.description}</p>
                 </div>
               </motion.div>
             ))}

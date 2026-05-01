@@ -76,7 +76,7 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-charcoal-600 leading-relaxed mb-6 text-sm font-light relative z-10">
+              <p className="text-charcoal-800 leading-relaxed mb-6 text-sm font-light relative z-10">
                 {testimonial.text}
               </p>
 
@@ -84,7 +84,7 @@ export default function Testimonials() {
                 <p className="text-charcoal-700 font-medium text-sm">
                   {testimonial.name}
                 </p>
-                <p className="text-charcoal-500 text-xs">{testimonial.location}</p>
+                <p className="text-charcoal-700 text-xs">{testimonial.location}</p>
               </div>
             </motion.div>
           ))}

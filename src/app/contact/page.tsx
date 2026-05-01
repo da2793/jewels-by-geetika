@@ -45,7 +45,7 @@ export default function ContactPage() {
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
           Contact <span className="text-gold-gradient">Us</span>
         </h1>
-        <p className="text-charcoal-600 max-w-lg mx-auto font-light">
+        <p className="text-charcoal-800 max-w-lg mx-auto font-light">
           Have a question about a piece? Want to place a custom order? We&apos;d love to hear from you.
         </p>
       </motion.div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 {method.icon}
               </div>
               <h3 className="text-charcoal-700 font-serif text-xl mb-2">{method.title}</h3>
-              <p className="text-charcoal-600 text-sm mb-4 font-light">{method.description}</p>
+              <p className="text-charcoal-800 text-sm mb-4 font-light">{method.description}</p>
               <span className="text-gold-600 text-sm font-medium">{method.action}</span>
             </motion.a>
           ))}
@@ -77,28 +77,28 @@ export default function ContactPage() {
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white rounded-2xl p-12 text-center shadow-sm">
               <div className="text-5xl mb-4">✨</div>
               <h3 className="text-2xl font-serif text-gold-600 mb-3">Message Sent!</h3>
-              <p className="text-charcoal-600 font-light">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
+              <p className="text-charcoal-800 font-light">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
               <button onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", phone: "", subject: "", message: "" }); }} className="mt-6 text-gold-600 text-sm uppercase tracking-[0.15em] hover:underline">Send Another Message</button>
             </motion.div>
           ) : (
             <motion.form initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 md:p-12 space-y-6 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Name *</label>
+                  <label htmlFor="name" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">Name *</label>
                   <input type="text" id="name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Your name" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Email</label>
+                  <label htmlFor="email" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">Email</label>
                   <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="your@email.com" />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Phone *</label>
+                  <label htmlFor="phone" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">Phone *</label>
                   <input type="tel" id="phone" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors" placeholder="+91 99999 99999" />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Subject</label>
+                  <label htmlFor="subject" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">Subject</label>
                   <select id="subject" value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors">
                     <option value="">Select a topic</option>
                     <option value="product-inquiry">Product Inquiry</option>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div>
-                <label htmlFor="message" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">Message *</label>
+                <label htmlFor="message" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">Message *</label>
                 <textarea id="message" required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full bg-cream-50 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 focus:outline-none focus:border-gold-400 transition-colors resize-none" placeholder="Tell us what you're looking for..." />
               </div>
               <motion.button type="submit" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full py-4 bg-charcoal-800 text-white font-light uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full">

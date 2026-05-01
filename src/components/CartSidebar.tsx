@@ -34,13 +34,13 @@ export default function CartSidebar() {
             <div className="flex items-center justify-between px-6 py-5 border-b border-cream-300">
               <h2 className="font-serif text-xl text-charcoal-800">
                 Your Bag{" "}
-                <span className="text-charcoal-500 text-sm font-sans font-light">
+                <span className="text-charcoal-700 text-sm font-sans font-light">
                   ({totalItems} {totalItems === 1 ? "item" : "items"})
                 </span>
               </h2>
               <button
                 onClick={closeCart}
-                className="w-8 h-8 flex items-center justify-center text-charcoal-600 hover:text-charcoal-700 transition-colors"
+                className="w-8 h-8 flex items-center justify-center text-charcoal-800 hover:text-charcoal-700 transition-colors"
                 aria-label="Close cart"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,8 +54,8 @@ export default function CartSidebar() {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <div className="text-4xl mb-4">✦</div>
-                  <p className="text-charcoal-600 font-light mb-2">Your bag is empty</p>
-                  <p className="text-charcoal-500 text-sm font-light mb-6">
+                  <p className="text-charcoal-800 font-light mb-2">Your bag is empty</p>
+                  <p className="text-charcoal-700 text-sm font-light mb-6">
                     Discover our curated collection
                   </p>
                   <button
@@ -103,7 +103,7 @@ export default function CartSidebar() {
                               onClick={() =>
                                 updateQuantity(item.product.id, item.quantity - 1)
                               }
-                              className="w-8 h-8 flex items-center justify-center text-charcoal-600 hover:text-charcoal-700 transition-colors"
+                              className="w-8 h-8 flex items-center justify-center text-charcoal-800 hover:text-charcoal-700 transition-colors"
                               aria-label="Decrease quantity"
                             >
                               −
@@ -115,7 +115,7 @@ export default function CartSidebar() {
                               onClick={() =>
                                 updateQuantity(item.product.id, item.quantity + 1)
                               }
-                              className="w-8 h-8 flex items-center justify-center text-charcoal-600 hover:text-charcoal-700 transition-colors"
+                              className="w-8 h-8 flex items-center justify-center text-charcoal-800 hover:text-charcoal-700 transition-colors"
                               aria-label="Increase quantity"
                             >
                               +
@@ -124,7 +124,7 @@ export default function CartSidebar() {
 
                           <button
                             onClick={() => removeFromCart(item.product.id)}
-                            className="text-charcoal-500 hover:text-red-400 transition-colors"
+                            className="text-charcoal-700 hover:text-red-400 transition-colors"
                             aria-label="Remove item"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,12 +143,12 @@ export default function CartSidebar() {
             {items.length > 0 && (
               <div className="border-t border-cream-300 px-6 py-5 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-charcoal-500 font-light">Subtotal</span>
+                  <span className="text-charcoal-700 font-light">Subtotal</span>
                   <span className="text-charcoal-800 font-serif text-lg">
                     ₹{totalPrice.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <p className="text-charcoal-500 text-xs font-light">
+                <p className="text-charcoal-700 text-xs font-light">
                   Shipping calculated at checkout
                 </p>
                 <Link href="/checkout" onClick={closeCart}>
@@ -162,7 +162,7 @@ export default function CartSidebar() {
                 </Link>
                 <button
                   onClick={closeCart}
-                  className="block w-full text-center text-charcoal-600 text-sm font-light hover:text-gold-600 transition-colors"
+                  className="block w-full text-center text-charcoal-800 text-sm font-light hover:text-gold-600 transition-colors"
                 >
                   Continue Shopping
                 </button>

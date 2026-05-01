@@ -105,7 +105,7 @@ export default function ComingSoonOverlay() {
         {/* Main message */}
         <motion.p
           variants={itemVariants}
-          className="text-charcoal-500 text-lg md:text-xl font-light leading-relaxed mb-3"
+          className="text-charcoal-700 text-lg md:text-xl font-light leading-relaxed mb-3"
         >
           We&apos;re glad you stumbled across our page
         </motion.p>
@@ -119,7 +119,7 @@ export default function ComingSoonOverlay() {
 
         <motion.p
           variants={itemVariants}
-          className="text-charcoal-600 font-light mb-10 leading-relaxed"
+          className="text-charcoal-800 font-light mb-10 leading-relaxed"
         >
           Stay tuned — an exquisite collection of hand-curated
           jewellery is on its way to you. Launching soon.
@@ -149,7 +149,7 @@ export default function ComingSoonOverlay() {
         <motion.div variants={itemVariants} className="mt-5">
           <a
             href="mailto:contact@jewelsbygeetika.com"
-            className="text-charcoal-600 text-sm font-light hover:text-gold-600 transition-colors inline-flex items-center space-x-2"
+            className="text-charcoal-800 text-sm font-light hover:text-gold-600 transition-colors inline-flex items-center space-x-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

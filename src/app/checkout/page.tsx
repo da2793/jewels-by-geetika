@@ -33,7 +33,7 @@ export default function CheckoutPage() {
         <h1 className="text-2xl font-serif text-charcoal-700 mb-3">
           Your bag is empty
         </h1>
-        <p className="text-charcoal-600 font-light mb-6">
+        <p className="text-charcoal-800 font-light mb-6">
           Add some beautiful pieces before checking out.
         </p>
         <Link href="/collections">
@@ -59,7 +59,7 @@ export default function CheckoutPage() {
         >
           <Link
             href="/collections"
-            className="text-charcoal-600 text-sm hover:text-gold-600 transition-colors mb-4 inline-block"
+            className="text-charcoal-800 text-sm hover:text-gold-600 transition-colors mb-4 inline-block"
           >
             ← Continue Shopping
           </Link>
@@ -84,7 +84,7 @@ export default function CheckoutPage() {
               <div className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="firstName" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="firstName" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       First Name *
                     </label>
                     <input
@@ -99,7 +99,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="lastName" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       Last Name *
                     </label>
                     <input
@@ -117,7 +117,7 @@ export default function CheckoutPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="email" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="email" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       Email *
                     </label>
                     <input
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="phone" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       Phone *
                     </label>
                     <input
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="address" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                  <label htmlFor="address" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                     Address *
                   </label>
                   <input
@@ -166,7 +166,7 @@ export default function CheckoutPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   <div>
-                    <label htmlFor="city" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="city" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       City *
                     </label>
                     <input
@@ -181,7 +181,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="state" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="state" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       State *
                     </label>
                     <select
@@ -228,7 +228,7 @@ export default function CheckoutPage() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="pincode" className="block text-charcoal-500 text-xs uppercase tracking-[0.15em] mb-2">
+                    <label htmlFor="pincode" className="block text-charcoal-700 text-xs uppercase tracking-[0.15em] mb-2">
                       Pincode *
                     </label>
                     <input
@@ -277,7 +277,7 @@ export default function CheckoutPage() {
                       <h3 className="text-charcoal-700 text-sm font-medium truncate">
                         {item.product.name}
                       </h3>
-                      <p className="text-charcoal-600 text-xs font-light">
+                      <p className="text-charcoal-800 text-xs font-light">
                         Qty: {item.quantity}
                       </p>
                       <div className="flex items-center justify-between mt-1">
@@ -286,7 +286,7 @@ export default function CheckoutPage() {
                         </p>
                         <button
                           onClick={() => removeFromCart(item.product.id)}
-                          className="text-charcoal-500 hover:text-red-400 text-xs transition-colors"
+                          className="text-charcoal-700 hover:text-red-400 text-xs transition-colors"
                         >
                           Remove
                         </button>
@@ -299,13 +299,13 @@ export default function CheckoutPage() {
               {/* Totals */}
               <div className="border-t border-cream-300 pt-4 space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-charcoal-600 font-light">Subtotal</span>
+                  <span className="text-charcoal-800 font-light">Subtotal</span>
                   <span className="text-charcoal-700">
                     ₹{totalPrice.toLocaleString("en-IN")}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-charcoal-600 font-light">Shipping</span>
+                  <span className="text-charcoal-800 font-light">Shipping</span>
                   <span className="text-charcoal-700">
                     {shippingCost === 0 ? (
                       <span className="text-green-600">Free</span>
@@ -341,14 +341,14 @@ export default function CheckoutPage() {
                 Pay ₹{orderTotal.toLocaleString("en-IN")}
               </motion.button>
 
-              <p className="text-center text-charcoal-500 text-[10px] mt-3 font-light">
+              <p className="text-center text-charcoal-700 text-[10px] mt-3 font-light">
                 Secure payment powered by Razorpay (coming soon)
               </p>
 
               {/* Trust */}
               <div className="flex justify-center gap-6 mt-6 pt-4 border-t border-cream-300">
                 {["🔒 Secure", "📦 Tracked", "✦ Curated"].map((t) => (
-                  <span key={t} className="text-charcoal-500 text-[10px] uppercase tracking-wider">
+                  <span key={t} className="text-charcoal-700 text-[10px] uppercase tracking-wider">
                     {t}
                   </span>
                 ))}

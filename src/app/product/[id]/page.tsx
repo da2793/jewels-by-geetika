@@ -43,13 +43,13 @@ export default function ProductDetailPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="flex items-center space-x-2 text-sm text-charcoal-500 mb-8"
+          className="flex items-center space-x-2 text-sm text-charcoal-700 mb-8"
         >
           <Link href="/" className="hover:text-gold-600 transition-colors">Home</Link>
           <span>/</span>
           <Link href="/collections" className="hover:text-gold-600 transition-colors">Collections</Link>
           <span>/</span>
-          <span className="text-charcoal-600">{product.name}</span>
+          <span className="text-charcoal-800">{product.name}</span>
         </motion.div>
 
         {/* Product Section */}
@@ -123,7 +123,7 @@ export default function ProductDetailPage() {
               </span>
               {product.originalPrice && (
                 <>
-                  <span className="text-xl text-charcoal-500 line-through">
+                  <span className="text-xl text-charcoal-700 line-through">
                     ₹{product.originalPrice.toLocaleString("en-IN")}
                   </span>
                   <span className="px-3 py-1 bg-green-50 text-green-600 text-xs font-medium rounded-full">
@@ -135,7 +135,7 @@ export default function ProductDetailPage() {
               )}
             </div>
 
-            <p className="text-charcoal-600 leading-relaxed mb-8 font-light">
+            <p className="text-charcoal-800 leading-relaxed mb-8 font-light">
               {product.description}
             </p>
 
@@ -145,7 +145,7 @@ export default function ProductDetailPage() {
               </h3>
               <ul className="space-y-2">
                 {product.details.map((detail, i) => (
-                  <li key={i} className="flex items-start space-x-3 text-charcoal-600 text-sm font-light">
+                  <li key={i} className="flex items-start space-x-3 text-charcoal-800 text-sm font-light">
                     <span className="text-gold-500 mt-0.5">✦</span>
                     <span>{detail}</span>
                   </li>
@@ -188,7 +188,7 @@ export default function ProductDetailPage() {
               ].map((badge) => (
                 <div key={badge.label} className="text-center">
                   <div className="text-xl mb-1">{badge.icon}</div>
-                  <div className="text-charcoal-500 text-[10px] uppercase tracking-[0.15em]">
+                  <div className="text-charcoal-700 text-[10px] uppercase tracking-[0.15em]">
                     {badge.label}
                   </div>
                 </div>

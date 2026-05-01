@@ -59,7 +59,7 @@ function CollectionsContent() {
             className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
               activeCategory === "all" && !showNewOnly
                 ? "bg-charcoal-800 text-white"
-                : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+                : "bg-white text-charcoal-700 hover:bg-charcoal-50 border border-charcoal-100"
             }`}
           >
             All
@@ -69,7 +69,7 @@ function CollectionsContent() {
             className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
               showNewOnly
                 ? "bg-gold-600 text-white"
-                : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+                : "bg-white text-charcoal-700 hover:bg-charcoal-50 border border-charcoal-100"
             }`}
           >
             ✦ New In
@@ -79,7 +79,7 @@ function CollectionsContent() {
             className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
               showBestsellers
                 ? "bg-gold-600 text-white"
-                : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+                : "bg-white text-charcoal-700 hover:bg-charcoal-50 border border-charcoal-100"
             }`}
           >
             ✦ Bestsellers
@@ -91,7 +91,7 @@ function CollectionsContent() {
               className={`px-5 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 rounded-full ${
                 activeCategory === cat.slug
                   ? "bg-charcoal-800 text-white"
-                  : "bg-white text-charcoal-500 hover:bg-charcoal-50 border border-charcoal-100"
+                  : "bg-white text-charcoal-700 hover:bg-charcoal-50 border border-charcoal-100"
               }`}
             >
               {cat.name}
@@ -102,7 +102,7 @@ function CollectionsContent() {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-          className="bg-white border border-charcoal-100 text-charcoal-500 px-4 py-2 text-sm rounded-full focus:outline-none focus:border-gold-400"
+          className="bg-white border border-charcoal-100 text-charcoal-700 px-4 py-2 text-sm rounded-full focus:outline-none focus:border-gold-400"
         >
           <option value="default">Sort by: Default</option>
           <option value="price-low">Price: Low to High</option>
@@ -135,7 +135,7 @@ function CollectionsContent() {
 
       {filteredProducts.length === 0 && (
         <div className="text-center py-20">
-          <p className="text-charcoal-500 text-lg font-light">
+          <p className="text-charcoal-700 text-lg font-light">
             No products found in this category yet. Check back soon!
           </p>
         </div>
@@ -160,7 +160,7 @@ export default function CollectionsPage() {
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
           Our <span className="text-gold-gradient">Collections</span>
         </h1>
-        <p className="text-charcoal-600 max-w-lg mx-auto font-light">
+        <p className="text-charcoal-800 max-w-lg mx-auto font-light">
           Each piece is hand-curated to bring you the finest in jewellery. Find your perfect match.
         </p>
       </motion.div>

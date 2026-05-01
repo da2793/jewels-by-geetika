@@ -90,7 +90,7 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-charcoal-600 leading-relaxed mb-6 font-light"
+              className="text-charcoal-800 leading-relaxed mb-6 font-light"
             >
               Jewels by Geetika was born from a love for beautiful jewellery and
               the belief that every woman deserves to feel extraordinary. Each
@@ -103,7 +103,7 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-charcoal-600 leading-relaxed mb-12 font-light"
+              className="text-charcoal-800 leading-relaxed mb-12 font-light"
             >
               From stunning AD diamond pieces to regal kundan sets and elegant
               gold replicas, we bring you jewellery that looks and feels like
@@ -124,7 +124,7 @@ export default function BrandStory() {
                   <div className="text-3xl md:text-4xl font-serif text-gold-600 mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-charcoal-500 text-[10px] uppercase tracking-[0.2em]">
+                  <div className="text-charcoal-700 text-[10px] uppercase tracking-[0.2em]">
                     {stat.label}
                   </div>
                 </motion.div>

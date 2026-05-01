@@ -46,7 +46,7 @@ export default function Navbar() {
               <Link
                 key={link.href + link.label}
                 href={link.href}
-                className="relative text-charcoal-500 hover:text-gold-600 transition-colors duration-300 text-[13px] uppercase tracking-[0.2em] group"
+                className="relative text-charcoal-700 hover:text-gold-600 transition-colors duration-300 text-[13px] uppercase tracking-[0.2em] group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-600 transition-all duration-300 group-hover:w-full" />
@@ -62,7 +62,7 @@ export default function Navbar() {
             </a>
             <button
               onClick={openCart}
-              className="relative ml-2 p-2 text-charcoal-500 hover:text-gold-600 transition-colors"
+              className="relative ml-2 p-2 text-charcoal-700 hover:text-gold-600 transition-colors"
               aria-label="Open cart"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-charcoal-600 hover:text-gold-600 text-lg uppercase tracking-[0.15em] transition-colors"
+                    className="block text-charcoal-800 hover:text-gold-600 text-lg uppercase tracking-[0.15em] transition-colors"
                   >
                     {link.label}
                   </Link>
