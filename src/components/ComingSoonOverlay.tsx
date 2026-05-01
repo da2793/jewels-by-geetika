@@ -91,14 +91,13 @@ export default function ComingSoonOverlay() {
           </motion.div>
         </motion.div>
 
-        {/* Brand name */}
+        {/* Brand logo */}
         <motion.div variants={itemVariants} className="mb-6">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold">
-            <span className="text-gold-gradient italic">Jewels</span>
-            <span className="text-charcoal-700 font-light ml-2 text-2xl md:text-3xl">
-              by Geetika
-            </span>
-          </h1>
+          <img
+            src="/logo.jpeg"
+            alt="Jewels by Geetika"
+            className="h-14 md:h-16 w-auto object-contain mx-auto"
+          />
         </motion.div>
 
         {/* Divider */}
