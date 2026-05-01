@@ -60,7 +60,7 @@ export default function AboutPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
-            <Image src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=750&fit=crop" alt="Geetika" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+            <Image src="/Geetika.JPG" alt="Geetika - Founder of Jewels by Geetika" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-charcoal-900">
