@@ -18,7 +18,7 @@ export default function FeaturedProducts() {
         transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
-        <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
+        <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">
           Curated For You
         </span>
         <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">
@@ -54,7 +54,7 @@ export default function FeaturedProducts() {
           <motion.span
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-block px-10 py-4 border border-charcoal-200 text-charcoal-600 font-light uppercase tracking-[0.2em] text-sm hover:border-gold-500 hover:text-gold-600 transition-all duration-500 cursor-pointer rounded-full"
+            className="inline-block px-10 py-4 border border-charcoal-400 text-charcoal-600 font-light uppercase tracking-[0.2em] text-sm hover:border-gold-500 hover:text-gold-600 transition-all duration-500 cursor-pointer rounded-full"
           >
             View All Collections →
           </motion.span>

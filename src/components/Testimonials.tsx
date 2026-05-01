@@ -35,7 +35,7 @@ export default function Testimonials() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
+          <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">
             Love Letters
           </span>
           <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">
@@ -76,7 +76,7 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-charcoal-400 leading-relaxed mb-6 text-sm font-light relative z-10">
+              <p className="text-charcoal-600 leading-relaxed mb-6 text-sm font-light relative z-10">
                 {testimonial.text}
               </p>
 
@@ -84,7 +84,7 @@ export default function Testimonials() {
                 <p className="text-charcoal-700 font-medium text-sm">
                   {testimonial.name}
                 </p>
-                <p className="text-charcoal-300 text-xs">{testimonial.location}</p>
+                <p className="text-charcoal-500 text-xs">{testimonial.location}</p>
               </div>
             </motion.div>
           ))}

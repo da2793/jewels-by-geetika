@@ -18,7 +18,7 @@ export default function MarqueeStrip() {
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="text-gold-700 text-[11px] uppercase tracking-[0.3em] mx-8 font-light"
+            className="text-gold-800 text-[11px] uppercase tracking-[0.3em] mx-8 font-medium"
           >
             {item}
           </span>

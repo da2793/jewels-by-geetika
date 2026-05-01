@@ -29,11 +29,11 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Jewels by Geetika | Hand-Curated Imitation Jewellery",
+  title: "Jewels by Geetika | Hand-Curated Jewellery",
   description:
-    "Discover exquisite hand-curated AD, kundan, and gold replica jewellery. Premium imitation jewellery for every occasion — necklaces, earrings, bangles, rings, and bridal sets.",
+    "Discover exquisite hand-curated AD, kundan, and gold replica jewellery. Premium jewellery for every occasion — necklaces, earrings, bangles, rings, and bridal sets.",
   keywords: [
-    "imitation jewellery",
+    "jewellery",
     "AD jewellery",
     "kundan jewellery",
     "gold replica",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     icon: "/icon.svg",
   },
   openGraph: {
-    title: "Jewels by Geetika | Hand-Curated Imitation Jewellery",
+    title: "Jewels by Geetika | Hand-Curated Jewellery",
     description:
       "Exquisite hand-curated AD, kundan, and gold replica jewellery for every occasion.",
     type: "website",

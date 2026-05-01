@@ -8,7 +8,7 @@ interface LogoProps {
 }
 
 export default function Logo({ variant = "dark", className = "" }: LogoProps) {
-  const textColor = variant === "dark" ? "text-charcoal-700" : "text-white/70";
+  const textColor = variant === "dark" ? "text-charcoal-800" : "text-white/80";
 
   return (
     <Link href="/" className={`inline-block group ${className}`} aria-label="Jewels by Geetika - Home">

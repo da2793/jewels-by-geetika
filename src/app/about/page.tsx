@@ -32,7 +32,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-white/50" />
         </motion.div>
         <div className="relative z-10 text-center px-4">
-          <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Our Story</motion.span>
+          <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">Our Story</motion.span>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-5xl md:text-7xl font-serif mt-4 text-charcoal-800">
             About <span className="text-gold-gradient">Geetika</span>
           </motion.h1>
@@ -49,7 +49,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-serif mb-6 text-charcoal-800">
               A Passion Turned <span className="text-gold-gradient">Purpose</span>
             </h2>
-            <div className="space-y-4 text-charcoal-400 leading-relaxed font-light">
+            <div className="space-y-4 text-charcoal-600 leading-relaxed font-light">
               <p>Jewels by Geetika started with a simple belief — that every woman deserves to feel beautiful and confident, and that stunning jewellery shouldn&apos;t come with a stunning price tag.</p>
               <p>What began as a personal passion for collecting and styling jewellery has grown into a curated collection loved by hundreds of women across India.</p>
               <p>From AD diamond pieces that sparkle like the real thing, to kundan sets that carry the weight of tradition, to gold replicas that exude timeless elegance — every item tells a story.</p>
@@ -62,7 +62,7 @@ export default function AboutPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-cream-300">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">What We Stand For</span>
+            <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">What We Stand For</span>
             <h2 className="text-4xl md:text-5xl font-serif mt-4 text-charcoal-800">Our <span className="text-gold-gradient">Values</span></h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <motion.div key={value.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -4 }} className="bg-cream-100 rounded-2xl p-8 text-center transition-all duration-500">
                 <div className="text-3xl mb-4">{value.icon}</div>
                 <h3 className="text-charcoal-700 font-serif text-xl mb-3">{value.title}</h3>
-                <p className="text-charcoal-400 text-sm leading-relaxed font-light">{value.description}</p>
+                <p className="text-charcoal-600 text-sm leading-relaxed font-light">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Behind The Scenes</span>
+            <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">Behind The Scenes</span>
             <h2 className="text-4xl md:text-5xl font-serif mt-4 text-charcoal-800">Our <span className="text-gold-gradient">Process</span></h2>
           </motion.div>
           <div className="space-y-10">
@@ -92,7 +92,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-charcoal-700 font-serif text-xl mb-2">{step.title}</h3>
-                  <p className="text-charcoal-400 leading-relaxed font-light">{step.description}</p>
+                  <p className="text-charcoal-600 leading-relaxed font-light">{step.description}</p>
                 </div>
               </motion.div>
             ))}

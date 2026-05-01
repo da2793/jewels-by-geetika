@@ -41,11 +41,11 @@ export default function ContactPage() {
   return (
     <div className="pt-28 pb-16 bg-cream-50 min-h-screen">
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center px-4 mb-16">
-        <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">Get In Touch</span>
+        <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">Get In Touch</span>
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
           Contact <span className="text-gold-gradient">Us</span>
         </h1>
-        <p className="text-charcoal-400 max-w-lg mx-auto font-light">
+        <p className="text-charcoal-600 max-w-lg mx-auto font-light">
           Have a question about a piece? Want to place a custom order? We&apos;d love to hear from you.
         </p>
       </motion.div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 {method.icon}
               </div>
               <h3 className="text-charcoal-700 font-serif text-xl mb-2">{method.title}</h3>
-              <p className="text-charcoal-400 text-sm mb-4 font-light">{method.description}</p>
+              <p className="text-charcoal-600 text-sm mb-4 font-light">{method.description}</p>
               <span className="text-gold-600 text-sm font-medium">{method.action}</span>
             </motion.a>
           ))}
@@ -77,7 +77,7 @@ export default function ContactPage() {
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white rounded-2xl p-12 text-center shadow-sm">
               <div className="text-5xl mb-4">✨</div>
               <h3 className="text-2xl font-serif text-gold-600 mb-3">Message Sent!</h3>
-              <p className="text-charcoal-400 font-light">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
+              <p className="text-charcoal-600 font-light">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
               <button onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", phone: "", subject: "", message: "" }); }} className="mt-6 text-gold-600 text-sm uppercase tracking-[0.15em] hover:underline">Send Another Message</button>
             </motion.div>
           ) : (

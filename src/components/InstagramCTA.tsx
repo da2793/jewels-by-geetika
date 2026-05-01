@@ -24,13 +24,13 @@ export default function InstagramCTA() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
+          <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">
             Follow Us
           </span>
           <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-4 text-charcoal-800">
             @<span className="text-gold-gradient">jewelsbygeetika</span>
           </h2>
-          <p className="text-charcoal-400 max-w-lg mx-auto font-light">
+          <p className="text-charcoal-600 max-w-lg mx-auto font-light">
             Join our growing community on Instagram for new arrivals, styling
             tips, and exclusive offers.
           </p>

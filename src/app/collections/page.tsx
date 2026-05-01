@@ -135,7 +135,7 @@ function CollectionsContent() {
 
       {filteredProducts.length === 0 && (
         <div className="text-center py-20">
-          <p className="text-charcoal-300 text-lg font-light">
+          <p className="text-charcoal-500 text-lg font-light">
             No products found in this category yet. Check back soon!
           </p>
         </div>
@@ -154,15 +154,14 @@ export default function CollectionsPage() {
         transition={{ duration: 0.8 }}
         className="text-center px-4 mb-12"
       >
-        <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
+        <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">
           Explore
         </span>
         <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-4 text-charcoal-800">
           Our <span className="text-gold-gradient">Collections</span>
         </h1>
-        <p className="text-charcoal-400 max-w-lg mx-auto font-light">
-          Each piece is hand-curated to bring you the finest in imitation
-          jewellery. Find your perfect match.
+        <p className="text-charcoal-600 max-w-lg mx-auto font-light">
+          Each piece is hand-curated to bring you the finest in jewellery. Find your perfect match.
         </p>
       </motion.div>
 

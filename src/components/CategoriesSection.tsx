@@ -17,7 +17,7 @@ export default function CategoriesSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-gold-600 uppercase tracking-[0.3em] text-xs font-light">
+          <span className="text-gold-700 font-medium uppercase tracking-[0.3em] text-xs font-light">
             Browse By
           </span>
           <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-6 text-charcoal-800">

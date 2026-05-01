@@ -71,7 +71,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               ₹{product.price.toLocaleString("en-IN")}
             </span>
             {product.originalPrice && (
-              <span className="text-charcoal-300 line-through text-sm">
+              <span className="text-charcoal-500 line-through text-sm">
                 ₹{product.originalPrice.toLocaleString("en-IN")}
               </span>
             )}

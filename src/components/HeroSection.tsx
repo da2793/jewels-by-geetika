@@ -62,7 +62,7 @@ export default function HeroSection() {
         >
           {/* Eyebrow */}
           <motion.div variants={itemVariants} className="mb-8">
-            <span className="text-gold-600 uppercase tracking-[0.4em] text-xs md:text-sm font-sans font-light">
+            <span className="text-gold-700 font-medium uppercase tracking-[0.4em] text-xs md:text-sm font-sans font-light">
               Hand-Curated Jewellery
             </span>
           </motion.div>
@@ -87,7 +87,7 @@ export default function HeroSection() {
           {/* Value Proposition */}
           <motion.p
             variants={itemVariants}
-            className="text-charcoal-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed font-light"
+            className="text-charcoal-600 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed font-light"
           >
             Anti-tarnish, everyday jewellery designed for the modern woman —
             AD, kundan &amp; gold replicas that look luxurious without the
@@ -112,7 +112,7 @@ export default function HeroSection() {
               <motion.span
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-block px-10 py-4 border border-charcoal-300 text-charcoal-600 font-light uppercase tracking-[0.2em] text-sm hover:border-gold-500 hover:text-gold-600 transition-all duration-500 cursor-pointer rounded-full"
+                className="inline-block px-10 py-4 border border-charcoal-500 text-charcoal-600 font-light uppercase tracking-[0.2em] text-sm hover:border-gold-500 hover:text-gold-600 transition-all duration-500 cursor-pointer rounded-full"
               >
                 Shop Bestsellers
               </motion.span>
@@ -133,7 +133,7 @@ export default function HeroSection() {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center space-y-2"
         >
-          <span className="text-charcoal-300 text-[10px] uppercase tracking-[0.3em]">
+          <span className="text-charcoal-500 text-[10px] uppercase tracking-[0.3em]">
             Scroll
           </span>
           <div className="w-[1px] h-8 bg-gradient-to-b from-gold-400/50 to-transparent" />

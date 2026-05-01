@@ -16,7 +16,6 @@ const footerLinks = {
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Shipping Policy", href: "#" },
-    { label: "Return Policy", href: "#" },
   ],
 };
 
@@ -36,7 +35,7 @@ export default function Footer() {
               <Logo variant="light" />
             </motion.div>
             <p className="text-white/50 leading-relaxed max-w-md mb-6 text-sm font-light">
-              Hand-curated imitation jewellery that brings the elegance of fine
+              Hand-curated jewellery that brings the elegance of fine
               jewellery to every woman. AD stones, gold replicas, and kundan
               pieces crafted with love.
             </p>
