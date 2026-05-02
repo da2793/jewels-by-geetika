@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 
 const navLinks = [
   { href: "/collections", label: "Collections" },
@@ -18,6 +19,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { openCart, totalItems } = useCart();
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -60,6 +62,15 @@ export default function Navbar() {
             >
               Shop Now
             </a>
+            <Link
+              href={user ? "/account" : "/auth/login"}
+              className="ml-2 p-2 text-charcoal-700 hover:text-gold-600 transition-colors"
+              aria-label={user ? "My account" : "Sign in"}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </Link>
             <button
               onClick={openCart}
               className="relative ml-2 p-2 text-charcoal-700 hover:text-gold-600 transition-colors"

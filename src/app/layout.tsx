@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import InstagramFloater from "@/components/InstagramFloater";
 import CartSidebar from "@/components/CartSidebar";
 import { CartProvider } from "@/context/CartContext";
+import { AuthProvider } from "@/context/AuthContext";
 import { Analytics } from "@vercel/analytics/react";
 
 const cinzel = Cinzel({
@@ -60,14 +61,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${jost.variable}`}>
       <body className="font-sans antialiased">
-        <CartProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <CartSidebar />
-          <InstagramFloater />
-          <Analytics />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <CartSidebar />
+            <InstagramFloater />
+            <Analytics />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
