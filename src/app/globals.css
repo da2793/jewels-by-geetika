@@ -4,7 +4,7 @@
 
 /* ═══════════════════════════════════════════════
    THEME: White + Gold + Champagne Beige
-   Mood : Luxury · Warm · Premium
+   Style: Glassmorphism + Soft Gradients
    ═══════════════════════════════════════════════ */
 
 :root {
@@ -23,14 +23,10 @@
   --color-text-secondary: #585858;
   --color-text-muted:     #A0A0A0;
 
-  --color-border-subtle:  rgba(0, 0, 0, 0.06);
-  --color-border-default: rgba(0, 0, 0, 0.10);
-  --color-border-gold:    rgba(200, 168, 75, 0.2);
-
   --shadow-sm:   0 1px 8px  rgba(0, 0, 0, 0.04);
   --shadow-md:   0 4px 20px rgba(0, 0, 0, 0.06);
   --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.07);
-  --shadow-gold: 0 0 0 1px  rgba(200, 168, 75, 0.2);
+  --shadow-gold: 0 0 0 1px  rgba(200, 168, 75, 0.15);
 }
 
 html {
@@ -79,20 +75,57 @@ body {
   animation: shimmer 3s linear infinite;
 }
 
-/* Cards */
-.elegant-card {
-  background: var(--color-bg-page);
-  border: 0.5px solid var(--color-border-default);
-  border-radius: 16px;
+/* ── Glassmorphism Cards ─────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.elegant-card:hover {
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.75);
   box-shadow: var(--shadow-lg), var(--shadow-gold);
   transform: translateY(-4px);
 }
 
-/* Product card */
+/* Stronger glass — for navbar, cart sidebar */
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Subtle glass — for badges, tags */
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 9999px;
+}
+
+/* ── Soft Gradient Backgrounds ───────────────── */
+.gradient-warm {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F9F6F1 50%, #F3E9DC 100%);
+}
+
+.gradient-champagne {
+  background: linear-gradient(180deg, #F3E9DC 0%, #F9F6F1 50%, #FFFFFF 100%);
+}
+
+.gradient-gold-soft {
+  background: linear-gradient(135deg, #FFFBEE 0%, #FFF3CC 30%, #F9F6F1 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9F6F1 40%, #F3E9DC 100%);
+}
+
+/* ── Product card ────────────────────────────── */
 .product-card {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

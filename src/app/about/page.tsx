@@ -97,7 +97,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-cream-300">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 gradient-champagne">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="text-gold-600 font-bold uppercase tracking-[0.3em] text-xs">What We Stand For</span>
@@ -105,7 +105,7 @@ export default function AboutPage() {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <motion.div key={value.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -4 }} className="bg-white rounded-2xl p-8 text-center transition-all duration-500 shadow-pearl-sm hover:shadow-pearl-md">
+              <motion.div key={value.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -4 }} className="glass-card p-8 text-center">
                 <div className="text-3xl mb-4">{value.icon}</div>
                 <h3 className="text-charcoal-900 font-display text-lg font-semibold mb-3">{value.title}</h3>
                 <p className="text-charcoal-700 text-sm leading-relaxed">{value.description}</p>
@@ -131,7 +131,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="flex gap-5 p-6 bg-cream-200 rounded-2xl transition-all duration-500 hover:shadow-pearl-sm"
+                className="flex gap-5 p-6 glass-card"
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gold-400/30 flex items-center justify-center text-xl shadow-sm">
                   {promise.icon}
@@ -147,7 +147,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-cream-300">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 gradient-gold-soft">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

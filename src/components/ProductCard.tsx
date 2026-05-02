@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         className="group cursor-pointer"
       >
         {/* Image Container */}
-        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream-200 mb-4">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream-200 mb-4 shadow-sm">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -40,7 +40,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Badge */}
           {product.badge && (
-            <div className="absolute top-4 left-4 px-3 py-1.5 bg-white/90 backdrop-blur-sm text-charcoal-700 text-[10px] font-semibold uppercase tracking-[0.15em] rounded-full">
+            <div className="absolute top-4 left-4 px-3 py-1.5 glass-subtle text-charcoal-800 text-[10px] font-semibold uppercase tracking-[0.15em]">
               {product.badge}
             </div>
           )}
@@ -54,7 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
             <button
               onClick={handleAddToCart}
-              className="block w-full text-center py-3 bg-white/90 backdrop-blur-sm text-charcoal-700 text-xs font-medium uppercase tracking-[0.15em] rounded-full hover:bg-charcoal-800 hover:text-white transition-colors"
+              className="block w-full text-center py-3 glass-subtle text-charcoal-800 text-xs font-medium uppercase tracking-[0.15em] hover:bg-charcoal-800 hover:text-white transition-colors"
             >
               Add to Bag
             </button>
