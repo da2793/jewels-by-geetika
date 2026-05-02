@@ -47,7 +47,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     );
 
     return () => subscription.unsubscribe();
-  }, [supabase.auth]);
+  }, []);
 
   const signUp = async (email: string, password: string, fullName: string) => {
     if (!supabase) return { error: "Not initialized" };
