@@ -25,8 +25,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const supabase = createClient();
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+
     // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }: any) => {
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
@@ -34,7 +39,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (_event: any, session: any) => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
@@ -45,6 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase.auth]);
 
   const signUp = async (email: string, password: string, fullName: string) => {
+    if (!supabase) return { error: "Not initialized" };
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -56,6 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signIn = async (email: string, password: string) => {
+    if (!supabase) return { error: "Not initialized" };
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -64,6 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signInWithGoogle = async () => {
+    if (!supabase) return { error: "Not initialized" };
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
@@ -74,6 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const sendOtp = async (phone: string) => {
+    if (!supabase) return { error: "Not initialized" };
     const { error } = await supabase.auth.signInWithOtp({
       phone,
     });
@@ -81,6 +90,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const verifyOtp = async (phone: string, token: string) => {
+    if (!supabase) return { error: "Not initialized" };
     const { error } = await supabase.auth.verifyOtp({
       phone,
       token,
@@ -90,6 +100,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
   };
 

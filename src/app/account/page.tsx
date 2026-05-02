@@ -49,14 +49,14 @@ export default function AccountPage() {
   }, [user, authLoading, router]);
 
   useEffect(() => {
-    if (user) {
+    if (user && supabase) {
       // Load profile
       supabase
         .from("profiles")
         .select("*")
         .eq("id", user.id)
         .single()
-        .then(({ data }) => {
+        .then(({ data }: any) => {
           if (data) {
             setProfile({
               full_name: data.full_name || user.user_metadata?.full_name || "",
@@ -80,14 +80,14 @@ export default function AccountPage() {
         .select("*")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false })
-        .then(({ data }) => {
+        .then(({ data }: any) => {
           if (data) setOrders(data as Order[]);
         });
     }
   }, [user, supabase]);
 
   const handleSaveProfile = async () => {
-    if (!user) return;
+    if (!user || !supabase) return;
     setSaving(true);
     setSaved(false);
 
