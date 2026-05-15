@@ -37,14 +37,27 @@ interface Customer {
   last_sign_in_at: string;
 }
 
+interface AbandonedCart {
+  id: string;
+  user_email: string;
+  user_phone: string;
+  items: { name: string; quantity: number; price: number; image: string }[];
+  total: number;
+  last_updated: string;
+  reminder_sent: boolean;
+  recovered: boolean;
+  created_at: string;
+}
+
 export default function AdminPage() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const supabase = createClient();
 
-  const [activeTab, setActiveTab] = useState<"orders" | "customers">("orders");
+  const [activeTab, setActiveTab] = useState<"orders" | "customers" | "abandoned">("orders");
   const [orders, setOrders] = useState<Order[]>([]);
   const [customers, setCustomers] = useState<Customer[]>([]);
+  const [abandonedCarts, setAbandonedCarts] = useState<AbandonedCart[]>([]);
   const [loadingData, setLoadingData] = useState(true);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [updatingStatus, setUpdatingStatus] = useState(false);
@@ -64,6 +77,7 @@ export default function AdminPage() {
     if (user && supabase && ADMIN_EMAILS.includes(user.email || "")) {
       loadOrders();
       loadCustomers();
+      loadAbandonedCarts();
     }
   }, [user, supabase]);
 
@@ -84,6 +98,16 @@ export default function AdminPage() {
       .select("*")
       .order("created_at", { ascending: false });
     if (data) setCustomers(data as Customer[]);
+  };
+
+  const loadAbandonedCarts = async () => {
+    if (!supabase) return;
+    const { data } = await supabase
+      .from("abandoned_carts")
+      .select("*")
+      .eq("recovered", false)
+      .order("last_updated", { ascending: false });
+    if (data) setAbandonedCarts(data as AbandonedCart[]);
   };
 
   const updateOrderStatus = async (orderId: string, newStatus: string) => {
@@ -186,6 +210,14 @@ export default function AdminPage() {
             }`}
           >
             Customers ({customers.length})
+          </button>
+          <button
+            onClick={() => setActiveTab("abandoned")}
+            className={`px-6 py-2.5 text-xs uppercase tracking-[0.15em] rounded-full transition-all font-medium ${
+              activeTab === "abandoned" ? "bg-charcoal-900 text-white" : "text-charcoal-700"
+            }`}
+          >
+            Abandoned ({abandonedCarts.length})
           </button>
         </div>
 
@@ -371,6 +403,76 @@ export default function AdminPage() {
                     </tbody>
                   </table>
                 </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Abandoned Carts Tab */}
+        {activeTab === "abandoned" && (
+          <div>
+            {abandonedCarts.length === 0 ? (
+              <div className="glass-card p-12 text-center">
+                <p className="text-charcoal-700">No abandoned carts yet. They&apos;ll appear when users add items but don&apos;t checkout.</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {abandonedCarts.map((cart) => (
+                  <div key={cart.id} className="glass-card p-6">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div>
+                        <p className="text-charcoal-900 font-medium">
+                          {cart.user_email || cart.user_phone || "Unknown user"}
+                        </p>
+                        <p className="text-charcoal-700 text-sm mt-1">
+                          {cart.items?.length || 0} item(s) • Last active:{" "}
+                          {new Date(cart.last_updated).toLocaleDateString("en-IN", {
+                            day: "numeric",
+                            month: "short",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <p className="text-charcoal-900 font-display font-bold text-lg">
+                          ₹{cart.total?.toLocaleString("en-IN")}
+                        </p>
+                        {cart.reminder_sent ? (
+                          <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold bg-blue-50 text-blue-700">
+                            Reminded
+                          </span>
+                        ) : (
+                          <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold bg-yellow-50 text-yellow-700">
+                            Not reminded
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    {/* Items */}
+                    <div className="mt-4 pt-4 border-t border-cream-300">
+                      {cart.items?.map((item, i) => (
+                        <div key={i} className="flex justify-between text-sm text-charcoal-700 mb-1">
+                          <span>{item.name} × {item.quantity}</span>
+                          <span>₹{(item.price * item.quantity).toLocaleString("en-IN")}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Action — placeholder for WhatsApp reminder */}
+                    {!cart.reminder_sent && cart.user_phone && (
+                      <div className="mt-4">
+                        <a
+                          href={`https://wa.me/${cart.user_phone.replace("+", "")}?text=${encodeURIComponent(`Hi! We noticed you left some beautiful pieces in your cart at Jewels by Geetika. Your ${cart.items?.[0]?.name || "jewellery"} is waiting for you! Complete your order: https://www.jewelsbygeetika.com/collections`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block px-4 py-2 bg-green-500 text-white text-xs uppercase tracking-wider rounded-full hover:bg-green-600 transition-colors"
+                        >
+                          Send WhatsApp Reminder
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
           </div>
