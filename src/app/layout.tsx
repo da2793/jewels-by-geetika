@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "Jewels by Geetika",
   ],
   icons: {
-    icon: "/icon.svg",
+    icon: "/logo.png",
   },
   openGraph: {
     title: "Jewels by Geetika | Hand-Curated Jewellery",
