@@ -168,13 +168,25 @@ export default function ProductDetailPage() {
                 Product Details
               </h3>
               <ul className="space-y-2">
-                {product.details.map((detail, i) => (
+                {product.details.filter(d => !d.startsWith("Why You'll Love It")).map((detail, i) => (
                   <li key={i} className="flex items-start space-x-3 text-charcoal-800 text-sm font-light">
                     <span className="text-gold-500 mt-0.5">✦</span>
                     <span>{detail}</span>
                   </li>
                 ))}
               </ul>
+
+              {/* Why You'll Love It */}
+              {product.details.filter(d => d.startsWith("Why You'll Love It")).length > 0 && (
+                <div className="mt-6 p-4 gradient-gold-soft rounded-xl border border-gold-400/15">
+                  <h4 className="text-gold-700 font-semibold text-xs uppercase tracking-[0.15em] mb-2">
+                    Why You&apos;ll Love It ✨
+                  </h4>
+                  <p className="text-charcoal-800 text-sm">
+                    {product.details.find(d => d.startsWith("Why You'll Love It"))?.replace("Why You'll Love It: ", "")}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* CTA Buttons */}
