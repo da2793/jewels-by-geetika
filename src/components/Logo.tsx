@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 interface LogoProps {
   variant?: "dark" | "light";
@@ -8,18 +9,18 @@ interface LogoProps {
 }
 
 export default function Logo({ variant = "dark", className = "" }: LogoProps) {
-  const subColor = variant === "dark" ? "text-charcoal-800" : "text-white/90";
-
   return (
     <Link href="/" className={`inline-block group ${className}`} aria-label="Jewels by Geetika - Home">
-      <div className="flex flex-col leading-none">
-        <span className="text-gold-gradient font-display text-2xl md:text-3xl font-bold tracking-widest">
-          JEWELS
-        </span>
-        <span className={`${subColor} text-[10px] md:text-xs font-sans font-medium tracking-[0.35em] uppercase mt-0.5`}>
-          by Geetika
-        </span>
-      </div>
+      <Image
+        src="/logo.png"
+        alt="Jewels by Geetika"
+        width={160}
+        height={48}
+        className={`h-10 md:h-12 w-auto object-contain ${
+          variant === "light" ? "brightness-0 invert" : ""
+        }`}
+        priority
+      />
     </Link>
   );
 }
