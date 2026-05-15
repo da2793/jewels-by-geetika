@@ -8,7 +8,7 @@ const items = [
   "✦ Bridal Sets",
   "✦ Free Shipping",
   "✦ Premium Quality",
-  "✦ Hand Curated",
+  "✦ Everyday Elegance",
 ];
 
 export default function MarqueeStrip() {
