@@ -64,7 +64,7 @@ export const products: Product[] = [
     id: "1",
     name: "Kaveri Necklace Set",
     category: "necklaces",
-    price: 2999,
+    price: 2499,
     description:
       "A timeless necklace set inspired by grace, strength, and divine femininity. Crafted for women who carry elegance effortlessly — every detail of Kaveri reflects royal Indian artistry with a modern touch.",
     details: [
@@ -89,7 +89,7 @@ export const products: Product[] = [
     id: "2",
     name: "Raahi Necklace Set",
     category: "necklaces",
-    price: 3499,
+    price: 5999,
     description:
       "A regal fusion of polki elegance and soft blush tones, crafted to make every moment feel royal. Adorned with shimmering stones, pearl accents, and delicate pink bead drops — this timeless statement set is perfect for weddings, festive occasions, and elegant soirées.",
     details: [
