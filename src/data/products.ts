@@ -66,13 +66,13 @@ export const products: Product[] = [
     category: "necklaces",
     price: 2499,
     description:
-      "Inspired by timeless Indian heritage and crafted with regal elegance, the Kaveri Necklace Set is a statement piece designed for women who love traditional artistry with a luxurious modern touch. Featuring intricate filigree detailing, floral circular motifs, and delicate handcrafted elements — this set beautifully captures the richness of ethnic Indian jewellery. Perfect for weddings, festive celebrations, and special occasions.",
+      "Inspired by timeless Indian heritage and crafted with regal elegance, the Kaveri Necklace Set is a statement piece designed for women who love traditional artistry with a luxurious modern touch. Featuring intricate filigree detailing, floral circular motifs, and delicate handcrafted elements — this set beautifully captures the richness of ethnic Indian jewellery. Perfect for weddings, festive celebrations, and special occasions, Kaveri adds effortless grace to every look.",
     details: [
       "Design: Intricate filigree with floral circular motifs",
       "Finish: Luxurious gold-tone with handcrafted elements",
       "Includes: Necklace + matching earrings",
       "Occasion: Weddings, festive celebrations, special occasions",
-      "Style: Traditional artistry with modern touch",
+      "Why You'll Love It: A celebration of elegance, femininity, and timeless Indian craftsmanship",
     ],
     images: [
       "/products/Kaveri/kaveri-1.png",
@@ -90,13 +90,13 @@ export const products: Product[] = [
     category: "necklaces",
     price: 5999,
     description:
-      "A timeless blend of royal elegance and modern femininity, the Raahi Necklace Set is designed for women who love statement jewellery with a soft, luxurious touch. Featuring a beautifully structured Hasli-inspired silhouette adorned with shimmering Polki-style stones, delicate blush pink bead drops, and pearl accents that add grace to every movement. Whether styled with a pastel lehenga, saree, or Indo-western outfit, Raahi instantly elevates your look with a regal statement.",
+      "A timeless blend of royal elegance and modern femininity, the Raahi Necklace Set is designed for women who love statement jewellery with a soft, luxurious touch. Featuring a beautifully structured Hasli-inspired silhouette adorned with shimmering Polki-style stones, delicate blush pink bead drops, and pearl accents that add grace to every movement. Crafted with intricate detailing and a rich gold-tone finish, Raahi captures the charm of traditional Indian jewellery while offering a contemporary designer aesthetic.",
     details: [
       "Design: Hasli-inspired silhouette with Polki-style stones",
       "Accents: Blush pink bead drops and pearl detailing",
       "Finish: Rich gold-tone with contemporary designer aesthetic",
       "Includes: Necklace + matching statement earrings",
-      "Occasion: Weddings, engagements, cocktail soirées, festive evenings",
+      "Why You'll Love It: Grace, royalty, and timeless elegance — perfect for weddings and celebrations",
     ],
     images: [
       "/products/Raahi/raahi-1.png",
@@ -113,13 +113,13 @@ export const products: Product[] = [
     category: "bridal-sets",
     price: 6999,
     description:
-      "A timeless blend of regal elegance and traditional craftsmanship, designed to make every occasion unforgettable. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops — this statement piece beautifully captures the essence of royal Indian jewellery.",
+      "A timeless blend of regal elegance and traditional craftsmanship, this exquisite choker set is designed to make every occasion unforgettable. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops — this statement piece beautifully captures the essence of royal Indian jewellery. Crafted with a luxurious antique gold finish, the choker sits gracefully around the neck, offering a bold yet elegant look.",
     details: [
-      "Material: Premium kundan-style stones with antique gold finish",
+      "Design: Intricate floral filigree with kundan-style stones",
       "Accents: Pearl drops and emerald-green bead detailing",
-      "Design: Intricate floral filigree work",
+      "Finish: Luxurious antique gold",
       "Includes: Choker necklace + matching statement earrings",
-      "Perfect for weddings, bridal wear, and grand occasions",
+      "Why You'll Love It: Royal Indian artistry that brings effortless grandeur to every outfit",
     ],
     images: [
       "/products/Saanjh/saanjh-1.png",
@@ -133,6 +133,30 @@ export const products: Product[] = [
   },
   {
     id: "4",
+    name: "Adaa Necklace Set",
+    category: "necklaces",
+    price: 5499,
+    description:
+      "A statement of timeless elegance, this exquisite necklace set is crafted to turn every moment into a celebration of grace and glamour. Featuring a beautifully detailed paisley-inspired pendant adorned with dazzling American Diamonds and rich ruby-toned stones — this masterpiece reflects royal charm with a modern luxury touch. The finely textured gold-finish chain adds refined richness, while the brilliant stone arrangement enhances the sparkle from every angle.",
+    details: [
+      "Design: Paisley-inspired pendant with AD and ruby-toned stones",
+      "Finish: Finely textured gold-finish chain",
+      "Includes: Necklace + matching statement earrings",
+      "Occasion: Weddings, receptions, cocktail evenings, celebrations",
+      "Why You'll Love It: Rich ruby tones, intricate AD craftsmanship, and regal paisley silhouette",
+    ],
+    images: [
+      "/products/Adaa/adaa-1.png",
+      "/products/Adaa/adaa-2.png",
+      "/products/Adaa/adaa-3.png",
+      "/products/Adaa/adaa-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+    isBestseller: true,
+  },
+  {
+    id: "5",
     name: "Temple Gold Bangles",
     category: "bangles",
     price: 1799,
@@ -151,7 +175,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "5",
+    id: "6",
     name: "AD Diamond Cocktail Ring",
     category: "rings",
     price: 699,
@@ -171,7 +195,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "6",
+    id: "7",
     name: "Bridal Kundan Set",
     category: "bridal-sets",
     price: 5999,
@@ -192,7 +216,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "7",
+    id: "8",
     name: "Polki Maang Tikka",
     category: "maang-tikka",
     price: 1199,
@@ -211,7 +235,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "8",
+    id: "9",
     name: "Layered Pearl Necklace",
     category: "necklaces",
     price: 1899,
@@ -230,7 +254,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: "9",
+    id: "10",
     name: "Chandbali Earrings",
     category: "earrings",
     price: 1299,
