@@ -15,7 +15,7 @@ const footerLinks = {
   company: [
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Shipping Policy", href: "#" },
+    { label: "Shipping & Payment Policy", href: "/policies" },
   ],
 };
 
