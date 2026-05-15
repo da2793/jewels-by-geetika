@@ -111,6 +111,30 @@ export const products: Product[] = [
   },
   {
     id: "3",
+    name: "Saanjh Choker Set",
+    category: "necklaces",
+    price: 6999,
+    description:
+      "A timeless blend of regal elegance and traditional craftsmanship, designed to make every occasion unforgettable. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops — this statement piece beautifully captures the essence of royal Indian jewellery.",
+    details: [
+      "Material: Premium kundan-style stones with antique gold finish",
+      "Accents: Pearl drops and emerald-green bead detailing",
+      "Design: Intricate floral filigree work",
+      "Includes: Choker necklace + matching statement earrings",
+      "Perfect for weddings, bridal wear, and grand occasions",
+    ],
+    images: [
+      "/products/Saanjh/saanjh-1.png",
+      "/products/Saanjh/saanjh-2.png",
+      "/products/Saanjh/saanjh-3.png",
+      "/products/Saanjh/saanjh-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+    isBestseller: true,
+  },
+  {
+    id: "4",
     name: "Temple Gold Bangles",
     category: "bangles",
     price: 1799,
@@ -129,7 +153,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "4",
+    id: "5",
     name: "AD Diamond Cocktail Ring",
     category: "rings",
     price: 699,
@@ -149,7 +173,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "5",
+    id: "6",
     name: "Bridal Kundan Set",
     category: "bridal-sets",
     price: 5999,
@@ -170,7 +194,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "6",
+    id: "7",
     name: "Polki Maang Tikka",
     category: "maang-tikka",
     price: 1199,
@@ -189,7 +213,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "7",
+    id: "8",
     name: "Layered Pearl Necklace",
     category: "necklaces",
     price: 1899,
@@ -208,7 +232,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: "8",
+    id: "9",
     name: "Chandbali Earrings",
     category: "earrings",
     price: 1299,
