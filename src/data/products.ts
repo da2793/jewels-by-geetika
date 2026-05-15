@@ -64,7 +64,7 @@ export const products: Product[] = [
     id: "1",
     name: "Kaveri Necklace Set",
     category: "necklaces",
-    price: 2499,
+    price: 1999,
     description:
       "Inspired by timeless Indian heritage and crafted with regal elegance, the Kaveri Necklace Set is a statement piece designed for women who love traditional artistry with a luxurious modern touch. Featuring intricate filigree detailing, floral circular motifs, and delicate handcrafted elements — this set beautifully captures the richness of ethnic Indian jewellery. Perfect for weddings, festive celebrations, and special occasions, Kaveri adds effortless grace to every look.",
     details: [
@@ -88,7 +88,7 @@ export const products: Product[] = [
     id: "2",
     name: "Raahi Necklace Set",
     category: "necklaces",
-    price: 5999,
+    price: 4499,
     description:
       "A timeless blend of royal elegance and modern femininity, the Raahi Necklace Set is designed for women who love statement jewellery with a soft, luxurious touch. Featuring a beautifully structured Hasli-inspired silhouette adorned with shimmering Polki-style stones, delicate blush pink bead drops, and pearl accents that add grace to every movement. Crafted with intricate detailing and a rich gold-tone finish, Raahi captures the charm of traditional Indian jewellery while offering a contemporary designer aesthetic.",
     details: [
@@ -111,7 +111,7 @@ export const products: Product[] = [
     id: "3",
     name: "Saanjh Choker Set",
     category: "bridal-sets",
-    price: 6999,
+    price: 5499,
     description:
       "A timeless blend of regal elegance and traditional craftsmanship, this exquisite choker set is designed to make every occasion unforgettable. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops — this statement piece beautifully captures the essence of royal Indian jewellery. Crafted with a luxurious antique gold finish, the choker sits gracefully around the neck, offering a bold yet elegant look.",
     details: [
@@ -135,7 +135,7 @@ export const products: Product[] = [
     id: "4",
     name: "Adaa Necklace Set",
     category: "necklaces",
-    price: 5499,
+    price: 3999,
     description:
       "A statement of timeless elegance, this exquisite necklace set is crafted to turn every moment into a celebration of grace and glamour. Featuring a beautifully detailed paisley-inspired pendant adorned with dazzling American Diamonds and rich ruby-toned stones — this masterpiece reflects royal charm with a modern luxury touch. The finely textured gold-finish chain adds refined richness, while the brilliant stone arrangement enhances the sparkle from every angle.",
     details: [
@@ -157,6 +157,29 @@ export const products: Product[] = [
   },
   {
     id: "5",
+    name: "Ruhani Necklace Set",
+    category: "necklaces",
+    price: 3999,
+    description:
+      "Graceful, regal, and timeless — the Ruhani Necklace Set is crafted for women who love statement elegance with a touch of royalty. Featuring shimmering AD stones beautifully paired with rich emerald green bead strands, this luxurious set creates a perfect balance of sophistication and traditional charm. The intricately designed pendant and matching chandelier earrings are adorned with delicate detailing and emerald drop accents.",
+    details: [
+      "Design: Shimmering AD stones with emerald green bead strands",
+      "Accents: Emerald drop accents and chandelier earrings",
+      "Finish: Rich gold-tone with intricate detailing",
+      "Includes: Necklace + matching chandelier earrings",
+      "Why You'll Love It: Sparkling diamond-like brilliance paired with deep emerald tones for a rich luxurious appeal",
+    ],
+    images: [
+      "/products/Ruhani/ruhani-1.png",
+      "/products/Ruhani/ruhani-2.png",
+      "/products/Ruhani/ruhani-3.png",
+      "/products/Ruhani/ruhani-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+  },
+  {
+    id: "6",
     name: "Temple Gold Bangles",
     category: "bangles",
     price: 1799,
@@ -175,7 +198,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "6",
+    id: "7",
     name: "AD Diamond Cocktail Ring",
     category: "rings",
     price: 699,
@@ -195,7 +218,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "7",
+    id: "8",
     name: "Bridal Kundan Set",
     category: "bridal-sets",
     price: 5999,
@@ -216,7 +239,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "8",
+    id: "9",
     name: "Polki Maang Tikka",
     category: "maang-tikka",
     price: 1199,
@@ -235,7 +258,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "9",
+    id: "10",
     name: "Layered Pearl Necklace",
     category: "necklaces",
     price: 1899,
@@ -254,7 +277,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: "10",
+    id: "11",
     name: "Chandbali Earrings",
     category: "earrings",
     price: 1299,
