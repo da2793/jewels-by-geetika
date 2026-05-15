@@ -60,19 +60,43 @@ export default function ProductDetailPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 bg-white shadow-sm">
+            <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 glass-card shadow-lg">
               <Image
                 src={product.images[selectedImage]}
                 alt={product.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
               {product.badge && (
-                <div className="absolute top-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm text-charcoal-700 text-xs font-semibold uppercase tracking-[0.15em] rounded-full">
+                <div className="absolute top-4 left-4 px-4 py-2 glass-subtle text-charcoal-800 text-xs font-semibold uppercase tracking-[0.15em]">
                   {product.badge}
                 </div>
+              )}
+
+              {/* Navigation Arrows */}
+              {product.images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setSelectedImage((prev) => (prev === 0 ? product.images.length - 1 : prev - 1))}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-subtle flex items-center justify-center text-charcoal-800 hover:bg-white/80 transition-all"
+                    aria-label="Previous image"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setSelectedImage((prev) => (prev === product.images.length - 1 ? 0 : prev + 1))}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-subtle flex items-center justify-center text-charcoal-800 hover:bg-white/80 transition-all"
+                    aria-label="Next image"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </>
               )}
             </div>
 

@@ -66,13 +66,13 @@ export const products: Product[] = [
     category: "necklaces",
     price: 2499,
     description:
-      "A timeless necklace set inspired by grace, strength, and divine femininity. Crafted for women who carry elegance effortlessly — every detail of Kaveri reflects royal Indian artistry with a modern touch.",
+      "Inspired by timeless Indian heritage and crafted with regal elegance, the Kaveri Necklace Set is a statement piece designed for women who love traditional artistry with a luxurious modern touch. Featuring intricate filigree detailing, floral circular motifs, and delicate handcrafted elements — this set beautifully captures the richness of ethnic Indian jewellery. Perfect for weddings, festive celebrations, and special occasions.",
     details: [
-      "Material: Premium kundan with gold plating",
-      "Finish: Royal gold with intricate detailing",
+      "Design: Intricate filigree with floral circular motifs",
+      "Finish: Luxurious gold-tone with handcrafted elements",
       "Includes: Necklace + matching earrings",
-      "Adjustable length with extension chain",
-      "Anti-tarnish coating for lasting shine",
+      "Occasion: Weddings, festive celebrations, special occasions",
+      "Style: Traditional artistry with modern touch",
     ],
     images: [
       "/products/Kaveri/kaveri-1.png",
@@ -91,13 +91,13 @@ export const products: Product[] = [
     category: "necklaces",
     price: 5999,
     description:
-      "A regal fusion of polki elegance and soft blush tones, crafted to make every moment feel royal. Adorned with shimmering stones, pearl accents, and delicate pink bead drops — this timeless statement set is perfect for weddings, festive occasions, and elegant soirées.",
+      "A timeless blend of royal elegance and modern femininity, the Raahi Necklace Set is designed for women who love statement jewellery with a soft, luxurious touch. Featuring a beautifully structured Hasli-inspired silhouette adorned with shimmering Polki-style stones, delicate blush pink bead drops, and pearl accents that add grace to every movement. Whether styled with a pastel lehenga, saree, or Indo-western outfit, Raahi instantly elevates your look with a regal statement.",
     details: [
-      "Material: Polki stones with pearl accents",
-      "Finish: Gold plating with blush pink bead drops",
-      "Includes: Necklace + matching earrings",
-      "Perfect for weddings and festive occasions",
-      "Lightweight and comfortable for all-day wear",
+      "Design: Hasli-inspired silhouette with Polki-style stones",
+      "Accents: Blush pink bead drops and pearl detailing",
+      "Finish: Rich gold-tone with contemporary designer aesthetic",
+      "Includes: Necklace + matching statement earrings",
+      "Occasion: Weddings, engagements, cocktail soirées, festive evenings",
     ],
     images: [
       "/products/Raahi/raahi-1.png",
@@ -112,7 +112,7 @@ export const products: Product[] = [
   {
     id: "3",
     name: "Saanjh Choker Set",
-    category: "necklaces",
+    category: "bridal-sets",
     price: 6999,
     description:
       "A timeless blend of regal elegance and traditional craftsmanship, designed to make every occasion unforgettable. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops — this statement piece beautifully captures the essence of royal Indian jewellery.",
