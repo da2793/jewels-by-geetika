@@ -231,6 +231,54 @@ export const products: Product[] = [
     badge: "New Launch",
     isNew: true,
   },
+  {
+    id: "9",
+    name: "Antara Temple Necklace Set",
+    category: "necklaces",
+    categories: ["necklaces", "bridal-sets"],
+    price: 3999,
+    description:
+      "This exquisite temple-inspired necklace set is a celebration of timeless Indian craftsmanship and regal elegance. Designed with intricate peacock motifs, delicate Lakshmi detailing, shimmering stone accents, and graceful pearl-green bead danglings — this piece beautifully captures the richness of traditional heritage jewellery. The luxurious antique gold finish adds a royal touch.",
+    details: [
+      "Design: Temple-inspired with peacock motifs and Lakshmi detailing",
+      "Accents: Shimmering stones and pearl-green bead danglings",
+      "Finish: Luxurious antique gold",
+      "Includes: Necklace + matching statement earrings",
+      "Why You'll Love It: Heritage artistry with regal elegance — perfect for weddings, poojas, and grand celebrations",
+    ],
+    images: [
+      "/products/Antara/antara-1.png",
+      "/products/Antara/antara-2.png",
+      "/products/Antara/antara-3.png",
+      "/products/Antara/antara-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+    isBestseller: true,
+  },
+  {
+    id: "10",
+    name: "Chandni Necklace Set",
+    category: "necklaces",
+    price: 3999,
+    description:
+      "A statement of timeless sophistication, Chandni is designed for women who adore refined glamour with a modern royal touch. Featuring a dazzling circular pendant adorned with brilliant American Diamonds and a rich emerald-green centerpiece — this necklace set effortlessly blends elegance with luxury. Perfect for cocktail evenings, wedding celebrations, and elegant soirées.",
+    details: [
+      "Design: Circular pendant with AD stones and emerald-green centerpiece",
+      "Finish: Intricate layered detailing with modern royal aesthetic",
+      "Includes: Necklace + matching earrings",
+      "Occasion: Cocktail evenings, weddings, festive occasions",
+      "Why You'll Love It: Bold emerald contrast with shimmering AD — contemporary yet timeless",
+    ],
+    images: [
+      "/products/Chandni/chandni-1.png",
+      "/products/Chandni/chandni-2.png",
+      "/products/Chandni/chandni-3.png",
+      "/products/Chandni/chandni-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+  },
 ];
 
 export function getProductsByCategory(category: Category): Product[] {
