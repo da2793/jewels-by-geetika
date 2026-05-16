@@ -279,6 +279,30 @@ export const products: Product[] = [
     badge: "New Launch",
     isNew: true,
   },
+  {
+    id: "11",
+    name: "Rajsi Necklace Set",
+    category: "necklaces",
+    categories: ["necklaces", "bridal-sets"],
+    price: 2999,
+    description:
+      "This exquisite peacock-inspired necklace set is a perfect blend of royal elegance and timeless craftsmanship. Adorned with shimmering AD stones, emerald green accents, and delicate pearl danglings — the intricate design beautifully captures the charm of traditional Indian jewellery with a luxurious modern finish.",
+    details: [
+      "Design: Peacock-inspired with swan motif and openwork detailing",
+      "Accents: Shimmering AD stones, emerald green, pearl danglings",
+      "Finish: Luxurious gold-tone with heritage charm",
+      "Includes: Necklace + matching earrings with pearl drops",
+      "Why You'll Love It: Royal peacock artistry with sophisticated sparkle — perfect for weddings and celebrations",
+    ],
+    images: [
+      "/products/Rajsi/rajsi-1.png",
+      "/products/Rajsi/rajsi-2.png",
+      "/products/Rajsi/rajsi-3.png",
+      "/products/Rajsi/rajsi-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+  },
 ];
 
 export function getProductsByCategory(category: Category): Product[] {
