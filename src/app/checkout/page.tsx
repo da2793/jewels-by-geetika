@@ -4,10 +4,21 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { createClient } from "@/lib/supabase/client";
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 export default function CheckoutPage() {
-  const { items, totalPrice, updateQuantity, removeFromCart } = useCart();
+  const { items, totalPrice, clearCart, markCartRecovered, removeFromCart } = useCart();
+  const { user } = useAuth();
+  const router = useRouter();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -19,8 +30,120 @@ export default function CheckoutPage() {
     pincode: "",
   });
 
-  const shippingCost = totalPrice >= 1999 ? 0 : 99;
+  const shippingCost = totalPrice >= 999 ? 0 : totalPrice >= 799 ? 49 : 79;
   const orderTotal = totalPrice + shippingCost;
+  const [paying, setPaying] = useState(false);
+
+  // Load Razorpay script
+  const loadRazorpayScript = (): Promise<boolean> => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handlePayment = async () => {
+    setPaying(true);
+
+    const scriptLoaded = await loadRazorpayScript();
+    if (!scriptLoaded) {
+      alert("Failed to load payment gateway. Please try again.");
+      setPaying(false);
+      return;
+    }
+
+    // Create order on server
+    const res = await fetch("/api/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: orderTotal,
+        receipt: `jbg_${Date.now()}`,
+      }),
+    });
+
+    const order = await res.json();
+    if (!order.id) {
+      alert("Failed to create order. Please try again.");
+      setPaying(false);
+      return;
+    }
+
+    // Open Razorpay checkout
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      amount: orderTotal * 100,
+      currency: "INR",
+      name: "Jewels by Geetika",
+      description: `Order of ${items.length} item(s)`,
+      order_id: order.id,
+      handler: async (response: any) => {
+        // Verify payment
+        const verifyRes = await fetch("/api/verify-payment", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(response),
+        });
+        const verification = await verifyRes.json();
+
+        if (verification.verified) {
+          // Save order to database
+          const supabase = createClient();
+          if (supabase && user) {
+            await supabase.from("orders").insert({
+              user_id: user.id,
+              status: "confirmed",
+              total: orderTotal,
+              shipping_cost: shippingCost,
+              shipping_name: `${form.firstName} ${form.lastName}`,
+              shipping_email: form.email,
+              shipping_phone: form.phone,
+              shipping_address: form.address,
+              shipping_city: form.city,
+              shipping_state: form.state,
+              shipping_pincode: form.pincode,
+              payment_id: response.razorpay_payment_id,
+              payment_status: "paid",
+              items: items.map((item) => ({
+                name: item.product.name,
+                quantity: item.quantity,
+                price: item.product.price,
+              })),
+            });
+          }
+
+          // Mark abandoned cart as recovered
+          await markCartRecovered();
+          clearCart();
+          router.push("/order-success?id=" + response.razorpay_payment_id);
+        } else {
+          alert("Payment verification failed. Please contact support.");
+        }
+        setPaying(false);
+      },
+      prefill: {
+        name: `${form.firstName} ${form.lastName}`,
+        email: form.email || user?.email || "",
+        contact: form.phone,
+      },
+      theme: {
+        color: "#C8A84B",
+      },
+      modal: {
+        ondismiss: () => setPaying(false),
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -316,7 +439,7 @@ export default function CheckoutPage() {
                 </div>
                 {shippingCost > 0 && (
                   <p className="text-xs text-gold-600 font-light">
-                    Free shipping on orders above ₹1,999
+                    Free shipping on orders above ₹999
                   </p>
                 )}
                 <div className="flex justify-between pt-3 border-t border-cream-300">
@@ -327,22 +450,19 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Pay Button — placeholder until Razorpay */}
+              {/* Pay Button */}
               <motion.button
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full mt-6 py-4 bg-charcoal-800 text-white font-light uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full"
-                onClick={() =>
-                  alert(
-                    "Payment gateway coming soon! We're setting up Razorpay for secure payments."
-                  )
-                }
+                className="w-full mt-6 py-4 bg-charcoal-800 text-white font-medium uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full disabled:opacity-50"
+                onClick={handlePayment}
+                disabled={paying || !form.firstName || !form.phone || !form.address || !form.city || !form.state || !form.pincode}
               >
-                Pay ₹{orderTotal.toLocaleString("en-IN")}
+                {paying ? "Processing..." : `Pay ₹${orderTotal.toLocaleString("en-IN")}`}
               </motion.button>
 
               <p className="text-center text-charcoal-700 text-[10px] mt-3 font-light">
-                Secure payment powered by Razorpay (coming soon)
+                Secure payment powered by Razorpay
               </p>
 
               {/* Trust */}
