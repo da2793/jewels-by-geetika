@@ -43,7 +43,7 @@ export const categories: { slug: Category; name: string; description: string; im
     slug: "rings",
     name: "Rings",
     description: "Exquisite rings from delicate bands to bold cocktail pieces",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=700&fit=crop",
+    image: "/products/Virasat/virasat-1.png",
   },
   {
     slug: "maang-tikka",
@@ -180,6 +180,75 @@ export const products: Product[] = [
   },
   {
     id: "6",
+    name: "Kanak Necklace Set",
+    category: "necklaces",
+    price: 1999,
+    description:
+      "Crafted with exquisite filigree-inspired detailing, this statement necklace set is designed for women who appreciate timeless Indian craftsmanship with a refined modern touch. The intricate openwork patterns, delicate bead edging, and soft reflective stones create a rich heritage aesthetic that instantly elevates every look. Its warm antique gold finish adds a royal charm.",
+    details: [
+      "Design: Filigree-inspired openwork with delicate bead edging",
+      "Finish: Warm antique gold with reflective stone accents",
+      "Includes: Necklace + matching statement earrings",
+      "Occasion: Bridal festivities, weddings, festive celebrations",
+      "Why You'll Love It: Timeless Indian craftsmanship that feels classic, sophisticated, and unforgettable",
+    ],
+    images: [
+      "/products/Kanak/kanak-1.png",
+      "/products/Kanak/kanak-2.png",
+      "/products/Kanak/kanak-3.png",
+      "/products/Kanak/kanak-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+  },
+  {
+    id: "7",
+    name: "Sunehri Statement Ring",
+    category: "rings",
+    price: 999,
+    description:
+      "A regal blend of tradition and artistry, this handcrafted antique-finish statement ring is designed to instantly elevate your festive and ethnic looks. Featuring intricate textured detailing, dual evil-eye inspired motifs with ruby-toned stones, and a beautifully carved center adorned with kundan-style accents and an emerald-green centerpiece. The delicate hanging ghungroo charms add graceful movement.",
+    details: [
+      "Design: Evil-eye motifs with ruby-toned stones and emerald centerpiece",
+      "Accents: Ghungroo charms and layered chains",
+      "Finish: Antique gold with kundan-style accents",
+      "Fit: Adjustable back design for comfortable wear",
+      "Why You'll Love It: Heritage elegance with bold femininity — a true conversation piece",
+    ],
+    images: [
+      "/products/Sunehri/sunehri-1.png",
+      "/products/Sunehri/sunehri-2.png",
+      "/products/Sunehri/sunehri-3.png",
+      "/products/Sunehri/sunehri-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+  },
+  {
+    id: "8",
+    name: "Virasat Statement Ring",
+    category: "rings",
+    price: 999,
+    description:
+      "A masterpiece inspired by timeless Indian artistry, Virasat is a regal statement ring crafted to capture attention instantly. Designed with intricate peacock detailing at the center, this oversized heritage ring beautifully blends traditional craftsmanship with luxurious elegance. The rich emerald green enamel accents, ruby-toned stones, and ghungroo danglings create a royal aesthetic.",
+    details: [
+      "Design: Intricate peacock detailing with emerald green enamel",
+      "Accents: Ruby-toned stones, kundan elements, ghungroo danglings",
+      "Finish: Antique gold with vintage royal aesthetic",
+      "Fit: Adjustable — bold oversized silhouette",
+      "Why You'll Love It: Culture, elegance, and timeless beauty — a statement of artistic tradition",
+    ],
+    images: [
+      "/products/Virasat/virasat-1.png",
+      "/products/Virasat/virasat-2.png",
+      "/products/Virasat/virasat-3.png",
+      "/products/Virasat/virasat-4.png",
+    ],
+    badge: "New Launch",
+    isNew: true,
+  },
+  {
+    id: "9",
     name: "Temple Gold Bangles",
     category: "bangles",
     price: 1799,
@@ -198,7 +267,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "7",
+    id: "10",
     name: "AD Diamond Cocktail Ring",
     category: "rings",
     price: 699,
@@ -218,7 +287,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "8",
+    id: "11",
     name: "Bridal Kundan Set",
     category: "bridal-sets",
     price: 5999,
@@ -239,7 +308,7 @@ export const products: Product[] = [
     isBestseller: true,
   },
   {
-    id: "9",
+    id: "12",
     name: "Polki Maang Tikka",
     category: "maang-tikka",
     price: 1199,
@@ -258,7 +327,7 @@ export const products: Product[] = [
     isNew: true,
   },
   {
-    id: "10",
+    id: "13",
     name: "Layered Pearl Necklace",
     category: "necklaces",
     price: 1899,
@@ -277,7 +346,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: "11",
+    id: "14",
     name: "Chandbali Earrings",
     category: "earrings",
     price: 1299,
