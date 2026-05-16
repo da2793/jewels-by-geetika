@@ -71,7 +71,7 @@ export default function CheckoutPage() {
 
     const order = await res.json();
     if (!order.id) {
-      alert("Failed to create order. Please try again.");
+      alert(order.error || "Failed to create order. Please try again.");
       setPaying(false);
       return;
     }

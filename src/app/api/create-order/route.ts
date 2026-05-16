@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Razorpay from "razorpay";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
@@ -8,7 +10,7 @@ export async function POST(request: NextRequest) {
 
     if (!keyId || !keySecret) {
       return NextResponse.json(
-        { error: "Payment gateway not configured" },
+        { error: `Payment gateway not configured. Key: ${!!keyId}, Secret: ${!!keySecret}` },
         { status: 500 }
       );
     }
@@ -20,16 +22,24 @@ export async function POST(request: NextRequest) {
 
     const { amount, currency = "INR", receipt } = await request.json();
 
+    if (!amount || amount <= 0) {
+      return NextResponse.json(
+        { error: "Invalid amount" },
+        { status: 400 }
+      );
+    }
+
     const order = await razorpay.orders.create({
-      amount: amount * 100,
+      amount: Math.round(amount * 100), // Razorpay expects paise
       currency,
       receipt: receipt || `order_${Date.now()}`,
     });
 
     return NextResponse.json(order);
   } catch (error: any) {
+    console.error("Razorpay error:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to create order" },
+      { error: error.message || "Failed to create order", details: error.description || null },
       { status: 500 }
     );
   }
