@@ -8,9 +8,14 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 
 const navLinks = [
-  { href: "/collections", label: "Collections" },
+  { href: "/collections", label: "Collections", dropdown: [
+    { href: "/collections", label: "All Collections" },
+    { href: "/collections?category=necklaces", label: "Necklaces" },
+    { href: "/collections?category=rings", label: "Rings" },
+    { href: "/collections?category=bridal-sets", label: "Bridal Sets" },
+    { href: "/collections?filter=new", label: "New Arrivals" },
+  ]},
   { href: "/collections?filter=new", label: "New In" },
-  { href: "/collections?category=bridal-sets", label: "Bridal" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -45,14 +50,30 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
             {navLinks.map((link) => (
-              <Link
-                key={link.href + link.label}
-                href={link.href}
-                className="relative text-charcoal-700 hover:text-gold-600 transition-colors duration-300 text-[13px] uppercase tracking-[0.2em] group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-600 transition-all duration-300 group-hover:w-full" />
-              </Link>
+              <div key={link.href + link.label} className="relative group">
+                <Link
+                  href={link.href}
+                  className="relative text-charcoal-700 hover:text-gold-600 transition-colors duration-300 text-[13px] uppercase tracking-[0.2em]"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-600 transition-all duration-300 group-hover:w-full" />
+                </Link>
+                {link.dropdown && (
+                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div className="glass-strong rounded-xl py-3 px-2 min-w-[180px] shadow-lg">
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.href + item.label}
+                          href={item.href}
+                          className="block px-4 py-2.5 text-[12px] uppercase tracking-[0.15em] text-charcoal-700 hover:text-gold-600 hover:bg-gold-50 rounded-lg transition-all"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
             <a
               href="https://www.instagram.com/jewelsbygeetika/"
