@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { number: "200+", label: "Unique Designs" },
+  { number: "✦", label: "Quality Assured" },
   { number: "100%", label: "Handcrafted" },
   { number: "✦", label: "Made in India" },
 ];
@@ -38,7 +38,7 @@ export default function BrandStory() {
                   className="w-full h-full bg-cover bg-center"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=500&fit=crop')",
+                      "url('/products/Saanjh/saanjh-2.png')",
                   }}
                 />
               </motion.div>
@@ -53,7 +53,7 @@ export default function BrandStory() {
                   className="w-full h-full bg-cover bg-center"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=500&fit=crop')",
+                      "url('/products/Adaa/adaa-2.png')",
                   }}
                 />
               </motion.div>

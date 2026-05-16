@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const instagramImages = [
-  "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=300&h=300&fit=crop",
+  "/products/Kaveri/kaveri-2.png",
+  "/products/Raahi/raahi-2.png",
+  "/products/Ruhani/ruhani-2.png",
+  "/products/Kanak/kanak-2.png",
+  "/products/Sunehri/sunehri-2.png",
+  "/products/Virasat/virasat-2.png",
 ];
 
 export default function InstagramCTA() {
