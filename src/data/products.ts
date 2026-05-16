@@ -247,123 +247,6 @@ export const products: Product[] = [
     badge: "New Launch",
     isNew: true,
   },
-  {
-    id: "9",
-    name: "Temple Gold Bangles",
-    category: "bangles",
-    price: 1799,
-    description:
-      "Set of 4 temple-inspired gold replica bangles with intricate deity motifs. A timeless addition to your jewellery collection.",
-    details: [
-      "Material: Gold-plated brass alloy",
-      "Set of 4 bangles",
-      "Available sizes: 2.4, 2.6, 2.8",
-      "Finish: Matte gold with temple motifs",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop",
-    ],
-    isBestseller: true,
-  },
-  {
-    id: "10",
-    name: "AD Diamond Cocktail Ring",
-    category: "rings",
-    price: 699,
-    originalPrice: 999,
-    description:
-      "A show-stopping AD diamond cocktail ring with a large center stone surrounded by smaller accent stones. Adjustable band fits all sizes.",
-    details: [
-      "Material: American Diamond (AD) with rhodium plating",
-      "Adjustable ring band",
-      "Center stone: 10mm cushion cut",
-      "Finish: Silver rhodium with sparkle",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop",
-    ],
-    isNew: true,
-  },
-  {
-    id: "11",
-    name: "Bridal Kundan Set",
-    category: "bridal-sets",
-    price: 5999,
-    originalPrice: 7999,
-    description:
-      "Complete bridal kundan jewellery set including necklace, earrings, maang tikka, and bangles. Hand-curated for the modern bride.",
-    details: [
-      "Material: Premium kundan with gold plating",
-      "Includes: Necklace, earrings, maang tikka, 2 bangles",
-      "Finish: Royal gold with red & green accents",
-      "Comes in premium gift box",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?w=800&h=800&fit=crop",
-    ],
-    badge: "Bridal Special",
-    isBestseller: true,
-  },
-  {
-    id: "12",
-    name: "Polki Maang Tikka",
-    category: "maang-tikka",
-    price: 1199,
-    description:
-      "A regal polki maang tikka with pearl drops and kundan detailing. Perfect for weddings and festive celebrations.",
-    details: [
-      "Material: Polki stones with gold plating",
-      "Pearl drop accents",
-      "Adjustable hook chain",
-      "Length: Customizable",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop",
-    ],
-    isNew: true,
-  },
-  {
-    id: "13",
-    name: "Layered Pearl Necklace",
-    category: "necklaces",
-    price: 1899,
-    originalPrice: 2499,
-    description:
-      "A three-layered pearl necklace with gold-plated spacers. This versatile piece transitions effortlessly from day to night.",
-    details: [
-      "Material: Freshwater pearl beads with gold plating",
-      "Three detachable layers",
-      "Lobster clasp closure",
-      "Total length: 16-22 inches",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=800&fit=crop",
-    ],
-  },
-  {
-    id: "14",
-    name: "Chandbali Earrings",
-    category: "earrings",
-    price: 1299,
-    description:
-      "Exquisite chandbali earrings with crescent moon design, adorned with tiny pearls and kundan stones.",
-    details: [
-      "Material: Kundan with gold-plated brass",
-      "Crescent moon (chandbali) design",
-      "Pearl bead accents",
-      "Weight: Approx 18g per piece",
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=800&fit=crop",
-    ],
-    badge: "Trending",
-  },
 ];
 
 export function getProductsByCategory(category: Category): Product[] {
@@ -376,9 +259,7 @@ export function getProductById(id: string): Product | undefined {
 
 export function getFeaturedProducts(): Product[] {
   return products.filter((p) => p.isBestseller || p.isNew).slice(0, 6);
-}
-
-export function getNewArrivals(): Product[] {
+}export function getNewArrivals(): Product[] {
   return products.filter((p) => p.isNew);
 }
 

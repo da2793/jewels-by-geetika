@@ -17,7 +17,7 @@ declare global {
 
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart, markCartRecovered, removeFromCart } = useCart();
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const [form, setForm] = useState({
     firstName: "",
@@ -148,6 +148,16 @@ export default function CheckoutPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
+  // Checkout gate — require login
+  if (!authLoading && !user) {
+    router.push("/auth/login");
+    return (
+      <div className="pt-32 pb-16 bg-cream-50 min-h-screen flex items-center justify-center">
+        <div className="inline-block w-8 h-8 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (
