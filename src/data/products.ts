@@ -2,6 +2,7 @@ export interface Product {
   id: string;
   name: string;
   category: Category;
+  categories?: Category[];
   price: number;
   originalPrice?: number;
   description: string;
@@ -14,10 +15,7 @@ export interface Product {
 
 export type Category =
   | "necklaces"
-  | "earrings"
-  | "bangles"
   | "rings"
-  | "maang-tikka"
   | "bridal-sets";
 
 export const categories: { slug: Category; name: string; description: string; image: string }[] = [
@@ -28,34 +26,16 @@ export const categories: { slug: Category; name: string; description: string; im
     image: "/products/Kaveri/kaveri-1.png",
   },
   {
-    slug: "earrings",
-    name: "Earrings",
-    description: "Statement earrings that frame your face with brilliance and grace",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&h=700&fit=crop",
-  },
-  {
-    slug: "bangles",
-    name: "Bangles",
-    description: "Handcrafted bangles and bracelets that add sparkle to every gesture",
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=700&fit=crop",
-  },
-  {
     slug: "rings",
     name: "Rings",
     description: "Exquisite rings from delicate bands to bold cocktail pieces",
     image: "/products/Virasat/virasat-1.png",
   },
   {
-    slug: "maang-tikka",
-    name: "Maang Tikka",
-    description: "Traditional maang tikkas reimagined with contemporary elegance",
-    image: "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?w=600&h=700&fit=crop",
-  },
-  {
     slug: "bridal-sets",
     name: "Bridal Sets",
     description: "Complete bridal jewellery sets for your most special day",
-    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=600&h=700&fit=crop",
+    image: "/products/Saanjh/saanjh-1.png",
   },
 ];
 
@@ -64,6 +44,7 @@ export const products: Product[] = [
     id: "1",
     name: "Kaveri Necklace Set",
     category: "necklaces",
+    categories: ["necklaces", "bridal-sets"],
     price: 1999,
     description:
       "Inspired by timeless Indian heritage and crafted with regal elegance, the Kaveri Necklace Set is a statement piece designed for women who love traditional artistry with a luxurious modern touch. Featuring intricate filigree detailing, floral circular motifs, and delicate handcrafted elements — this set beautifully captures the richness of ethnic Indian jewellery. Perfect for weddings, festive celebrations, and special occasions, Kaveri adds effortless grace to every look.",
@@ -88,6 +69,7 @@ export const products: Product[] = [
     id: "2",
     name: "Raahi Necklace Set",
     category: "necklaces",
+    categories: ["necklaces", "bridal-sets"],
     price: 4499,
     description:
       "A timeless blend of royal elegance and modern femininity, the Raahi Necklace Set is designed for women who love statement jewellery with a soft, luxurious touch. Featuring a beautifully structured Hasli-inspired silhouette adorned with shimmering Polki-style stones, delicate blush pink bead drops, and pearl accents that add grace to every movement. Crafted with intricate detailing and a rich gold-tone finish, Raahi captures the charm of traditional Indian jewellery while offering a contemporary designer aesthetic.",
@@ -111,6 +93,7 @@ export const products: Product[] = [
     id: "3",
     name: "Saanjh Choker Set",
     category: "bridal-sets",
+    categories: ["necklaces", "bridal-sets"],
     price: 5499,
     description:
       "A timeless blend of regal elegance and traditional craftsmanship, this exquisite choker set is designed to make every occasion unforgettable. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops — this statement piece beautifully captures the essence of royal Indian jewellery. Crafted with a luxurious antique gold finish, the choker sits gracefully around the neck, offering a bold yet elegant look.",
@@ -182,6 +165,7 @@ export const products: Product[] = [
     id: "6",
     name: "Kanak Necklace Set",
     category: "necklaces",
+    categories: ["necklaces", "bridal-sets"],
     price: 1999,
     description:
       "Crafted with exquisite filigree-inspired detailing, this statement necklace set is designed for women who appreciate timeless Indian craftsmanship with a refined modern touch. The intricate openwork patterns, delicate bead edging, and soft reflective stones create a rich heritage aesthetic that instantly elevates every look. Its warm antique gold finish adds a royal charm.",
@@ -250,7 +234,7 @@ export const products: Product[] = [
 ];
 
 export function getProductsByCategory(category: Category): Product[] {
-  return products.filter((p) => p.category === category);
+  return products.filter((p) => p.category === category || p.categories?.includes(category));
 }
 
 export function getProductById(id: string): Product | undefined {

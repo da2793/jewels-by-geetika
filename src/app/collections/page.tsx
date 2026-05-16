@@ -25,7 +25,7 @@ function CollectionsContent() {
     let filtered =
       activeCategory === "all"
         ? products
-        : products.filter((p) => p.category === activeCategory);
+        : products.filter((p) => p.category === activeCategory || p.categories?.includes(activeCategory));
 
     if (showNewOnly) {
       filtered = filtered.filter((p) => p.isNew);
