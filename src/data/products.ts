@@ -11,7 +11,23 @@ export interface Product {
   badge?: string;
   isNew?: boolean;
   isBestseller?: boolean;
+  stock?: number;
 }
+
+// Stock levels - update these when restocking
+const stockLevels: Record<string, number> = {
+  "1": 2,  // Kaveri
+  "2": 1,  // Raahi
+  "3": 2,  // Saanjh
+  "4": 2,  // Adaa
+  "5": 2,  // Ruhani
+  "6": 2,  // Kanak
+  "7": 2,  // Sunehri
+  "8": 1,  // Virasat
+  "9": 2,  // Antara
+  "10": 2, // Chandni
+  "11": 2, // Rajsi
+};
 
 export type Category =
   | "necklaces"
@@ -311,6 +327,14 @@ export function getProductsByCategory(category: Category): Product[] {
 
 export function getProductById(id: string): Product | undefined {
   return products.find((p) => p.id === id);
+}
+
+export function getStock(productId: string): number {
+  return stockLevels[productId] ?? 0;
+}
+
+export function isInStock(productId: string): boolean {
+  return getStock(productId) > 0;
 }
 
 export function getFeaturedProducts(): Product[] {

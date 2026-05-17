@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { getProductById, getFeaturedProducts } from "@/data/products";
+import { getProductById, getFeaturedProducts, isInStock } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
 
@@ -190,6 +190,12 @@ export default function ProductDetailPage() {
             </div>
 
             {/* CTA Buttons */}
+            {product && !isInStock(product.id) ? (
+              <div className="mb-8 py-4 text-center bg-red-50 rounded-xl border border-red-100">
+                <p className="text-red-600 font-semibold uppercase tracking-[0.15em] text-sm">Out of Stock</p>
+                <p className="text-charcoal-700 text-xs mt-1">This item is currently unavailable</p>
+              </div>
+            ) : (
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <motion.button
                 onClick={() => product && addToCart(product)}
@@ -214,6 +220,7 @@ export default function ProductDetailPage() {
                 </motion.span>
               </Link>
             </div>
+            )}
 
             {/* Trust Badges */}
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-cream-400">

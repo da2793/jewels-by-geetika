@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { isInStock } from "@/data/products";
 
 interface ProductCardProps {
   product: Product;
@@ -16,8 +17,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (!isInStock(product.id)) return;
     addToCart(product);
   };
+
+  const outOfStock = !isInStock(product.id);
 
   return (
     <Link href={`/product/${product.id}`}>
@@ -54,9 +58,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
             <button
               onClick={handleAddToCart}
-              className="block w-full text-center py-3 glass-subtle text-charcoal-800 text-xs font-medium uppercase tracking-[0.15em] hover:bg-charcoal-800 hover:text-white transition-colors"
+              disabled={outOfStock}
+              className={`block w-full text-center py-3 glass-subtle text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
+                outOfStock
+                  ? "text-red-500 cursor-not-allowed"
+                  : "text-charcoal-800 hover:bg-charcoal-800 hover:text-white"
+              }`}
             >
-              Add to Bag
+              {outOfStock ? "Out of Stock" : "Add to Bag"}
             </button>
           </div>
         </div>
