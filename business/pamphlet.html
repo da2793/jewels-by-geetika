@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jewels by Geetika - Pamphlet</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @page {
+      size: A5 portrait;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: #FFFFFF;
+      color: #111111;
+      width: 148mm;
+      height: 210mm;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pamphlet {
+      width: 148mm;
+      height: 210mm;
+      padding: 8mm;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9F6F1 50%, #F3E9DC 100%);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 5mm;
+    }
+
+    .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 18pt;
+      font-weight: 700;
+      color: #B8941F;
+      letter-spacing: 3px;
+    }
+
+    .tagline {
+      font-size: 7pt;
+      color: #585858;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 2mm;
+    }
+
+    .divider {
+      width: 20mm;
+      height: 0.5px;
+      background: linear-gradient(90deg, transparent, #C8A84B, transparent);
+      margin: 3mm auto;
+    }
+
+    /* Product Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      flex: 1;
+    }
+
+    .product {
+      text-align: center;
+      background: rgba(255,255,255,0.7);
+      border-radius: 3mm;
+      padding: 2mm;
+      border: 0.3px solid rgba(200,168,75,0.15);
+    }
+
+    .product img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 2mm;
+      margin-bottom: 1.5mm;
+    }
+
+    .product-name {
+      font-family: 'Cinzel', serif;
+      font-size: 6pt;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 0.5mm;
+    }
+
+    .product-price {
+      font-size: 6.5pt;
+      color: #B8941F;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 4mm;
+      text-align: center;
+      padding-top: 3mm;
+      border-top: 0.5px solid rgba(200,168,75,0.2);
+    }
+
+    .qr-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8mm;
+      margin-bottom: 2mm;
+    }
+
+    .qr-item {
+      text-align: center;
+    }
+
+    .qr-item img {
+      width: 18mm;
+      height: 18mm;
+    }
+
+    .qr-label {
+      font-size: 5pt;
+      color: #585858;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1mm;
+    }
+
+    .footer-text {
+      font-size: 5.5pt;
+      color: #787878;
+      letter-spacing: 1px;
+    }
+
+    @media print {
+      body { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="pamphlet">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand-name">JEWELS</div>
+      <div class="tagline">by Geetika • Hand-Curated Jewellery</div>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Products Grid - All 11 products -->
+    <div class="products">
+      <div class="product">
+        <img src="../public/products/Kaveri/kaveri-1.png" alt="Kaveri">
+        <div class="product-name">Kaveri</div>
+        <div class="product-price">₹1,999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Raahi/raahi-1.png" alt="Raahi">
+        <div class="product-name">Raahi</div>
+        <div class="product-price">₹4,499</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Saanjh/saanjh-1.png" alt="Saanjh">
+        <div class="product-name">Saanjh</div>
+        <div class="product-price">₹5,499</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Adaa/adaa-1.png" alt="Adaa">
+        <div class="product-name">Adaa</div>
+        <div class="product-price">₹3,999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Ruhani/ruhani-1.png" alt="Ruhani">
+        <div class="product-name">Ruhani</div>
+        <div class="product-price">₹3,999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Kanak/kanak-1.png" alt="Kanak">
+        <div class="product-name">Kanak</div>
+        <div class="product-price">₹1,999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Sunehri/sunehri-1.png" alt="Sunehri">
+        <div class="product-name">Sunehri</div>
+        <div class="product-price">₹999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Virasat/virasat-1.png" alt="Virasat">
+        <div class="product-name">Virasat</div>
+        <div class="product-price">₹999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Antara/antara-1.png" alt="Antara">
+        <div class="product-name">Antara</div>
+        <div class="product-price">₹3,999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Chandni/chandni-1.png" alt="Chandni">
+        <div class="product-name">Chandni</div>
+        <div class="product-price">₹3,999</div>
+      </div>
+      <div class="product">
+        <img src="../public/products/Rajsi/rajsi-1.png" alt="Rajsi">
+        <div class="product-name">Rajsi</div>
+        <div class="product-price">₹2,999</div>
+      </div>
+      <!-- Empty cell for grid alignment -->
+      <div class="product" style="border: none; background: none;"></div>
+    </div>
+
+    <!-- Footer with QR codes -->
+    <div class="footer">
+      <div class="qr-section">
+        <div class="qr-item">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.jewelsbygeetika.com&color=B8941F" alt="Website QR">
+          <div class="qr-label">Shop Online</div>
+        </div>
+        <div class="qr-item">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.instagram.com/jewelsbygeetika/&color=B8941F" alt="Instagram QR">
+          <div class="qr-label">@jewelsbygeetika</div>
+        </div>
+      </div>
+      <div class="footer-text">www.jewelsbygeetika.com • Premium Hand-Curated Jewellery</div>
+    </div>
+  </div>
+</body>
+</html>
