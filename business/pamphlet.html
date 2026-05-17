@@ -9,7 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     @page {
-      size: A5 portrait;
+      size: 148mm 210mm;
       margin: 0;
     }
 
@@ -20,92 +20,106 @@
       width: 148mm;
       height: 210mm;
       margin: 0 auto;
-      position: relative;
       overflow: hidden;
     }
 
     .pamphlet {
       width: 148mm;
       height: 210mm;
-      padding: 8mm;
+      padding: 5mm 6mm;
       display: flex;
       flex-direction: column;
-      position: relative;
       background: linear-gradient(180deg, #FFFFFF 0%, #F9F6F1 50%, #F3E9DC 100%);
     }
 
-    /* Header */
+    /* Header with Logo */
     .header {
       text-align: center;
-      margin-bottom: 5mm;
+      margin-bottom: 3mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3mm;
+    }
+
+    .header img {
+      height: 12mm;
+      width: auto;
+    }
+
+    .header-text {
+      text-align: left;
     }
 
     .brand-name {
       font-family: 'Cinzel', serif;
-      font-size: 18pt;
+      font-size: 14pt;
       font-weight: 700;
       color: #B8941F;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
     }
 
     .tagline {
-      font-size: 7pt;
+      font-size: 6pt;
       color: #585858;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-top: 2mm;
     }
 
     .divider {
-      width: 20mm;
+      width: 100%;
       height: 0.5px;
       background: linear-gradient(90deg, transparent, #C8A84B, transparent);
-      margin: 3mm auto;
+      margin: 2mm 0;
     }
 
     /* Product Grid */
     .products {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3mm;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2mm;
       flex: 1;
     }
 
     .product {
       text-align: center;
       background: rgba(255,255,255,0.7);
-      border-radius: 3mm;
-      padding: 2mm;
-      border: 0.3px solid rgba(200,168,75,0.15);
+      border-radius: 2mm;
+      padding: 1.5mm;
+      border: 0.3px solid rgba(200,168,75,0.12);
     }
 
     .product img {
       width: 100%;
-      aspect-ratio: 3/4;
+      aspect-ratio: 1;
       object-fit: cover;
-      border-radius: 2mm;
-      margin-bottom: 1.5mm;
+      border-radius: 1.5mm;
+      margin-bottom: 1mm;
     }
 
     .product-name {
       font-family: 'Cinzel', serif;
-      font-size: 6pt;
+      font-size: 5.5pt;
       font-weight: 600;
       color: #111111;
-      margin-bottom: 0.5mm;
     }
 
     .product-price {
-      font-size: 6.5pt;
+      font-size: 5.5pt;
       color: #B8941F;
       font-weight: 500;
     }
 
+    .product.empty {
+      border: none;
+      background: none;
+    }
+
     /* Footer */
     .footer {
-      margin-top: 4mm;
+      margin-top: 2mm;
       text-align: center;
-      padding-top: 3mm;
+      padding-top: 2mm;
       border-top: 0.5px solid rgba(200,168,75,0.2);
     }
 
@@ -114,7 +128,7 @@
       justify-content: center;
       align-items: center;
       gap: 8mm;
-      margin-bottom: 2mm;
+      margin-bottom: 1.5mm;
     }
 
     .qr-item {
@@ -122,22 +136,22 @@
     }
 
     .qr-item img {
-      width: 18mm;
-      height: 18mm;
+      width: 14mm;
+      height: 14mm;
     }
 
     .qr-label {
-      font-size: 5pt;
+      font-size: 4.5pt;
       color: #585858;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 1mm;
+      letter-spacing: 0.8px;
+      margin-top: 0.5mm;
     }
 
     .footer-text {
-      font-size: 5.5pt;
+      font-size: 5pt;
       color: #787878;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
 
     @media print {
@@ -147,14 +161,17 @@
 </head>
 <body>
   <div class="pamphlet">
-    <!-- Header -->
+    <!-- Header with Logo -->
     <div class="header">
-      <div class="brand-name">JEWELS</div>
-      <div class="tagline">by Geetika • Hand-Curated Jewellery</div>
-      <div class="divider"></div>
+      <img src="../public/logo.png" alt="Jewels by Geetika Logo">
+      <div class="header-text">
+        <div class="brand-name">JEWELS BY GEETIKA</div>
+        <div class="tagline">Hand-Curated Premium Jewellery</div>
+      </div>
     </div>
+    <div class="divider"></div>
 
-    <!-- Products Grid - All 11 products -->
+    <!-- Products Grid - 4 columns, 3 rows = 12 slots for 11 products -->
     <div class="products">
       <div class="product">
         <img src="../public/products/Kaveri/kaveri-1.png" alt="Kaveri">
@@ -211,8 +228,7 @@
         <div class="product-name">Rajsi</div>
         <div class="product-price">₹2,999</div>
       </div>
-      <!-- Empty cell for grid alignment -->
-      <div class="product" style="border: none; background: none;"></div>
+      <div class="product empty"></div>
     </div>
 
     <!-- Footer with QR codes -->
@@ -227,7 +243,7 @@
           <div class="qr-label">@jewelsbygeetika</div>
         </div>
       </div>
-      <div class="footer-text">www.jewelsbygeetika.com • Premium Hand-Curated Jewellery</div>
+      <div class="footer-text">www.jewelsbygeetika.com</div>
     </div>
   </div>
 </body>
