@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jewels by Geetika - Saanjh</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @page { size: 148mm 210mm; margin: 0; }
+    body { font-family: 'Jost', sans-serif; width: 148mm; height: 210mm; margin: 0 auto; overflow: hidden; }
+    .pamphlet { width: 148mm; height: 210mm; padding: 8mm; display: flex; flex-direction: column; background: linear-gradient(180deg, #FFFFFF 0%, #F9F6F1 50%, #F3E9DC 100%); }
+    .header { text-align: center; margin-bottom: 4mm; display: flex; align-items: center; justify-content: center; gap: 3mm; }
+    .header img { height: 12mm; width: auto; }
+    .header-text { text-align: left; }
+    .brand-name { font-family: 'Cinzel', serif; font-size: 14pt; font-weight: 700; color: #B8941F; letter-spacing: 2px; }
+    .tagline { font-size: 6pt; color: #585858; letter-spacing: 1.5px; text-transform: uppercase; }
+    .divider { width: 100%; height: 0.5px; background: linear-gradient(90deg, transparent, #C8A84B, transparent); margin: 2mm 0; }
+    .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4mm; }
+    .product-image { width: 90mm; height: auto; max-height: 120mm; object-fit: contain; border-radius: 4mm; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .product-name { font-family: 'Cinzel', serif; font-size: 16pt; font-weight: 600; color: #111; letter-spacing: 2px; }
+    .product-price { font-size: 14pt; color: #B8941F; font-weight: 500; }
+    .product-desc { font-size: 7.5pt; color: #585858; text-align: center; max-width: 120mm; line-height: 1.6; font-weight: 300; }
+    .footer { margin-top: 4mm; text-align: center; padding-top: 2mm; border-top: 0.5px solid rgba(200,168,75,0.2); }
+    .qr-section { display: flex; justify-content: center; align-items: center; gap: 8mm; margin-bottom: 1.5mm; }
+    .qr-item { text-align: center; }
+    .qr-item img { width: 14mm; height: 14mm; }
+    .qr-label { font-size: 4.5pt; color: #585858; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 0.5mm; }
+    .footer-text { font-size: 5pt; color: #787878; letter-spacing: 0.8px; }
+    @media print { body { margin: 0; } }
+  </style>
+</head>
+<body>
+  <div class="pamphlet">
+    <div class="header">
+      <img src="../public/logo.png" alt="Logo">
+      <div class="header-text">
+        <div class="brand-name">JEWELS BY GEETIKA</div>
+        <div class="tagline">Hand-Curated Premium Jewellery</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="content">
+      <img class="product-image" src="../public/products/Saanjh/saanjh-1.png" alt="Saanjh Choker Set">
+      <div class="product-name">Saanjh</div>
+      <div class="product-price">₹5,499</div>
+      <div class="product-desc">A timeless blend of regal elegance and traditional craftsmanship. Featuring intricate floral filigree detailing, premium kundan-style stones, delicate pearl accents, and rich emerald-green bead drops.</div>
+    </div>
+    <div class="footer">
+      <div class="qr-section">
+        <div class="qr-item">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.jewelsbygeetika.com&color=B8941F" alt="Website QR">
+          <div class="qr-label">Website</div>
+        </div>
+        <div class="qr-item">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.instagram.com/jewelsbygeetika/&color=B8941F" alt="Instagram QR">
+          <div class="qr-label">Instagram</div>
+        </div>
+      </div>
+      <div class="footer-text">www.jewelsbygeetika.com</div>
+    </div>
+  </div>
+</body>
+</html>
