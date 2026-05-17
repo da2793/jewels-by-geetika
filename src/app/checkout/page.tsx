@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
+import { validateStock, decrementStock } from "@/lib/stock";
 
 declare global {
   interface Window {
@@ -52,6 +53,17 @@ export default function CheckoutPage() {
   const handlePayment = async () => {
     setPaying(true);
 
+    // Validate stock before payment
+    const stockCheck = await validateStock(
+      items.map((item) => ({ productId: item.product.id, quantity: item.quantity }))
+    );
+    if (!stockCheck.valid) {
+      const productName = items.find((i) => i.product.id === stockCheck.insufficientProduct)?.product.name || "A product";
+      alert(`${productName} only has ${stockCheck.available} piece(s) available. Please update your cart.`);
+      setPaying(false);
+      return;
+    }
+
     const scriptLoaded = await loadRazorpayScript();
     if (!scriptLoaded) {
       alert("Failed to load payment gateway. Please try again.");
@@ -94,6 +106,11 @@ export default function CheckoutPage() {
         const verification = await verifyRes.json();
 
         if (verification.verified) {
+          // Decrement stock
+          await decrementStock(
+            items.map((item) => ({ productId: item.product.id, quantity: item.quantity }))
+          );
+
           // Save order to database
           const supabase = createClient();
           if (supabase && user) {

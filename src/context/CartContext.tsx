@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useCallback, useEffect, useRef, ReactNode } from "react";
 import { Product } from "@/data/products";
 import { createClient } from "@/lib/supabase/client";
+import { getAllStock } from "@/lib/stock";
 
 export interface CartItem {
   product: Product;
@@ -28,7 +29,13 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [stockLevels, setStockLevels] = useState<Record<string, number>>({});
   const saveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Load stock levels from database
+  useEffect(() => {
+    getAllStock().then(setStockLevels);
+  }, []);
 
   const openCart = useCallback(() => setIsOpen(true), []);
   const closeCart = useCallback(() => setIsOpen(false), []);
@@ -36,6 +43,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const addToCart = useCallback((product: Product) => {
     setItems((prev) => {
       const existing = prev.find((item) => item.product.id === product.id);
+      const currentQty = existing ? existing.quantity : 0;
+      const availableStock = stockLevels[product.id] ?? 0;
+
+      // Don't add if out of stock or at limit
+      if (currentQty >= availableStock) {
+        return prev;
+      }
+
       if (existing) {
         return prev.map((item) =>
           item.product.id === product.id
@@ -46,7 +61,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return [...prev, { product, quantity: 1 }];
     });
     setIsOpen(true);
-  }, []);
+  }, [stockLevels]);
 
   const removeFromCart = useCallback((productId: string) => {
     setItems((prev) => prev.filter((item) => item.product.id !== productId));
@@ -57,12 +72,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setItems((prev) => prev.filter((item) => item.product.id !== productId));
       return;
     }
+    const availableStock = stockLevels[productId] ?? 0;
+    const cappedQuantity = Math.min(quantity, availableStock);
     setItems((prev) =>
       prev.map((item) =>
-        item.product.id === productId ? { ...item, quantity } : item
+        item.product.id === productId ? { ...item, quantity: cappedQuantity } : item
       )
     );
-  }, []);
+  }, [stockLevels]);
 
   const clearCart = useCallback(() => {
     setItems([]);

@@ -1,19 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { getProductById, getFeaturedProducts, isInStock } from "@/data/products";
+import { getProductById, getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
+import { getStock } from "@/lib/stock";
 
 export default function ProductDetailPage() {
   const params = useParams();
   const product = getProductById(params.id as string);
   const [selectedImage, setSelectedImage] = useState(0);
   const { addToCart } = useCart();
+  const [stockQty, setStockQty] = useState<number | null>(null);
+
+  const productId = params.id as string;
+  useEffect(() => {
+    getStock(productId).then(setStockQty);
+  }, [productId]);
 
   if (!product) {
     return (
@@ -190,7 +197,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* CTA Buttons */}
-            {product && !isInStock(product.id) ? (
+            {product && stockQty !== null && stockQty <= 0 ? (
               <div className="mb-8 py-4 text-center bg-red-50 rounded-xl border border-red-100">
                 <p className="text-red-600 font-semibold uppercase tracking-[0.15em] text-sm">Out of Stock</p>
                 <p className="text-charcoal-700 text-xs mt-1">This item is currently unavailable</p>

@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
-import { isInStock } from "@/data/products";
+import { useState, useEffect } from "react";
+import { getStock } from "@/lib/stock";
 
 interface ProductCardProps {
   product: Product;
@@ -17,11 +18,15 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!isInStock(product.id)) return;
+    if (outOfStock) return;
     addToCart(product);
   };
 
-  const outOfStock = !isInStock(product.id);
+  const [outOfStock, setOutOfStock] = useState(false);
+
+  useEffect(() => {
+    getStock(product.id).then((qty) => setOutOfStock(qty <= 0));
+  }, [product.id]);
 
   return (
     <Link href={`/product/${product.id}`}>
