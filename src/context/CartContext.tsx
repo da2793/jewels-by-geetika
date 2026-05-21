@@ -27,10 +27,25 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const saved = localStorage.getItem("jbg-cart");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isOpen, setIsOpen] = useState(false);
   const [stockLevels, setStockLevels] = useState<Record<string, number>>({});
   const saveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Persist cart to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem("jbg-cart", JSON.stringify(items));
+    } catch {}
+  }, [items]);
 
   // Load stock levels from database
   useEffect(() => {
@@ -83,6 +98,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const clearCart = useCallback(() => {
     setItems([]);
+    try { localStorage.removeItem("jbg-cart"); } catch {}
   }, []);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
