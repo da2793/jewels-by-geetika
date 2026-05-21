@@ -27,8 +27,6 @@ const stockLevels: Record<string, number> = {
   "9": 2,  // Antara
   "10": 2, // Chandni
   "11": 2, // Rajsi
-  "12": 5, // Test Product A
-  "13": 5, // Test Product B
 };
 
 export type Category =
@@ -320,26 +318,6 @@ export const products: Product[] = [
     ],
     badge: "New Launch",
     isNew: true,
-  },
-  {
-    id: "12",
-    name: "Test Product A (₹599)",
-    category: "rings",
-    price: 599,
-    description: "Dummy product for testing shipping fee below ₹799.",
-    details: ["Test product — will be removed after testing"],
-    images: ["/products/Sunehri/sunehri-1.png"],
-    isNew: false,
-  },
-  {
-    id: "13",
-    name: "Test Product B (₹899)",
-    category: "rings",
-    price: 899,
-    description: "Dummy product for testing shipping fee between ₹799–₹999.",
-    details: ["Test product — will be removed after testing"],
-    images: ["/products/Virasat/virasat-1.png"],
-    isNew: false,
   },
 ];
 

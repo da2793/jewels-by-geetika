@@ -1,9 +1,8 @@
 import { createClient } from "@/lib/supabase/client";
-import { getStock as getLocalStock } from "@/data/products";
 
 export async function getStock(productId: string): Promise<number> {
   const supabase = createClient();
-  if (!supabase) return getLocalStock(productId);
+  if (!supabase) return 0;
 
   const { data } = await supabase
     .from("stock")
@@ -11,28 +10,18 @@ export async function getStock(productId: string): Promise<number> {
     .eq("product_id", productId)
     .single();
 
-  // Fall back to local stock if product not in database
-  if (!data) return getLocalStock(productId);
-  return data.quantity ?? 0;
+  return data?.quantity ?? 0;
 }
 
 export async function getAllStock(): Promise<Record<string, number>> {
-  // Start with local stock as base
-  const { products } = await import("@/data/products");
-  const localStockLevels: Record<string, number> = {};
-  products.forEach((p: any) => {
-    localStockLevels[p.id] = getLocalStock(p.id);
-  });
-
   const supabase = createClient();
-  if (!supabase) return localStockLevels;
+  if (!supabase) return {};
 
   const { data } = await supabase.from("stock").select("product_id, quantity");
 
-  if (!data) return localStockLevels;
+  if (!data) return {};
 
-  // Merge: Supabase values override local
-  const stockMap: Record<string, number> = { ...localStockLevels };
+  const stockMap: Record<string, number> = {};
   data.forEach((item: any) => {
     stockMap[item.product_id] = item.quantity;
   });
