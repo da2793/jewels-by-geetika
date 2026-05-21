@@ -204,19 +204,6 @@ export default function PoliciesPage() {
               <p className="text-charcoal-700 text-sm">
                 All payments are processed securely through Razorpay-supported payment methods.
               </p>
-
-              {/* Prepaid Benefits */}
-              <h3 className="text-lg font-display font-semibold text-charcoal-900 mt-8 mb-4">
-                Prepaid Order Benefits
-              </h3>
-              <ul className="space-y-2 text-charcoal-700 text-sm">
-                <li>• Faster processing &amp; priority dispatch</li>
-                <li>• Lower cancellation risk</li>
-                <li>• Quicker customer support resolution</li>
-              </ul>
-              <p className="text-charcoal-700 text-sm mt-3">
-                We strongly recommend prepaid payments for a smoother shopping experience.
-              </p>
             </section>
 
             {/* ── CANCELLATION & REFUND ── */}
