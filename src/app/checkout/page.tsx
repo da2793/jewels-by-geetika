@@ -31,7 +31,9 @@ export default function CheckoutPage() {
     pincode: "",
   });
 
-  const shippingCost = totalPrice >= 999 ? 0 : totalPrice >= 799 ? 49 : 79;
+  const [expressShipping, setExpressShipping] = useState(false);
+  const baseShippingCost = totalPrice >= 999 ? 0 : totalPrice >= 799 ? 49 : 79;
+  const shippingCost = baseShippingCost + (expressShipping ? 99 : 0);
   const orderTotal = totalPrice + shippingCost;
   const [paying, setPaying] = useState(false);
 
@@ -457,18 +459,35 @@ export default function CheckoutPage() {
                 <div className="flex justify-between text-sm">
                   <span className="text-charcoal-800 font-light">Shipping</span>
                   <span className="text-charcoal-700">
-                    {shippingCost === 0 ? (
+                    {baseShippingCost === 0 && !expressShipping ? (
                       <span className="text-green-600">Free</span>
                     ) : (
                       `₹${shippingCost}`
                     )}
                   </span>
                 </div>
-                {shippingCost > 0 && (
+                {baseShippingCost > 0 && !expressShipping && (
                   <p className="text-xs text-gold-600 font-light">
                     Free shipping on orders above ₹999
                   </p>
                 )}
+
+                {/* Express Shipping Option */}
+                <label className="flex items-center justify-between py-3 px-4 bg-cream-50 rounded-xl border border-cream-400 cursor-pointer hover:border-gold-400 transition-colors">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={expressShipping}
+                      onChange={(e) => setExpressShipping(e.target.checked)}
+                      className="w-4 h-4 accent-gold-600 rounded"
+                    />
+                    <div>
+                      <span className="text-charcoal-800 text-sm font-medium">Express Shipping</span>
+                      <p className="text-charcoal-700 text-[10px]">Faster delivery (2–3 business days)</p>
+                    </div>
+                  </div>
+                  <span className="text-charcoal-800 text-sm font-medium">+₹99</span>
+                </label>
                 <div className="flex justify-between pt-3 border-t border-cream-300">
                   <span className="text-charcoal-800 font-medium">Total</span>
                   <span className="text-charcoal-800 font-serif text-xl">

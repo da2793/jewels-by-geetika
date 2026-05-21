@@ -148,11 +148,16 @@ export default function PoliciesPage() {
                       <td className="py-3 px-4">₹999 &amp; Above</td>
                       <td className="py-3 px-4 text-gold-700 font-medium">Free Shipping</td>
                     </tr>
+                    <tr>
+                      <td className="py-3 px-4">Express Shipping</td>
+                      <td className="py-3 px-4">₹99 (additional)</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
               <ul className="mt-4 space-y-2 text-charcoal-700 text-sm">
                 <li>• Free shipping applies automatically at checkout.</li>
+                <li>• Express shipping is available for select pincodes and prepaid orders only.</li>
                 <li>• Bridal and premium collection orders always qualify for free shipping.</li>
               </ul>
 
