@@ -10,6 +10,7 @@ import { createClient } from "@/lib/supabase/client";
 interface Profile {
   full_name: string;
   phone: string;
+  email: string;
   address: string;
   city: string;
   state: string;
@@ -33,6 +34,7 @@ export default function AccountPage() {
   const [profile, setProfile] = useState<Profile>({
     full_name: "",
     phone: "",
+    email: "",
     address: "",
     city: "",
     state: "",
@@ -60,7 +62,8 @@ export default function AccountPage() {
           if (data) {
             setProfile({
               full_name: data.full_name || user.user_metadata?.full_name || "",
-              phone: data.phone || "",
+              phone: data.phone || user.phone || "",
+              email: data.email || user.email || "",
               address: data.address || "",
               city: data.city || "",
               state: data.state || "",
@@ -70,6 +73,8 @@ export default function AccountPage() {
             setProfile((p) => ({
               ...p,
               full_name: user.user_metadata?.full_name || "",
+              phone: user.phone || "",
+              email: user.email || "",
             }));
           }
         });
@@ -134,7 +139,7 @@ export default function AccountPage() {
             <h1 className="text-3xl font-display font-bold text-charcoal-900">
               My Account
             </h1>
-            <p className="text-charcoal-700 mt-1">{user.email}</p>
+            <p className="text-charcoal-700 mt-1">{user.email || user.phone}</p>
           </div>
           <button
             onClick={handleSignOut}
@@ -188,25 +193,44 @@ export default function AccountPage() {
                   <label className="block text-charcoal-800 text-xs uppercase tracking-[0.15em] mb-2 font-medium">
                     Phone
                   </label>
-                  <input
-                    type="tel"
-                    value={profile.phone}
-                    onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                    className="w-full bg-white border border-cream-400 rounded-xl px-4 py-3 text-charcoal-800 focus:outline-none focus:border-gold-400 transition-colors"
-                    placeholder="+91 99999 99999"
-                  />
+                  {user.phone ? (
+                    <input
+                      type="tel"
+                      value={user.phone}
+                      disabled
+                      className="w-full bg-cream-200 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 cursor-not-allowed"
+                    />
+                  ) : (
+                    <input
+                      type="tel"
+                      value={profile.phone}
+                      onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
+                      className="w-full bg-white border border-cream-400 rounded-xl px-4 py-3 text-charcoal-800 focus:outline-none focus:border-gold-400 transition-colors"
+                      placeholder="+91 99999 99999"
+                    />
+                  )}
                 </div>
               </div>
               <div>
                 <label className="block text-charcoal-800 text-xs uppercase tracking-[0.15em] mb-2 font-medium">
                   Email
                 </label>
-                <input
-                  type="email"
-                  value={user.email || ""}
-                  disabled
-                  className="w-full bg-cream-200 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 cursor-not-allowed"
-                />
+                {user.email ? (
+                  <input
+                    type="email"
+                    value={user.email}
+                    disabled
+                    className="w-full bg-cream-200 border border-cream-400 rounded-xl px-4 py-3 text-charcoal-700 cursor-not-allowed"
+                  />
+                ) : (
+                  <input
+                    type="email"
+                    value={profile.email}
+                    onChange={(e) => setProfile({ ...profile, email: e.target.value })}
+                    placeholder="Add your email (optional)"
+                    className="w-full bg-white border border-cream-400 rounded-xl px-4 py-3 text-charcoal-800 focus:outline-none focus:border-gold-400 transition-colors"
+                  />
+                )}
               </div>
 
               <div className="flex items-center gap-4 pt-4">
