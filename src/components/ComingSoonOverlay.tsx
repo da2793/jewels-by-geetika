@@ -85,7 +85,7 @@ export default function ComingSoonOverlay() {
               className="mx-auto"
             >
               <path d="M16 14 L24 8 L32 14 L24 38 Z" fill="#B8941F" opacity="0.8" />
-              <path d="M16 14 L24 8 L24 38 Z" fill="#C9A84C" opacity="0.6" />
+              <path d="M16 14 L24 8 L24 38 Z" fill="#C8A84B" opacity="0.6" />
               <circle cx="30" cy="10" r="2" fill="#D4AF37" opacity="0.5" />
             </svg>
           </motion.div>
