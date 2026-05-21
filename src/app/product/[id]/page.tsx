@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { getProductById, getFeaturedProducts } from "@/data/products";
@@ -10,10 +10,157 @@ import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { getStock } from "@/lib/stock";
 
+function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const zoomIn = () => setScale((s) => Math.min(s + 0.5, 4));
+  const zoomOut = () => {
+    setScale((s) => {
+      const newScale = Math.max(s - 0.5, 1);
+      if (newScale === 1) setPosition({ x: 0, y: 0 });
+      return newScale;
+    });
+  };
+  const resetZoom = () => { setScale(1); setPosition({ x: 0, y: 0 }); };
+
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.3 : 0.3;
+    setScale((s) => {
+      const newScale = Math.max(1, Math.min(s + delta, 4));
+      if (newScale === 1) setPosition({ x: 0, y: 0 });
+      return newScale;
+    });
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (scale <= 1) return;
+    setDragging(true);
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!dragging) return;
+    setPosition({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
+  };
+
+  const handleMouseUp = () => setDragging(false);
+
+  // Touch support for pinch zoom
+  const lastTouchDistance = useRef<number | null>(null);
+  const lastTouchCenter = useRef({ x: 0, y: 0 });
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (lastTouchDistance.current !== null) {
+        const delta = (distance - lastTouchDistance.current) * 0.01;
+        setScale((s) => {
+          const newScale = Math.max(1, Math.min(s + delta, 4));
+          if (newScale === 1) setPosition({ x: 0, y: 0 });
+          return newScale;
+        });
+      }
+      lastTouchDistance.current = distance;
+    } else if (e.touches.length === 1 && scale > 1) {
+      const touch = e.touches[0];
+      if (lastTouchCenter.current.x !== 0) {
+        const dx = touch.clientX - lastTouchCenter.current.x;
+        const dy = touch.clientY - lastTouchCenter.current.y;
+        setPosition((p) => ({ x: p.x + dx, y: p.y + dy }));
+      }
+      lastTouchCenter.current = { x: touch.clientX, y: touch.clientY };
+    }
+  }, [scale]);
+
+  const handleTouchEnd = () => {
+    lastTouchDistance.current = null;
+    lastTouchCenter.current = { x: 0, y: 0 };
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "+" || e.key === "=") zoomIn();
+      if (e.key === "-") zoomOut();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      {/* Controls */}
+      <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+        <button onClick={zoomIn} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors" aria-label="Zoom in">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12M6 12h12" /></svg>
+        </button>
+        <button onClick={zoomOut} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors" aria-label="Zoom out">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12h12" /></svg>
+        </button>
+        <button onClick={resetZoom} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors text-xs font-medium" aria-label="Reset zoom">
+          {Math.round(scale * 100)}%
+        </button>
+        <button onClick={onClose} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors" aria-label="Close">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      {/* Zoom hint */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-xs z-10">
+        Scroll to zoom · Drag to pan · Esc to close
+      </div>
+
+      {/* Image container */}
+      <div
+        ref={containerRef}
+        className="w-full h-full flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className="relative w-[85vmin] h-[85vmin] transition-transform duration-150 ease-out"
+          style={{ transform: `translate(${position.x}px, ${position.y}px) scale(${scale})` }}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-contain select-none pointer-events-none"
+            sizes="85vmin"
+            priority
+            draggable={false}
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function ProductDetailPage() {
   const params = useParams();
   const product = getProductById(params.id as string);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [zoomOpen, setZoomOpen] = useState(false);
   const { addToCart } = useCart();
   const [stockQty, setStockQty] = useState<number | null>(null);
 
@@ -67,7 +214,7 @@ export default function ProductDetailPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 glass-card shadow-lg">
+            <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 glass-card shadow-lg cursor-zoom-in" onClick={() => setZoomOpen(true)}>
               <Image
                 src={product.images[selectedImage]}
                 alt={product.name}
@@ -82,11 +229,18 @@ export default function ProductDetailPage() {
                 </div>
               )}
 
+              {/* Zoom indicator */}
+              <div className="absolute top-4 right-4 w-9 h-9 rounded-full glass-subtle flex items-center justify-center text-charcoal-700 opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6M7 10h6" />
+                </svg>
+              </div>
+
               {/* Navigation Arrows */}
               {product.images.length > 1 && (
                 <>
                   <button
-                    onClick={() => setSelectedImage((prev) => (prev === 0 ? product.images.length - 1 : prev - 1))}
+                    onClick={(e) => { e.stopPropagation(); setSelectedImage((prev) => (prev === 0 ? product.images.length - 1 : prev - 1)); }}
                     className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-subtle flex items-center justify-center text-charcoal-800 hover:bg-white/80 transition-all"
                     aria-label="Previous image"
                   >
@@ -95,7 +249,7 @@ export default function ProductDetailPage() {
                     </svg>
                   </button>
                   <button
-                    onClick={() => setSelectedImage((prev) => (prev === product.images.length - 1 ? 0 : prev + 1))}
+                    onClick={(e) => { e.stopPropagation(); setSelectedImage((prev) => (prev === product.images.length - 1 ? 0 : prev + 1)); }}
                     className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-subtle flex items-center justify-center text-charcoal-800 hover:bg-white/80 transition-all"
                     aria-label="Next image"
                   >
@@ -274,6 +428,17 @@ export default function ProductDetailPage() {
           </div>
         )}
       </div>
+
+      {/* Zoom Modal */}
+      <AnimatePresence>
+        {zoomOpen && product && (
+          <ImageZoomModal
+            src={product.images[selectedImage]}
+            alt={product.name}
+            onClose={() => setZoomOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
