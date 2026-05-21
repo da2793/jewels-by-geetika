@@ -6,7 +6,7 @@ import { useState } from "react";
 const sections = [
   { id: "shipping", label: "Shipping" },
   { id: "payment", label: "Payment" },
-  { id: "cod", label: "Cash on Delivery" },
+  { id: "cancellation", label: "Cancellation & Refund" },
   { id: "tracking", label: "Order Tracking" },
   { id: "packaging", label: "Packaging" },
   { id: "unboxing", label: "Unboxing Policy" },
@@ -194,7 +194,6 @@ export default function PoliciesPage() {
                   "UPI (Google Pay, PhonePe, Paytm, BHIM)",
                   "Net Banking",
                   "Wallets",
-                  "Cash on Delivery (COD)",
                 ].map((method) => (
                   <div key={method} className="flex items-center gap-2 text-charcoal-700 text-sm">
                     <span className="text-gold-500">✦</span>
@@ -220,28 +219,80 @@ export default function PoliciesPage() {
               </p>
             </section>
 
-            {/* ── COD ── */}
-            <section id="cod">
+            {/* ── CANCELLATION & REFUND ── */}
+            <section id="cancellation">
               <h2 className="text-2xl font-display font-bold text-charcoal-900 mb-6">
-                Cash on Delivery (COD)
+                Order Cancellation &amp; Refund Policy
               </h2>
-              <div className="space-y-4 text-charcoal-700 text-sm">
-                <p>COD is offered for customer convenience with the following conditions:</p>
-                <div className="bg-cream-200 rounded-xl p-5">
-                  <p className="text-charcoal-900 font-semibold mb-2">COD Fee: ₹99 (flat handling fee)</p>
-                  <p className="text-charcoal-700">Available for orders below ₹2,499 on eligible serviceable pincodes.</p>
+
+              <h3 className="text-lg font-display font-semibold text-charcoal-900 mb-4">
+                Cancellation Window
+              </h3>
+              <div className="space-y-3 text-charcoal-700 text-sm">
+                <p>
+                  Orders can only be cancelled <span className="text-charcoal-900 font-medium">before they are shipped</span>. Once your order has been dispatched and a tracking ID is generated, cancellation is no longer possible.
+                </p>
+                <div className="bg-cream-200 rounded-xl p-5 mt-4">
+                  <p className="text-charcoal-900 font-semibold mb-2">To request a cancellation:</p>
+                  <ul className="space-y-1 text-charcoal-700">
+                    <li>• Contact us immediately via email at <a href="mailto:contact@jewelsbygeetika.com" className="text-gold-600 font-medium hover:underline">contact@jewelsbygeetika.com</a></li>
+                    <li>• Include your Order ID and reason for cancellation</li>
+                    <li>• Cancellation requests are processed within 24 hours</li>
+                  </ul>
                 </div>
-                <h3 className="text-base font-display font-semibold text-charcoal-900 mt-4">
-                  COD Not Available For:
-                </h3>
-                <ul className="space-y-1">
-                  <li>• Bridal or custom jewellery</li>
-                  <li>• Personalized products</li>
-                  <li>• Orders above ₹2,499</li>
-                  <li>• Certain high-RTO pincodes</li>
-                </ul>
-                <p className="text-charcoal-700 mt-3">
-                  Jewels by Geetika reserves the right to disable COD for specific users, locations, or orders at its discretion.
+              </div>
+
+              <h3 className="text-lg font-display font-semibold text-charcoal-900 mt-8 mb-4">
+                No Returns or Replacements
+              </h3>
+              <div className="space-y-3 text-charcoal-700 text-sm">
+                <p>
+                  Due to the nature of our products, we do <span className="text-charcoal-900 font-medium">not accept returns, exchanges, or replacements</span> once the order has been delivered. All sales are final after dispatch.
+                </p>
+                <p>
+                  We encourage customers to review product details, images, and descriptions carefully before placing an order.
+                </p>
+              </div>
+
+              <h3 className="text-lg font-display font-semibold text-charcoal-900 mt-8 mb-4">
+                Refund Timelines
+              </h3>
+              <div className="space-y-3 text-charcoal-700 text-sm">
+                <p>If your cancellation is approved, refunds will be processed as follows:</p>
+                <div className="overflow-x-auto mt-3">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-cream-200">
+                        <th className="text-left py-3 px-4 text-charcoal-800 font-semibold">Payment Method</th>
+                        <th className="text-left py-3 px-4 text-charcoal-800 font-semibold">Refund Timeline</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-charcoal-700">
+                      <tr className="border-b border-cream-300">
+                        <td className="py-3 px-4">UPI (Google Pay, PhonePe, etc.)</td>
+                        <td className="py-3 px-4">1–3 business days</td>
+                      </tr>
+                      <tr className="border-b border-cream-300">
+                        <td className="py-3 px-4">Debit Card</td>
+                        <td className="py-3 px-4">5–7 business days</td>
+                      </tr>
+                      <tr className="border-b border-cream-300">
+                        <td className="py-3 px-4">Credit Card</td>
+                        <td className="py-3 px-4">7–10 business days</td>
+                      </tr>
+                      <tr className="border-b border-cream-300">
+                        <td className="py-3 px-4">Net Banking</td>
+                        <td className="py-3 px-4">5–7 business days</td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 px-4">Wallets</td>
+                        <td className="py-3 px-4">1–3 business days</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3">
+                  Refunds are credited back to the original payment source. Actual timelines may vary depending on your bank or payment provider.
                 </p>
               </div>
             </section>
