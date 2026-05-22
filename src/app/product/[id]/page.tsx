@@ -404,6 +404,7 @@ export default function ProductDetailPage() {
                 <p className="text-charcoal-700 text-xs mt-1">This item is currently unavailable</p>
               </div>
             ) : (
+            <>
             <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <motion.button
                 onClick={() => product && addToCart(product)}
@@ -429,6 +430,7 @@ export default function ProductDetailPage() {
               </Link>
             </div>
             <WishlistButtonInline productId={product.id} />
+            </>
             )}
 
             {/* Trust Badges */}
