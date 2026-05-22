@@ -168,7 +168,7 @@ export default function PoliciesPage() {
               </h3>
               <div className="space-y-3 text-charcoal-700 text-sm">
                 <p>Customers are responsible for providing accurate name, mobile number, shipping address, and pincode. Once shipped, address modifications may not always be possible.</p>
-                <p>Courier partners generally make 2–3 delivery attempts. Undelivered orders may be returned to us.</p>
+                <p>Courier partners generally make 2–3 delivery attempts. Undelivered orders will be returned, and the order will be considered cancelled.</p>
               </div>
 
               {/* Delays */}
