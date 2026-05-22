@@ -168,7 +168,7 @@ export default function PoliciesPage() {
               </h3>
               <div className="space-y-3 text-charcoal-700 text-sm">
                 <p>Customers are responsible for providing accurate name, mobile number, shipping address, and pincode. Once shipped, address modifications may not always be possible.</p>
-                <p>Courier partners generally make 2–3 delivery attempts. Undelivered orders may be returned, and additional shipping charges may apply for re-dispatch.</p>
+                <p>Courier partners generally make 2–3 delivery attempts. Undelivered orders may be returned to us.</p>
               </div>
 
               {/* Delays */}
@@ -190,10 +190,9 @@ export default function PoliciesPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                 {[
-                  "Credit Cards (Visa, Mastercard, RuPay, Amex)",
+                  "Credit Cards (Visa, Mastercard, RuPay)",
                   "Debit Cards",
                   "UPI (Google Pay, PhonePe, Paytm, BHIM)",
-                  "Net Banking",
                   "Wallets",
                   "Cash on Delivery (COD)",
                 ].map((method) => (
@@ -320,7 +319,6 @@ export default function PoliciesPage() {
                 <p>Once your order is dispatched, you will receive:</p>
                 <ul className="space-y-2">
                   <li>• A shipping confirmation email</li>
-                  <li>• WhatsApp tracking updates</li>
                   <li>• A live tracking link</li>
                 </ul>
                 <p className="mt-3">
@@ -336,7 +334,6 @@ export default function PoliciesPage() {
                 <p>Once payment is completed, you receive:</p>
                 <ul className="space-y-1">
                   <li>• Order confirmation email</li>
-                  <li>• WhatsApp confirmation</li>
                   <li>• Invoice/receipt</li>
                 </ul>
                 <p className="mt-3">
@@ -371,7 +368,7 @@ export default function PoliciesPage() {
                 <ul className="space-y-1">
                   <li>• Please do not accept the delivery</li>
                   <li>• Take photos/videos of the package</li>
-                  <li>• Contact us immediately via WhatsApp or email</li>
+                  <li>• Contact us immediately via email</li>
                 </ul>
                 <p className="mt-3">
                   Jewels by Geetika is not liable for products accepted in visibly tampered packaging.
@@ -442,7 +439,7 @@ export default function PoliciesPage() {
                 Bulk &amp; Corporate Orders
               </h3>
               <p className="text-charcoal-700 text-sm">
-                For wedding gifting, return favours, corporate gifting, or bulk purchases — please contact our support team at{" "}
+                For wedding gifting, corporate gifting, or bulk purchases — please contact our support team at{" "}
                 <a href="mailto:contact@jewelsbygeetika.com" className="text-gold-600 font-medium hover:underline">
                   contact@jewelsbygeetika.com
                 </a>{" "}
