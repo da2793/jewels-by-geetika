@@ -1,14 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { getProductById, getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
-import WishlistButton from "@/components/WishlistButton";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
+import { useAuth } from "@/context/AuthContext";
 import { getStock } from "@/lib/stock";
 
 function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
@@ -154,6 +155,49 @@ function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClo
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function WishlistButtonInline({ productId }: { productId: string }) {
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const { user } = useAuth();
+  const router = useRouter();
+  const active = isInWishlist(productId);
+
+  const handleClick = () => {
+    if (!user) {
+      router.push("/auth/login");
+      return;
+    }
+    toggleWishlist(productId);
+  };
+
+  return (
+    <motion.button
+      onClick={handleClick}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className={`w-full flex items-center justify-center space-x-2 px-8 py-3 mb-8 border rounded-full font-light uppercase tracking-[0.15em] text-sm transition-all ${
+        active
+          ? "border-red-300 text-red-500 bg-red-50/50 hover:bg-red-50"
+          : "border-cream-400 text-charcoal-700 hover:border-gold-400 hover:text-gold-700"
+      }`}
+    >
+      <svg
+        className="w-4 h-4"
+        fill={active ? "currentColor" : "none"}
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={active ? 0 : 1.5}
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
+      </svg>
+      <span>{active ? "Added to Wishlist" : "Add to Wishlist"}</span>
+    </motion.button>
   );
 }
 
@@ -303,7 +347,6 @@ export default function ProductDetailPage() {
               <h1 className="text-3xl md:text-4xl font-serif text-charcoal-800">
                 {product.name}
               </h1>
-              <WishlistButton productId={product.id} size="md" />
             </div>
 
             <div className="flex items-center space-x-4 mb-6">
@@ -361,7 +404,7 @@ export default function ProductDetailPage() {
                 <p className="text-charcoal-700 text-xs mt-1">This item is currently unavailable</p>
               </div>
             ) : (
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <motion.button
                 onClick={() => product && addToCart(product)}
                 whileHover={{ scale: 1.02 }}
@@ -385,6 +428,7 @@ export default function ProductDetailPage() {
                 </motion.span>
               </Link>
             </div>
+            <WishlistButtonInline productId={product.id} />
             )}
 
             {/* Trust Badges */}
