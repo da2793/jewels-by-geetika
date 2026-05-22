@@ -6,6 +6,7 @@ import { useState } from "react";
 const sections = [
   { id: "shipping", label: "Shipping" },
   { id: "payment", label: "Payment" },
+  { id: "cod", label: "Cash on Delivery" },
   { id: "cancellation", label: "Cancellation & Refund" },
   { id: "tracking", label: "Order Tracking" },
   { id: "packaging", label: "Packaging" },
@@ -194,6 +195,7 @@ export default function PoliciesPage() {
                   "UPI (Google Pay, PhonePe, Paytm, BHIM)",
                   "Net Banking",
                   "Wallets",
+                  "Cash on Delivery (COD)",
                 ].map((method) => (
                   <div key={method} className="flex items-center gap-2 text-charcoal-700 text-sm">
                     <span className="text-gold-500">✦</span>
@@ -204,6 +206,31 @@ export default function PoliciesPage() {
               <p className="text-charcoal-700 text-sm">
                 All payments are processed securely through Razorpay-supported payment methods.
               </p>
+            </section>
+
+            {/* ── COD ── */}
+            <section id="cod">
+              <h2 className="text-2xl font-display font-bold text-charcoal-900 mb-6">
+                Cash on Delivery (COD)
+              </h2>
+              <div className="space-y-4 text-charcoal-700 text-sm">
+                <p>COD is available for customer convenience with the following conditions:</p>
+                <div className="bg-cream-200 rounded-xl p-5">
+                  <p className="text-charcoal-900 font-semibold mb-2">COD Fee: ₹99 (flat handling fee)</p>
+                  <p className="text-charcoal-700">Available for orders up to ₹1,999 on eligible serviceable pincodes.</p>
+                </div>
+                <h3 className="text-base font-display font-semibold text-charcoal-900 mt-4">
+                  COD Not Available For:
+                </h3>
+                <ul className="space-y-1">
+                  <li>• Orders above ₹1,999</li>
+                  <li>• Bridal or custom jewellery</li>
+                  <li>• Certain high-RTO pincodes</li>
+                </ul>
+                <p className="text-charcoal-700 mt-3">
+                  Jewels by Geetika reserves the right to disable COD for specific users, locations, or orders at its discretion.
+                </p>
+              </div>
             </section>
 
             {/* ── CANCELLATION & REFUND ── */}
