@@ -56,36 +56,52 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story — Personal letter from Geetika */}
+      {/* Brand Story — About Jewels by Geetika */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className="text-gold-600 font-bold uppercase tracking-[0.3em] text-xs">Who We Are</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mt-4 text-charcoal-900">About <span className="text-gold-gradient">Jewels by Geetika</span></h2>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-6 text-charcoal-800 leading-relaxed text-center">
+            <p>
+              Jewels by Geetika is a luxury jewellery brand built on one simple idea — that every woman deserves to wear pieces that make her feel extraordinary.
+            </p>
+            <p>
+              We don&apos;t follow trends. We curate timeless pieces — from regal kundan sets and intricate temple jewellery to modern AD necklaces and statement rings — each one handpicked for its craftsmanship, design, and ability to elevate any look.
+            </p>
+            <p>
+              Our collection is designed for women who appreciate the finer things — those who want the weight of gold, the sparkle of diamonds, and the elegance of heritage jewellery, reimagined in premium quality replicas that look and feel like the real thing.
+            </p>
+            <p>
+              Every piece is limited in stock, intentionally. We believe in exclusivity over mass production — so you know when you wear Jewels by Geetika, you wear something rare.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Story — Personal letter from Geetika */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 gradient-champagne">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
             <Image src="/Geetika.JPG" alt="Geetika - Founder of Jewels by Geetika" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-charcoal-900">
-              A Letter from <span className="text-gold-gradient">Geetika</span>
+              A Letter from the <span className="text-gold-gradient">Founder</span>
             </h2>
             <div className="space-y-5 text-charcoal-800 leading-relaxed">
               <p>
-                I started this brand with a simple belief — every woman deserves
-                to feel beautifully adorned, without compromise.
+                I started Jewels by Geetika with one simple belief — every woman deserves to feel luxurious, confident, and beautifully adorned without compromise.
               </p>
               <p>
-                I understand the desire to wear gold at celebrations, to shine in
-                diamonds, to feel special on your big day, and to carry elegance
-                in everyday moments — without the limitations that often come
-                with it.
+                With gold and diamonds becoming increasingly expensive, along with the concerns that come with wearing precious jewellery, I wanted to create pieces that give women the same feeling of elegance, glamour, and confidence – at prices that feel accessible, not limiting.
               </p>
               <p>
-                Every piece you see here is thoughtfully chosen with love,
-                keeping you in mind — your style, your comfort, and your
-                confidence.
+                Every piece you see here is thoughtfully chosen with love, keeping you in mind — your style, your comfort, and your confidence.
               </p>
               <p>
-                This isn&apos;t just jewellery, it&apos;s a feeling I want you to
-                experience every time you wear it — because you deserve nothing
-                less than feeling your absolute best.
+                This isn&apos;t just jewellery, it&apos;s a feeling I want you to experience every time you wear it — because you deserve nothing less than feeling your absolute best.
               </p>
             </div>
             <div className="mt-8 flex items-center gap-4">
