@@ -32,9 +32,12 @@ export default function CheckoutPage() {
   });
 
   const [expressShipping, setExpressShipping] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<"prepaid" | "cod">("prepaid");
+  const codFee = 99;
+  const codEligible = totalPrice <= 1999;
   const baseShippingCost = totalPrice >= 999 ? 0 : totalPrice >= 799 ? 49 : 79;
   const shippingCost = baseShippingCost + (expressShipping ? 99 : 0);
-  const orderTotal = totalPrice + shippingCost;
+  const orderTotal = totalPrice + shippingCost + (paymentMethod === "cod" ? codFee : 0);
   const [paying, setPaying] = useState(false);
 
   // Load Razorpay script
@@ -65,6 +68,49 @@ export default function CheckoutPage() {
       setPaying(false);
       return;
     }
+
+    // COD Flow — skip Razorpay
+    if (paymentMethod === "cod") {
+      // Decrement stock
+      await decrementStock(
+        items.map((item) => ({ productId: item.product.id, quantity: item.quantity }))
+      );
+
+      // Save order to database
+      const supabase = createClient();
+      if (supabase && user) {
+        await supabase.from("orders").insert({
+          user_id: user.id,
+          status: "confirmed",
+          total: orderTotal,
+          shipping_cost: shippingCost,
+          cod_fee: codFee,
+          payment_method: "cod",
+          shipping_name: `${form.firstName} ${form.lastName}`,
+          shipping_email: form.email,
+          shipping_phone: form.phone,
+          shipping_address: form.address,
+          shipping_city: form.city,
+          shipping_state: form.state,
+          shipping_pincode: form.pincode,
+          payment_id: `cod_${Date.now()}`,
+          payment_status: "pending",
+          items: items.map((item) => ({
+            name: item.product.name,
+            quantity: item.quantity,
+            price: item.product.price,
+          })),
+        });
+      }
+
+      await markCartRecovered();
+      clearCart();
+      router.push("/order-success?id=cod_" + Date.now());
+      setPaying(false);
+      return;
+    }
+
+    // Prepaid Flow — Razorpay
 
     const scriptLoaded = await loadRazorpayScript();
     if (!scriptLoaded) {
@@ -488,6 +534,12 @@ export default function CheckoutPage() {
                   </div>
                   <span className="text-charcoal-800 text-sm font-medium">+₹99</span>
                 </label>
+                {paymentMethod === "cod" && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-charcoal-800 font-light">COD Fee</span>
+                    <span className="text-charcoal-700">₹{codFee}</span>
+                  </div>
+                )}
                 <div className="flex justify-between pt-3 border-t border-cream-300">
                   <span className="text-charcoal-800 font-medium">Total</span>
                   <span className="text-charcoal-800 font-serif text-xl">
@@ -496,19 +548,97 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Pay Button */}
-              <motion.button
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="w-full mt-6 py-4 bg-charcoal-800 text-white font-medium uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full disabled:opacity-50"
-                onClick={handlePayment}
-                disabled={paying || !form.firstName || !form.phone || !form.address || !form.city || !form.state || !form.pincode}
-              >
-                {paying ? "Processing..." : `Pay ₹${orderTotal.toLocaleString("en-IN")}`}
-              </motion.button>
+              {/* Payment Method */}
+              <div className="border-t border-cream-300 pt-4 mt-2">
+                <h3 className="text-charcoal-800 text-xs uppercase tracking-[0.15em] font-medium mb-3">Payment Method</h3>
+                <div className="space-y-2">
+                  <label className={`flex items-center justify-between p-3 rounded-xl border cursor-pointer transition-all ${paymentMethod === "prepaid" ? "border-gold-500 bg-gold-50/30" : "border-cream-400 hover:border-gold-400"}`}>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        checked={paymentMethod === "prepaid"}
+                        onChange={() => setPaymentMethod("prepaid")}
+                        className="w-4 h-4 accent-gold-600"
+                      />
+                      <div>
+                        <span className="text-charcoal-800 text-sm font-medium">Pay Online</span>
+                        <p className="text-charcoal-700 text-[10px]">UPI, Cards, Net Banking, Wallets</p>
+                      </div>
+                    </div>
+                    <span className="text-green-600 text-[10px] font-medium uppercase tracking-wider">Recommended</span>
+                  </label>
+
+                  <label className={`flex items-center justify-between p-3 rounded-xl border cursor-pointer transition-all ${!codEligible ? "opacity-50 cursor-not-allowed" : paymentMethod === "cod" ? "border-gold-500 bg-gold-50/30" : "border-cream-400 hover:border-gold-400"}`}>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        checked={paymentMethod === "cod"}
+                        onChange={() => codEligible && setPaymentMethod("cod")}
+                        disabled={!codEligible}
+                        className="w-4 h-4 accent-gold-600"
+                      />
+                      <div>
+                        <span className="text-charcoal-800 text-sm font-medium">Cash on Delivery</span>
+                        <p className="text-charcoal-700 text-[10px]">
+                          {codEligible ? "+₹99 COD fee • Orders up to ₹1,999" : "Not available for orders above ₹1,999"}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-charcoal-700 text-sm font-medium">+₹99</span>
+                  </label>
+                </div>
+
+                {/* Prepaid Benefits Blurb */}
+                {paymentMethod === "cod" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    className="mt-3 p-3 bg-green-50 rounded-xl border border-green-100"
+                  >
+                    <p className="text-green-800 text-[11px] font-semibold mb-1.5">💡 Why pay online instead?</p>
+                    <ul className="text-green-700 text-[10px] space-y-0.5">
+                      <li>• Save ₹99 — no COD fee</li>
+                      <li>• Faster processing &amp; priority dispatch</li>
+                      <li>• Instant order confirmation</li>
+                      <li>• Hassle-free — no cash needed at delivery</li>
+                    </ul>
+                    <button
+                      onClick={() => setPaymentMethod("prepaid")}
+                      className="mt-2 text-green-700 text-[10px] font-semibold underline hover:text-green-900 transition-colors"
+                    >
+                      Switch to Pay Online →
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Pay / Place Order Button */}
+              {paymentMethod === "prepaid" ? (
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="w-full mt-6 py-4 bg-charcoal-800 text-white font-medium uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full disabled:opacity-50"
+                  onClick={handlePayment}
+                  disabled={paying || !form.firstName || !form.phone || !form.address || !form.city || !form.state || !form.pincode}
+                >
+                  {paying ? "Processing..." : `Pay ₹${orderTotal.toLocaleString("en-IN")}`}
+                </motion.button>
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="w-full mt-6 py-4 bg-charcoal-800 text-white font-medium uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full disabled:opacity-50"
+                  onClick={handlePayment}
+                  disabled={paying || !form.firstName || !form.phone || !form.address || !form.city || !form.state || !form.pincode}
+                >
+                  {paying ? "Processing..." : `Place COD Order • ₹${orderTotal.toLocaleString("en-IN")}`}
+                </motion.button>
+              )}
 
               <p className="text-center text-charcoal-700 text-[10px] mt-3 font-light">
-                Secure payment powered by Razorpay
+                {paymentMethod === "prepaid" ? "Secure payment powered by Razorpay" : "Pay ₹" + orderTotal.toLocaleString("en-IN") + " at delivery (includes ₹99 COD fee)"}
               </p>
 
               {/* Trust */}
