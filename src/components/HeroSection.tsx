@@ -89,8 +89,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-charcoal-700 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
           >
-            Premium, everyday jewellery designed for the modern woman —
-            AD, kundan &amp; gold replicas crafted to perfection.
+            Thoughtfully curated luxury jewellery for women who love timeless elegance, modern glamour &amp; effortless sophistication.
           </motion.p>
 
           {/* CTAs */}
