@@ -9,6 +9,7 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
 import { validateStock, decrementStock } from "@/lib/stock";
+import { isExpressEligible } from "@/lib/express-pincodes";
 
 declare global {
   interface Window {
@@ -265,7 +266,12 @@ export default function CheckoutPage() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    // Reset express shipping if pincode changes to non-eligible
+    if (name === "pincode" && !isExpressEligible(value)) {
+      setExpressShipping(false);
+    }
   };
 
   // Checkout gate — require login
@@ -572,7 +578,8 @@ export default function CheckoutPage() {
                   </p>
                 )}
 
-                {/* Express Shipping Option */}
+                {/* Express Shipping Option — only for eligible pincodes */}
+                {isExpressEligible(form.pincode) && (
                 <label className="flex items-center justify-between py-3 px-4 bg-cream-50 rounded-xl border border-cream-400 cursor-pointer hover:border-gold-400 transition-colors">
                   <div className="flex items-center gap-2">
                     <input
@@ -588,6 +595,7 @@ export default function CheckoutPage() {
                   </div>
                   <span className="text-charcoal-800 text-sm font-medium">+₹99</span>
                 </label>
+                )}
                 {paymentMethod === "cod" && (
                   <div className="flex justify-between text-sm">
                     <span className="text-charcoal-800 font-light">COD Fee</span>
