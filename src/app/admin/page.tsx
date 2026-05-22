@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
 
 // Only these emails can access admin
-const ADMIN_EMAILS = ["da.2793@yahoo.com"];
+const ADMIN_EMAILS = ["da.2793@yahoo.com", "geetikatyagi75@gmail.com"];
 
 interface Order {
   id: string;
