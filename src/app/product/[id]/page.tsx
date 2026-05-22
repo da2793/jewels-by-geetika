@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProductById, getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import WishlistButton from "@/components/WishlistButton";
 import { useCart } from "@/context/CartContext";
 import { getStock } from "@/lib/stock";
 
@@ -298,9 +299,12 @@ export default function ProductDetailPage() {
               </span>
             )}
 
-            <h1 className="text-3xl md:text-4xl font-serif text-charcoal-800 mb-4">
-              {product.name}
-            </h1>
+            <div className="flex items-center justify-between mb-4">
+              <h1 className="text-3xl md:text-4xl font-serif text-charcoal-800">
+                {product.name}
+              </h1>
+              <WishlistButton productId={product.id} size="md" />
+            </div>
 
             <div className="flex items-center space-x-4 mb-6">
               <span className="text-3xl font-medium text-charcoal-800">

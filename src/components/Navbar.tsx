@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 const navLinks = [
   { href: "/collections", label: "Collections", dropdown: [
@@ -25,6 +26,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { openCart, totalItems } = useCart();
   const { user } = useAuth();
+  const { wishlistIds } = useWishlist();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -91,6 +93,24 @@ export default function Navbar() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
+            </Link>
+            <Link
+              href="/wishlist"
+              className="relative ml-2 p-2 text-charcoal-700 hover:text-red-400 transition-colors"
+              aria-label="Wishlist"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              {wishlistIds.length > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-red-400 text-white text-[10px] font-medium rounded-full flex items-center justify-center"
+                >
+                  {wishlistIds.length}
+                </motion.span>
+              )}
             </Link>
             <button
               onClick={openCart}

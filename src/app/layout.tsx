@@ -7,6 +7,7 @@ import InstagramFloater from "@/components/InstagramFloater";
 import CartSidebar from "@/components/CartSidebar";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 import { Analytics } from "@vercel/analytics/react";
 
 const cinzel = Cinzel({
@@ -63,12 +64,14 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <AuthProvider>
           <CartProvider>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-            <CartSidebar />
-            <InstagramFloater />
-            <Analytics />
+            <WishlistProvider>
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+              <CartSidebar />
+              <InstagramFloater />
+              <Analytics />
+            </WishlistProvider>
           </CartProvider>
         </AuthProvider>
       </body>

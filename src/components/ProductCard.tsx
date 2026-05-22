@@ -7,6 +7,7 @@ import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useState, useEffect } from "react";
 import { getStock } from "@/lib/stock";
+import WishlistButton from "./WishlistButton";
 
 interface ProductCardProps {
   product: Product;
@@ -58,6 +59,11 @@ export default function ProductCard({ product }: ProductCardProps) {
               New
             </div>
           )}
+
+          {/* Wishlist */}
+          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <WishlistButton productId={product.id} size="sm" />
+          </div>
 
           {/* Quick View */}
           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
