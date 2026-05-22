@@ -104,6 +104,33 @@ export default function CheckoutPage() {
       }
 
       await markCartRecovered();
+
+      // Notify admin via email
+      fetch("/api/notify-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          order: {
+            payment_id: `cod_${Date.now()}`,
+            payment_method: "cod",
+            total: orderTotal,
+            shipping_cost: shippingCost,
+            shipping_name: `${form.firstName} ${form.lastName}`,
+            shipping_email: form.email,
+            shipping_phone: form.phone,
+            shipping_address: form.address,
+            shipping_city: form.city,
+            shipping_state: form.state,
+            shipping_pincode: form.pincode,
+            items: items.map((item) => ({
+              name: item.product.name,
+              quantity: item.quantity,
+              price: item.product.price,
+            })),
+          },
+        }),
+      }).catch(() => {}); // Fire and forget
+
       clearCart();
       router.push("/order-success?id=cod_" + Date.now());
       setPaying(false);
@@ -186,6 +213,33 @@ export default function CheckoutPage() {
 
           // Mark abandoned cart as recovered
           await markCartRecovered();
+
+          // Notify admin via email
+          fetch("/api/notify-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              order: {
+                payment_id: response.razorpay_payment_id,
+                payment_method: "prepaid",
+                total: orderTotal,
+                shipping_cost: shippingCost,
+                shipping_name: `${form.firstName} ${form.lastName}`,
+                shipping_email: form.email,
+                shipping_phone: form.phone,
+                shipping_address: form.address,
+                shipping_city: form.city,
+                shipping_state: form.state,
+                shipping_pincode: form.pincode,
+                items: items.map((item) => ({
+                  name: item.product.name,
+                  quantity: item.quantity,
+                  price: item.product.price,
+                })),
+              },
+            }),
+          }).catch(() => {}); // Fire and forget
+
           clearCart();
           router.push("/order-success?id=" + response.razorpay_payment_id);
         } else {
