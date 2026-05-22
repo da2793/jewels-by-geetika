@@ -61,7 +61,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* Wishlist */}
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute top-4 right-4 z-10">
             <WishlistButton productId={product.id} size="sm" />
           </div>
 
