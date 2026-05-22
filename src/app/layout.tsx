@@ -31,9 +31,9 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Jewels by Geetika | Hand-Curated Jewellery",
+  title: "Jewels by Geetika | Luxury Curated Jewellery",
   description:
-    "Discover exquisite hand-curated AD, kundan, and gold replica jewellery. Premium jewellery for every occasion — necklaces, earrings, bangles, rings, and bridal sets.",
+    "Thoughtfully curated luxury jewellery for women who love timeless elegance, modern glamour & effortless sophistication. Necklaces, rings, and bridal sets.",
   keywords: [
     "jewellery",
     "AD jewellery",
@@ -42,14 +42,16 @@ export const metadata: Metadata = {
     "bridal jewellery",
     "Indian jewellery online",
     "Jewels by Geetika",
+    "luxury jewellery",
+    "curated jewellery",
   ],
   icons: {
     icon: "/logo.png",
   },
   openGraph: {
-    title: "Jewels by Geetika | Hand-Curated Jewellery",
+    title: "Jewels by Geetika | Luxury Curated Jewellery",
     description:
-      "Exquisite hand-curated AD, kundan, and gold replica jewellery for every occasion.",
+      "Thoughtfully curated luxury jewellery for women who love timeless elegance, modern glamour & effortless sophistication.",
     type: "website",
   },
 };
