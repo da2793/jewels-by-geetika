@@ -27,12 +27,19 @@ const stockLevels: Record<string, number> = {
   "9": 2,  // Antara
   "10": 2, // Chandni
   "11": 2, // Rajsi
+  "12": 3, // Bella
+  "13": 3, // Blossom
+  "14": 3, // Ziya
+  "15": 3, // Grace
+  "16": 3, // Iris
 };
 
 export type Category =
   | "necklaces"
+  | "earrings"
   | "rings"
-  | "bridal-sets";
+  | "bridal-sets"
+  | "anti-tarnish";
 
 export const categories: { slug: Category; name: string; description: string; image: string }[] = [
   {
@@ -40,6 +47,12 @@ export const categories: { slug: Category; name: string; description: string; im
     name: "Necklaces",
     description: "Elegant necklaces crafted with precision, from chokers to long layered pieces",
     image: "/products/Kaveri/kaveri-1.png",
+  },
+  {
+    slug: "earrings",
+    name: "Earrings",
+    description: "Statement earrings that add the perfect finishing touch to every look",
+    image: "/products/Ziya/ziya-1.png",
   },
   {
     slug: "rings",
@@ -52,6 +65,12 @@ export const categories: { slug: Category; name: string; description: string; im
     name: "Bridal Sets",
     description: "Complete bridal jewellery sets for your most special day",
     image: "/products/Saanjh/saanjh-1.png",
+  },
+  {
+    slug: "anti-tarnish",
+    name: "Anti Tarnish",
+    description: "Long-lasting jewellery with anti-tarnish coating — stays beautiful wear after wear",
+    image: "/products/Bella/bella-1.png",
   },
 ];
 
@@ -317,6 +336,128 @@ export const products: Product[] = [
       "/products/Rajsi/rajsi-4.png",
     ],
     badge: "New Launch",
+    isNew: true,
+  },
+  {
+    id: "12",
+    name: "Bella Statement Necklace",
+    category: "anti-tarnish",
+    categories: ["anti-tarnish", "necklaces"],
+    price: 1999,
+    description:
+      "A bold anti-tarnish statement necklace designed for women who love luxurious yet long-lasting jewellery. Featuring a chunky gold-toned chain and an intricately detailed dual panther-inspired pendant with sparkling stone embellishments — this piece is crafted to retain its shine and elegance wear after wear. Perfect for elevating western, fusion, or party looks, it brings together glamour, durability, and effortless sophistication in one timeless design.",
+    details: [
+      "Design: Chunky gold-toned chain with dual panther-inspired pendant",
+      "Accents: Sparkling stone embellishments with intricate detailing",
+      "Finish: Premium anti-tarnish coating for long-lasting shine",
+      "Occasion: Dinner dates, vacations, festive occasions, everyday glam",
+      "Why You'll Love It: Striking statement design with premium anti-tarnish quality — lightweight, comfortable, and effortlessly stylish",
+    ],
+    images: [
+      "/products/Bella/bella-1.png",
+      "/products/Bella/bella-2.png",
+      "/products/Bella/bella-3.png",
+      "/products/Bella/bella-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+    isBestseller: true,
+  },
+  {
+    id: "13",
+    name: "Blossom Necklace",
+    category: "anti-tarnish",
+    categories: ["anti-tarnish", "necklaces"],
+    price: 1499,
+    description:
+      "A timeless statement necklace crafted with a premium anti-tarnish finish, designed to retain its shine and elegance wear after wear. Featuring a beautifully sculpted floral pendant on a sleek gold-tone chain, this piece blends modern luxury with everyday durability — perfect for elevating both casual and occasion looks.",
+    details: [
+      "Design: Sculpted floral pendant on a sleek gold-tone chain",
+      "Finish: Premium anti-tarnish coating for lasting brilliance",
+      "Style: Modern luxury meets everyday durability",
+      "Occasion: Casual outings, workwear, celebrations, layering",
+      "Why You'll Love It: Bold yet graceful floral design with anti-tarnish quality — lightweight, minimal maintenance, and effortlessly elegant",
+    ],
+    images: [
+      "/products/Blossom/blossom-1.png",
+      "/products/Blossom/blossom-2.png",
+      "/products/Blossom/blossom-3.png",
+      "/products/Blossom/blossom-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+  },
+  {
+    id: "14",
+    name: "Ziya Earrings",
+    category: "earrings",
+    categories: ["earrings", "anti-tarnish"],
+    price: 1499,
+    description:
+      "Crafted with premium anti-tarnish finishing, these statement earrings are designed to retain their luxurious shine and elegance for a long time. A dreamy blend of pearls, soft blush crystals, and gold detailing — these earrings bring together elegance and charm in the most graceful way. The delicate pearl drops add movement and sophistication, while the unique floral-inspired silhouette makes them a standout accessory.",
+    details: [
+      "Design: Floral-inspired silhouette with pearl drops",
+      "Accents: Soft blush crystals and gold detailing",
+      "Finish: Premium anti-tarnish coating for lasting shine",
+      "Occasion: Weddings, festive celebrations, brunches, elevated everyday styling",
+      "Why You'll Love It: Dreamy pearl and crystal elegance with anti-tarnish durability — lightweight, feminine, and effortlessly luxe",
+    ],
+    images: [
+      "/products/Ziya/ziya-1.png",
+      "/products/Ziya/ziya-2.png",
+      "/products/Ziya/ziya-3.png",
+      "/products/Ziya/ziya-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+  },
+  {
+    id: "15",
+    name: "Grace Floral Earrings",
+    category: "earrings",
+    categories: ["earrings", "anti-tarnish"],
+    price: 1499,
+    description:
+      "Crafted with premium anti-tarnish finishing, these statement floral earrings are designed to retain their luxurious shine and elegance for a long time. The sculpted gold floral detailing paired with sparkling crystal flowers and a delicate pearl drop creates a stunning statement look that instantly elevates any outfit. Lightweight yet glamorous — perfect for weddings, festive occasions, parties, and elevated evening looks.",
+    details: [
+      "Design: Sculpted gold floral detailing with crystal flowers",
+      "Accents: Sparkling crystals and delicate pearl drop",
+      "Finish: Premium anti-tarnish coating for long-lasting beauty",
+      "Occasion: Weddings, festive occasions, parties, evening looks",
+      "Why You'll Love It: Bold glamour meets feminine elegance — luxurious finish, graceful movement, and timeless floral charm",
+    ],
+    images: [
+      "/products/Grace/grace-1.png",
+      "/products/Grace/grace-2.png",
+      "/products/Grace/grace-3.png",
+      "/products/Grace/grace-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+    isBestseller: true,
+  },
+  {
+    id: "16",
+    name: "Iris Evil-Eye Earrings",
+    category: "earrings",
+    categories: ["earrings", "anti-tarnish"],
+    price: 1999,
+    description:
+      "Crafted with premium anti-tarnish polish, these statement earrings are designed to retain their shine and elegance for longer. Their bold evil-eye inspired silhouette paired with molten gold detailing creates a luxurious look that stands out effortlessly. The striking blue evil-eye centre, crystal detailing, and fluid dangling drops create a dramatic yet elegant vibe — wearable art for women who love artistic, unconventional jewellery.",
+    details: [
+      "Design: Evil-eye inspired silhouette with molten gold detailing",
+      "Accents: Striking blue centre, crystal detailing, fluid dangling drops",
+      "Finish: Premium anti-tarnish polish for lasting shine",
+      "Occasion: Festive evenings, gowns, sarees, co-ord sets, date nights",
+      "Why You'll Love It: Bold artistic design with high-fashion appeal — lightweight, dramatic, and a true conversation starter",
+    ],
+    images: [
+      "/products/Iris/iris-1.png",
+      "/products/Iris/iris-2.png",
+      "/products/Iris/iris-3.png",
+      "/products/Iris/iris-4.png",
+    ],
+    badge: "Anti Tarnish",
     isNew: true,
   },
 ];

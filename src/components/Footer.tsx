@@ -7,8 +7,10 @@ import Logo from "./Logo";
 const footerLinks = {
   shop: [
     { label: "Necklaces", href: "/collections?category=necklaces" },
+    { label: "Earrings", href: "/collections?category=earrings" },
     { label: "Rings", href: "/collections?category=rings" },
     { label: "Bridal Sets", href: "/collections?category=bridal-sets" },
+    { label: "Anti Tarnish", href: "/collections?category=anti-tarnish" },
   ],
   company: [
     { label: "About Us", href: "/about" },

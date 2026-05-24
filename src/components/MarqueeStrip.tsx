@@ -6,6 +6,7 @@ const items = [
   "✦ Kundan",
   "✦ Gold Replica",
   "✦ Bridal Sets",
+  "✦ Anti Tarnish",
   "✦ Free Shipping",
   "✦ Premium Quality",
   "✦ Everyday Elegance",
