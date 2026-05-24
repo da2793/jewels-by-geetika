@@ -63,7 +63,7 @@ export default function HeroSection() {
           {/* Eyebrow */}
           <motion.div variants={itemVariants} className="mb-8">
             <span className="text-gold-600 font-semibold uppercase tracking-[0.4em] text-xs md:text-sm font-sans">
-              Hand-Curated Jewellery
+              Premium Hand-Curated Jewellery
             </span>
           </motion.div>
 

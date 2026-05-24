@@ -52,7 +52,7 @@ function buildWelcomeEmail(data: { name: string; email: string }) {
       <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #FDFCFA; border-radius: 12px;">
         <div style="text-align: center; margin-bottom: 24px;">
           <h1 style="color: #111; font-size: 24px; margin: 0;">Welcome to Jewels by Geetika</h1>
-          <p style="color: #C8A84B; font-size: 13px; letter-spacing: 2px; margin-top: 4px;">LUXURY CURATED JEWELLERY</p>
+          <p style="color: #C8A84B; font-size: 13px; letter-spacing: 2px; margin-top: 4px;">PREMIUM HAND-CURATED JEWELLERY</p>
         </div>
         
         <p style="color: #252525; font-size: 15px; line-height: 1.7;">
@@ -73,7 +73,7 @@ function buildWelcomeEmail(data: { name: string; email: string }) {
 
         <p style="color: #252525; font-size: 15px; line-height: 1.7;">
           With love,<br>
-          <span style="color: #C8A84B; font-style: italic;">Geetika</span>
+          <span style="color: #C8A84B; font-style: italic;">Jewels by Geetika</span>
         </p>
 
         <div style="border-top: 1px solid #E8D9C5; margin-top: 32px; padding-top: 16px; text-align: center;">
