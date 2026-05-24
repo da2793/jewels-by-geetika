@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     const { type, data } = await request.json();
 
-    let emailConfig: { from: string; to: string; subject: string; html: string } | null = null;
+    let emailConfig: { from: string; to: string; replyTo?: string; subject: string; html: string } | null = null;
 
     switch (type) {
       case "welcome":
@@ -46,7 +46,8 @@ function buildWelcomeEmail(data: { name: string; email: string }) {
   return {
     from: "Jewels by Geetika <hello@jewelsbygeetika.com>",
     to: data.email,
-    subject: "Welcome to Jewels by Geetika ✨",
+    replyTo: "contact@jewelsbygeetika.com",
+    subject: "Welcome to Jewels by Geetika",
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #FDFCFA; border-radius: 12px;">
         <div style="text-align: center; margin-bottom: 24px;">
@@ -105,7 +106,8 @@ function buildOrderConfirmationEmail(data: {
   return {
     from: "Jewels by Geetika <orderconfirmation@jewelsbygeetika.com>",
     to: data.email,
-    subject: `Order Confirmed! 🎉 Your Jewels by Geetika order #${data.orderId.slice(0, 8)}`,
+    replyTo: "contact@jewelsbygeetika.com",
+    subject: `Order Confirmed — Jewels by Geetika #${data.orderId.slice(0, 8)}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #FDFCFA; border-radius: 12px;">
         <div style="text-align: center; margin-bottom: 24px;">
@@ -166,7 +168,8 @@ function buildOrderShippedEmail(data: {
   return {
     from: "Jewels by Geetika <orders@jewelsbygeetika.com>",
     to: data.email,
-    subject: `Your order has been shipped! 📦 #${data.orderId.slice(0, 8)}`,
+    replyTo: "contact@jewelsbygeetika.com",
+    subject: `Your order has been shipped — #${data.orderId.slice(0, 8)}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #FDFCFA; border-radius: 12px;">
         <div style="text-align: center; margin-bottom: 24px;">

@@ -38,18 +38,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
 
     // Listen for auth changes
+    const sentWelcomeKey = "jbg-welcome-sent";
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event: any, session: any) => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
 
-        // Send welcome email for new users
+        // Send welcome email for new users (only once)
         if (_event === "SIGNED_IN" && session?.user) {
           const createdAt = new Date(session.user.created_at).getTime();
           const now = Date.now();
-          // If account was created within the last 60 seconds, it's a new signup
-          if (now - createdAt < 60000) {
+          const alreadySent = localStorage.getItem(sentWelcomeKey) === session.user.id;
+          // If account was created within the last 60 seconds and we haven't sent already
+          if (now - createdAt < 60000 && !alreadySent) {
+            localStorage.setItem(sentWelcomeKey, session.user.id);
             fetch("/api/send-email", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
