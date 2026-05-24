@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     `;
 
     await resend.emails.send({
-      from: "Jewels by Geetika <orders@jewelsbygeetika.com>",
+      from: "Jewels by Geetika <notification@jewelsbygeetika.com>",
       to: ADMIN_EMAILS,
       subject: `🛍️ New Order — ₹${order.total?.toLocaleString("en-IN")} from ${order.shipping_name}`,
       html: emailHtml,
