@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -36,32 +35,14 @@ const promises = [
 ];
 
 export default function AboutPage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-
   return (
-    <div className="pt-20 bg-cream-50">
-      {/* Hero */}
-      <section ref={heroRef} className="relative h-[55vh] flex items-center justify-center overflow-hidden">
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
-          <Image src="https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=1920&h=1080&fit=crop" alt="About" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-white/50" />
-        </motion.div>
-        <div className="relative z-10 text-center px-4">
-          <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-gold-600 font-bold uppercase tracking-[0.3em] text-xs">Our Story</motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-5xl md:text-7xl font-display font-bold mt-4 text-charcoal-900">
-            About <span className="text-gold-gradient">Geetika</span>
-          </motion.h1>
-        </div>
-      </section>
-
+    <div className="bg-cream-50">
       {/* Brand Story — About Jewels by Geetika */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
             <span className="text-gold-600 font-bold uppercase tracking-[0.3em] text-xs">Who We Are</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mt-4 text-charcoal-900">About <span className="text-gold-gradient">Jewels by Geetika</span></h2>
+            <h1 className="text-4xl md:text-5xl font-display font-bold mt-4 text-charcoal-900">About <span className="text-gold-gradient">Jewels by Geetika</span></h1>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-6 text-charcoal-800 leading-relaxed text-center">
             <p>
