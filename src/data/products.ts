@@ -27,11 +27,11 @@ const stockLevels: Record<string, number> = {
   "9": 2,  // Antara
   "10": 2, // Chandni
   "11": 2, // Rajsi
-  "12": 3, // Bella
-  "13": 3, // Blossom
-  "14": 3, // Ziya
-  "15": 3, // Grace
-  "16": 3, // Iris
+  "12": 2, // Bella
+  "13": 2, // Blossom
+  "14": 2, // Ziya
+  "15": 1, // Grace
+  "16": 2, // Iris
 };
 
 export type Category =
