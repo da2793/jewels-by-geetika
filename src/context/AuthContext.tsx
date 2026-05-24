@@ -43,6 +43,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+
+        // Send welcome email for new users
+        if (_event === "SIGNED_IN" && session?.user) {
+          const createdAt = new Date(session.user.created_at).getTime();
+          const now = Date.now();
+          // If account was created within the last 60 seconds, it's a new signup
+          if (now - createdAt < 60000) {
+            fetch("/api/send-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                type: "welcome",
+                data: {
+                  name: session.user.user_metadata?.full_name || "",
+                  email: session.user.email || "",
+                },
+              }),
+            }).catch(() => {});
+          }
+        }
       }
     );
 

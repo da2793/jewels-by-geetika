@@ -135,6 +135,27 @@ export default function AdminPage() {
         updated_at: new Date().toISOString(),
       })
       .eq("id", orderId);
+
+    // Send shipped email to customer
+    const order = orders.find((o) => o.id === orderId);
+    if (order?.shipping_email) {
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "order-shipped",
+          data: {
+            email: order.shipping_email,
+            name: order.shipping_name,
+            orderId: orderId,
+            trackingNumber,
+            courierPartner: courier,
+            items: order.items,
+          },
+        }),
+      }).catch(() => {});
+    }
+
     await loadOrders();
   };
 

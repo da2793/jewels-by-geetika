@@ -130,7 +130,31 @@ export default function CheckoutPage() {
             })),
           },
         }),
-      }).catch(() => {}); // Fire and forget
+      }).catch(() => {});
+
+      // Send order confirmation to customer
+      if (form.email) {
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "order-confirmation",
+            data: {
+              email: form.email,
+              name: form.firstName,
+              orderId: `cod_${Date.now()}`,
+              total: orderTotal,
+              shippingCost,
+              paymentMethod: "cod",
+              items: items.map((item) => ({
+                name: item.product.name,
+                quantity: item.quantity,
+                price: item.product.price,
+              })),
+            },
+          }),
+        }).catch(() => {});
+      }
 
       clearCart();
       router.push("/order-success?id=cod_" + Date.now());
@@ -239,7 +263,31 @@ export default function CheckoutPage() {
                 })),
               },
             }),
-          }).catch(() => {}); // Fire and forget
+          }).catch(() => {});
+
+          // Send order confirmation to customer
+          if (form.email) {
+            fetch("/api/send-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                type: "order-confirmation",
+                data: {
+                  email: form.email,
+                  name: form.firstName,
+                  orderId: response.razorpay_payment_id,
+                  total: orderTotal,
+                  shippingCost,
+                  paymentMethod: "prepaid",
+                  items: items.map((item) => ({
+                    name: item.product.name,
+                    quantity: item.quantity,
+                    price: item.product.price,
+                  })),
+                },
+              }),
+            }).catch(() => {});
+          }
 
           clearCart();
           router.push("/order-success?id=" + response.razorpay_payment_id);
