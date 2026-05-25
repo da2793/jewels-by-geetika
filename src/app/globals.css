@@ -140,6 +140,12 @@ body {
   animation: marquee 30s linear infinite;
 }
 
+@media (max-width: 768px) {
+  .marquee {
+    animation: marquee 15s linear infinite;
+  }
+}
+
 /* Swiper */
 .swiper-pagination-bullet {
   background: var(--color-gold-main) !important;
