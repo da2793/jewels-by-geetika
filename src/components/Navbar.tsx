@@ -80,9 +80,7 @@ export default function Navbar() {
               </div>
             ))}
             <a
-              href="https://www.instagram.com/jewelsbygeetika/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/collections"
               className="ml-2 px-6 py-2.5 bg-charcoal-800 text-white text-[12px] uppercase tracking-[0.2em] hover:bg-gold-600 transition-all duration-300 rounded-full"
             >
               Shop Now
@@ -196,9 +194,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
-                href="https://www.instagram.com/jewelsbygeetika/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/collections"
                 className="block text-center py-3 bg-charcoal-800 text-white uppercase tracking-[0.15em] rounded-full hover:bg-gold-600 transition-all"
               >
                 Shop Now
