@@ -146,7 +146,7 @@ export default function PoliciesPage() {
                       <td className="py-3 px-4">₹49</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4">₹999 &amp; Above</td>
+                      <td className="py-3 px-4">Above ₹999</td>
                       <td className="py-3 px-4 text-gold-700 font-medium">Free Shipping</td>
                     </tr>
                     <tr>

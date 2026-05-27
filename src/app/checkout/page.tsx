@@ -41,7 +41,7 @@ export default function CheckoutPage() {
   const [promoError, setPromoError] = useState("");
   const codFee = 99;
   const codEligible = totalPrice <= 1999;
-  const baseShippingCost = totalPrice >= 999 ? 0 : totalPrice >= 799 ? 49 : 79;
+  const baseShippingCost = totalPrice > 999 ? 0 : totalPrice >= 799 ? 49 : 79;
   const shippingCost = baseShippingCost + (expressShipping ? 99 : 0);
   const orderTotal = totalPrice - promoDiscount + shippingCost + (paymentMethod === "cod" ? codFee : 0);
   const [paying, setPaying] = useState(false);
@@ -747,7 +747,7 @@ export default function CheckoutPage() {
                       />
                       <div>
                         <span className="text-charcoal-800 text-sm font-medium">Pay Online</span>
-                        <p className="text-charcoal-700 text-[10px]">UPI, Cards, Net Banking, Wallets</p>
+                        <p className="text-charcoal-700 text-[10px]">UPI, Cards, Wallets</p>
                       </div>
                     </div>
                     <span className="text-green-600 text-[10px] font-medium uppercase tracking-wider">Recommended</span>
