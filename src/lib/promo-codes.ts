@@ -50,7 +50,7 @@ export async function validatePromoCode(
 
   // Check minimum order
   if (promo.min_order && orderTotal < promo.min_order) {
-    return { valid: false, error: `Minimum order of ₹${promo.min_order} required` };
+    return { valid: false, error: "Promo code valid on orders above ₹999" };
   }
 
   // Calculate discount
