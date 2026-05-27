@@ -652,7 +652,7 @@ export default function CheckoutPage() {
                           const { data } = await supabase.from("orders").select("id").eq("user_id", user.id).limit(1);
                           hasOrders = (data && data.length > 0) || false;
                         }
-                        const result = validatePromoCode(promoInput, totalPrice, hasOrders);
+                        const result = await validatePromoCode(promoInput, totalPrice, hasOrders);
                         if (result.valid && result.discount) {
                           setPromoDiscount(result.discount);
                           setPromoApplied(promoInput.trim().toUpperCase());
