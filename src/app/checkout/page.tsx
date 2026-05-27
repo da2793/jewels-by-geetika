@@ -10,7 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
 import { validateStock, decrementStock } from "@/lib/stock";
 import { isExpressEligible } from "@/lib/express-pincodes";
-import { validatePromoCode } from "@/lib/promo-codes";
+import { validatePromoCode, incrementPromoUsage } from "@/lib/promo-codes";
 
 declare global {
   interface Window {
@@ -110,6 +110,11 @@ export default function CheckoutPage() {
       }
 
       await markCartRecovered();
+
+      // Increment promo code usage
+      if (promoApplied) {
+        incrementPromoUsage(promoApplied).catch(() => {});
+      }
 
       // Notify admin via email
       fetch("/api/notify-order", {
@@ -243,6 +248,11 @@ export default function CheckoutPage() {
 
           // Mark abandoned cart as recovered
           await markCartRecovered();
+
+          // Increment promo code usage
+          if (promoApplied) {
+            incrementPromoUsage(promoApplied).catch(() => {});
+          }
 
           // Notify admin via email
           fetch("/api/notify-order", {

@@ -1,55 +1,75 @@
+import { createClient } from "@/lib/supabase/client";
+
 export interface PromoCode {
+  id: string;
   code: string;
   type: "percentage" | "flat";
-  value: number; // percentage (10 = 10%) or flat amount in ₹
-  minOrder?: number;
-  maxDiscount?: number; // cap for percentage discounts
-  firstTimeOnly?: boolean;
+  value: number;
+  min_order: number;
+  max_discount: number | null;
+  first_time_only: boolean;
+  max_uses: number | null;
+  used_count: number;
+  expires_at: string | null;
   active: boolean;
 }
 
-const promoCodes: PromoCode[] = [
-  {
-    code: "WELCOME10",
-    type: "percentage",
-    value: 10,
-    minOrder: 0,
-    maxDiscount: 500,
-    firstTimeOnly: true,
-    active: true,
-  },
-];
-
-export function validatePromoCode(
+export async function validatePromoCode(
   code: string,
   orderTotal: number,
   hasOrderHistory: boolean
-): { valid: boolean; error?: string; discount?: number; promoCode?: PromoCode } {
-  const promo = promoCodes.find(
-    (p) => p.code.toUpperCase() === code.trim().toUpperCase() && p.active
-  );
+): Promise<{ valid: boolean; error?: string; discount?: number; promoCode?: PromoCode }> {
+  const supabase = createClient();
+  if (!supabase) return { valid: false, error: "System error" };
+
+  const { data: promo } = await supabase
+    .from("promo_codes")
+    .select("*")
+    .eq("code", code.trim().toUpperCase())
+    .eq("active", true)
+    .single();
 
   if (!promo) {
     return { valid: false, error: "Invalid promo code" };
   }
 
-  if (promo.firstTimeOnly && hasOrderHistory) {
+  // Check expiry
+  if (promo.expires_at && new Date(promo.expires_at) < new Date()) {
+    return { valid: false, error: "This promo code has expired" };
+  }
+
+  // Check usage limit
+  if (promo.max_uses && promo.used_count >= promo.max_uses) {
+    return { valid: false, error: "This promo code has reached its usage limit" };
+  }
+
+  // Check first-time only
+  if (promo.first_time_only && hasOrderHistory) {
     return { valid: false, error: "This code is only valid for first-time orders" };
   }
 
-  if (promo.minOrder && orderTotal < promo.minOrder) {
-    return { valid: false, error: `Minimum order of ₹${promo.minOrder} required` };
+  // Check minimum order
+  if (promo.min_order && orderTotal < promo.min_order) {
+    return { valid: false, error: `Minimum order of ₹${promo.min_order} required` };
   }
 
+  // Calculate discount
   let discount = 0;
   if (promo.type === "percentage") {
-    discount = Math.round((orderTotal * promo.value) / 100);
-    if (promo.maxDiscount && discount > promo.maxDiscount) {
-      discount = promo.maxDiscount;
+    discount = Math.floor((orderTotal * promo.value) / 100);
+    if (promo.max_discount && discount > promo.max_discount) {
+      discount = promo.max_discount;
     }
   } else {
     discount = promo.value;
   }
 
   return { valid: true, discount, promoCode: promo };
+}
+
+export async function incrementPromoUsage(code: string): Promise<void> {
+  const supabase = createClient();
+  if (!supabase) return;
+
+  await supabase.rpc("increment_promo_usage", { p_code: code.trim().toUpperCase() });
 }
