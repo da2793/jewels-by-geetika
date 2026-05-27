@@ -10,6 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
 import { validateStock, decrementStock } from "@/lib/stock";
 import { isExpressEligible } from "@/lib/express-pincodes";
+import { validatePromoCode } from "@/lib/promo-codes";
 
 declare global {
   interface Window {
@@ -34,11 +35,15 @@ export default function CheckoutPage() {
 
   const [expressShipping, setExpressShipping] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"prepaid" | "cod">("prepaid");
+  const [promoInput, setPromoInput] = useState("");
+  const [promoDiscount, setPromoDiscount] = useState(0);
+  const [promoApplied, setPromoApplied] = useState("");
+  const [promoError, setPromoError] = useState("");
   const codFee = 99;
   const codEligible = totalPrice <= 1999;
   const baseShippingCost = totalPrice >= 999 ? 0 : totalPrice >= 799 ? 49 : 79;
   const shippingCost = baseShippingCost + (expressShipping ? 99 : 0);
-  const orderTotal = totalPrice + shippingCost + (paymentMethod === "cod" ? codFee : 0);
+  const orderTotal = totalPrice - promoDiscount + shippingCost + (paymentMethod === "cod" ? codFee : 0);
   const [paying, setPaying] = useState(false);
 
   // Load Razorpay script
@@ -602,6 +607,59 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
+              {/* Promo Code */}
+              <div className="border-t border-cream-300 pt-4">
+                <p className="text-charcoal-800 text-xs uppercase tracking-[0.15em] font-medium mb-2">Promo Code</p>
+                {promoApplied ? (
+                  <div className="flex items-center justify-between py-2 px-3 bg-green-50 rounded-xl border border-green-100">
+                    <div className="flex items-center gap-2">
+                      <span className="text-green-700 text-sm font-medium">{promoApplied}</span>
+                      <span className="text-green-600 text-xs">(-₹{promoDiscount})</span>
+                    </div>
+                    <button
+                      onClick={() => { setPromoApplied(""); setPromoDiscount(0); setPromoInput(""); }}
+                      className="text-red-400 text-xs hover:text-red-600 transition-colors"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={promoInput}
+                      onChange={(e) => { setPromoInput(e.target.value.toUpperCase()); setPromoError(""); }}
+                      placeholder="Enter code"
+                      className="flex-1 bg-cream-50 border border-cream-400 rounded-xl px-3 py-2 text-charcoal-800 text-sm focus:outline-none focus:border-gold-400 transition-colors"
+                    />
+                    <button
+                      onClick={async () => {
+                        if (!promoInput.trim()) return;
+                        // Check if user has order history (for first-time-only codes)
+                        let hasOrders = false;
+                        const supabase = createClient();
+                        if (supabase && user) {
+                          const { data } = await supabase.from("orders").select("id").eq("user_id", user.id).limit(1);
+                          hasOrders = (data && data.length > 0) || false;
+                        }
+                        const result = validatePromoCode(promoInput, totalPrice, hasOrders);
+                        if (result.valid && result.discount) {
+                          setPromoDiscount(result.discount);
+                          setPromoApplied(promoInput.trim().toUpperCase());
+                          setPromoError("");
+                        } else {
+                          setPromoError(result.error || "Invalid code");
+                        }
+                      }}
+                      className="px-4 py-2 bg-charcoal-800 text-white text-xs uppercase tracking-wider rounded-xl hover:bg-gold-600 transition-colors"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                )}
+                {promoError && <p className="text-red-500 text-xs mt-1">{promoError}</p>}
+              </div>
+
               {/* Totals */}
               <div className="border-t border-cream-300 pt-4 space-y-3">
                 <div className="flex justify-between text-sm">
@@ -610,6 +668,12 @@ export default function CheckoutPage() {
                     ₹{totalPrice.toLocaleString("en-IN")}
                   </span>
                 </div>
+                {promoDiscount > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-green-600 font-light">Promo ({promoApplied})</span>
+                    <span className="text-green-600">-₹{promoDiscount.toLocaleString("en-IN")}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-sm">
                   <span className="text-charcoal-800 font-light">Shipping</span>
                   <span className="text-charcoal-700">
