@@ -325,6 +325,15 @@ export default function AdminPage() {
 
                         {/* Status Update */}
                         <div className="mt-6 flex flex-wrap gap-2">
+                          <a
+                            href={`/invoice/${order.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-4 py-2 text-xs uppercase tracking-wider rounded-full bg-gold-100 text-gold-700 hover:bg-gold-200 transition-all"
+                          >
+                            View Invoice
+                          </a>
                           {["pending", "confirmed", "shipped", "delivered", "cancelled"].map((status) => (
                             <button
                               key={status}
