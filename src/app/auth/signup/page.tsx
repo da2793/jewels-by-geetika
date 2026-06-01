@@ -11,6 +11,7 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneEmail, setPhoneEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [mode, setMode] = useState<"phone" | "email">("phone");
@@ -22,6 +23,13 @@ export default function SignUpPage() {
 
   const handlePhoneSignup = async () => {
     setError("");
+
+    // Validate email before sending OTP
+    if (!otpSent && !phoneEmail.trim()) {
+      setError("Please enter your email address");
+      return;
+    }
+
     setLoading(true);
     const formattedPhone = phone.startsWith("+91") ? phone : `+91${phone.replace(/\s/g, "")}`;
 
@@ -37,6 +45,15 @@ export default function SignUpPage() {
       if (error) {
         setError(error);
       } else {
+        // Send welcome email
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "welcome",
+            data: { name: "", email: phoneEmail },
+          }),
+        }).catch(() => {});
         router.push("/account");
       }
     }
@@ -170,6 +187,19 @@ export default function SignUpPage() {
                 <>
                   <div>
                     <label className="block text-charcoal-800 text-xs uppercase tracking-[0.15em] mb-2 font-medium">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={phoneEmail}
+                      onChange={(e) => setPhoneEmail(e.target.value)}
+                      className="w-full bg-white border border-cream-400 rounded-xl px-4 py-3 text-charcoal-800 focus:outline-none focus:border-gold-400 transition-colors"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-charcoal-800 text-xs uppercase tracking-[0.15em] mb-2 font-medium">
                       Phone Number
                     </label>
                     <div className="flex">
@@ -188,7 +218,7 @@ export default function SignUpPage() {
                   </div>
                   <motion.button
                     onClick={handlePhoneSignup}
-                    disabled={loading || phone.length < 10}
+                    disabled={loading || phone.length < 10 || !phoneEmail.trim()}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     className="w-full py-4 bg-charcoal-900 text-white font-medium uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full disabled:opacity-50"
