@@ -102,6 +102,25 @@ export default function AccountPage() {
       updated_at: new Date().toISOString(),
     });
 
+    // Send welcome email if phone user just added their email
+    if (profile.email && user.phone && !user.email) {
+      const welcomeSentKey = `jbg-welcome-sent-${user.id}`;
+      if (!localStorage.getItem(welcomeSentKey)) {
+        localStorage.setItem(welcomeSentKey, "true");
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "welcome",
+            data: {
+              name: profile.full_name || "",
+              email: profile.email,
+            },
+          }),
+        }).catch(() => {});
+      }
+    }
+
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
