@@ -92,6 +92,7 @@ function buildOrderConfirmationEmail(data: {
   email: string;
   name: string;
   orderId: string;
+  invoiceUrl?: string;
   total: number;
   shippingCost: number;
   paymentMethod: string;
@@ -139,6 +140,7 @@ function buildOrderConfirmationEmail(data: {
         </div>
 
         <div style="text-align: center; margin: 24px 0;">
+          ${data.invoiceUrl ? `<a href="${data.invoiceUrl}" style="display: inline-block; padding: 12px 28px; background: #C8A84B; color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border-radius: 50px; margin-right: 8px; margin-bottom: 8px;">View Invoice</a>` : ""}
           <a href="https://www.jewelsbygeetika.com/account" style="display: inline-block; padding: 12px 28px; background: #111; color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border-radius: 50px;">
             View My Orders
           </a>

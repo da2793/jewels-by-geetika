@@ -83,9 +83,10 @@ export default function CheckoutPage() {
       );
 
       // Save order to database
+      let orderId = "";
       const supabase = createClient();
       if (supabase && user) {
-        await supabase.from("orders").insert({
+        const { data: insertedOrder } = await supabase.from("orders").insert({
           user_id: user.id,
           status: "confirmed",
           total: orderTotal,
@@ -106,7 +107,8 @@ export default function CheckoutPage() {
             quantity: item.quantity,
             price: item.product.price,
           })),
-        });
+        }).select("id").single();
+        orderId = insertedOrder?.id || "";
       }
 
       await markCartRecovered();
@@ -153,6 +155,7 @@ export default function CheckoutPage() {
               email: form.email,
               name: form.firstName,
               orderId: `cod_${Date.now()}`,
+              invoiceUrl: orderId ? `https://www.jewelsbygeetika.com/invoice/${orderId}` : "",
               total: orderTotal,
               shippingCost,
               paymentMethod: "cod",
@@ -222,9 +225,10 @@ export default function CheckoutPage() {
           );
 
           // Save order to database
+          let orderId = "";
           const supabase = createClient();
           if (supabase && user) {
-            await supabase.from("orders").insert({
+            const { data: insertedOrder } = await supabase.from("orders").insert({
               user_id: user.id,
               status: "confirmed",
               total: orderTotal,
@@ -243,7 +247,8 @@ export default function CheckoutPage() {
                 quantity: item.quantity,
                 price: item.product.price,
               })),
-            });
+            }).select("id").single();
+            orderId = insertedOrder?.id || "";
           }
 
           // Mark abandoned cart as recovered
@@ -291,6 +296,7 @@ export default function CheckoutPage() {
                   email: form.email,
                   name: form.firstName,
                   orderId: response.razorpay_payment_id,
+                  invoiceUrl: orderId ? `https://www.jewelsbygeetika.com/invoice/${orderId}` : "",
                   total: orderTotal,
                   shippingCost,
                   paymentMethod: "prepaid",
