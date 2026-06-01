@@ -56,7 +56,7 @@ export async function validatePromoCode(
   // Calculate discount
   let discount = 0;
   if (promo.type === "percentage") {
-    discount = Math.floor((orderTotal * promo.value) / 100);
+    discount = Math.ceil((orderTotal * promo.value) / 100);
     if (promo.max_discount && discount > promo.max_discount) {
       discount = promo.max_discount;
     }
