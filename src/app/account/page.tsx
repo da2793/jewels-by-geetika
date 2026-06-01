@@ -332,9 +332,19 @@ export default function AccountPage() {
                       <p className="text-charcoal-700 text-sm">
                         {order.items?.length || 0} item(s)
                       </p>
-                      <p className="text-charcoal-900 font-display font-bold text-lg">
-                        ₹{order.total?.toLocaleString("en-IN")}
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <a
+                          href={`/invoice/${order.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gold-600 text-xs uppercase tracking-wider font-medium hover:underline"
+                        >
+                          Invoice
+                        </a>
+                        <p className="text-charcoal-900 font-display font-bold text-lg">
+                          ₹{order.total?.toLocaleString("en-IN")}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
