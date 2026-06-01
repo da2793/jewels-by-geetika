@@ -161,6 +161,22 @@ export default function CheckoutPage() {
         }),
       }).catch(() => {});
 
+      // Send welcome email if first time (hasn't received one yet)
+      if (form.email) {
+        const welcomeKey = `jbg-welcome-sent-${user?.id}`;
+        if (!localStorage.getItem(welcomeKey)) {
+          localStorage.setItem(welcomeKey, "true");
+          fetch("/api/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              type: "welcome",
+              data: { name: form.firstName, email: form.email },
+            }),
+          }).catch(() => {});
+        }
+      }
+
       // Send order confirmation to customer
       if (form.email) {
         fetch("/api/send-email", {
@@ -301,6 +317,22 @@ export default function CheckoutPage() {
               },
             }),
           }).catch(() => {});
+
+          // Send welcome email if first time
+          if (form.email) {
+            const welcomeKey = `jbg-welcome-sent-${user?.id}`;
+            if (!localStorage.getItem(welcomeKey)) {
+              localStorage.setItem(welcomeKey, "true");
+              fetch("/api/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  type: "welcome",
+                  data: { name: form.firstName, email: form.email },
+                }),
+              }).catch(() => {});
+            }
+          }
 
           // Send order confirmation to customer
           if (form.email) {
