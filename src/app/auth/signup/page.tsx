@@ -11,6 +11,7 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneName, setPhoneName] = useState("");
   const [phoneEmail, setPhoneEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
@@ -24,9 +25,13 @@ export default function SignUpPage() {
   const handlePhoneSignup = async () => {
     setError("");
 
-    // Validate email before sending OTP
+    // Validate email and name before sending OTP
     if (!otpSent && !phoneEmail.trim()) {
       setError("Please enter your email address");
+      return;
+    }
+    if (!otpSent && !phoneName.trim()) {
+      setError("Please enter your name");
       return;
     }
 
@@ -45,13 +50,29 @@ export default function SignUpPage() {
       if (error) {
         setError(error);
       } else {
+        // Save profile with name and email
+        const { createClient } = await import("@/lib/supabase/client");
+        const supabase = createClient();
+        if (supabase) {
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session?.user) {
+            await supabase.from("profiles").upsert({
+              id: session.user.id,
+              full_name: phoneName,
+              email: phoneEmail,
+              phone: formattedPhone,
+              updated_at: new Date().toISOString(),
+            });
+          }
+        }
+
         // Send welcome email
         fetch("/api/send-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             type: "welcome",
-            data: { name: "", email: phoneEmail },
+            data: { name: phoneName, email: phoneEmail },
           }),
         }).catch(() => {});
         router.push("/account");
@@ -187,6 +208,19 @@ export default function SignUpPage() {
                 <>
                   <div>
                     <label className="block text-charcoal-800 text-xs uppercase tracking-[0.15em] mb-2 font-medium">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={phoneName}
+                      onChange={(e) => setPhoneName(e.target.value)}
+                      className="w-full bg-white border border-cream-400 rounded-xl px-4 py-3 text-charcoal-800 focus:outline-none focus:border-gold-400 transition-colors"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-charcoal-800 text-xs uppercase tracking-[0.15em] mb-2 font-medium">
                       Email *
                     </label>
                     <input
@@ -218,7 +252,7 @@ export default function SignUpPage() {
                   </div>
                   <motion.button
                     onClick={handlePhoneSignup}
-                    disabled={loading || phone.length < 10 || !phoneEmail.trim()}
+                    disabled={loading || phone.length < 10 || !phoneEmail.trim() || !phoneName.trim()}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     className="w-full py-4 bg-charcoal-900 text-white font-medium uppercase tracking-[0.2em] text-sm hover:bg-gold-600 transition-colors rounded-full disabled:opacity-50"
