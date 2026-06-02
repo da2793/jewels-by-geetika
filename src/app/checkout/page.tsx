@@ -46,23 +46,6 @@ export default function CheckoutPage() {
   const orderTotal = totalPrice - promoDiscount + shippingCost + (paymentMethod === "cod" ? codFee : 0);
   const [paying, setPaying] = useState(false);
 
-  // Check if profile is complete (has name and email)
-  useEffect(() => {
-    if (!user) return;
-    const checkProfile = async () => {
-      const supabase = createClient();
-      if (!supabase) return;
-      // For Google users, email is always available
-      if (user.email) { setProfileIncomplete(false); return; }
-      // For phone users, check profiles table
-      const { data } = await supabase.from("profiles").select("full_name, email").eq("id", user.id).single();
-      if (!data?.full_name || !data?.email) {
-        setProfileIncomplete(true);
-      }
-    };
-    checkProfile();
-  }, [user]);
-
   // Load Razorpay script
   const loadRazorpayScript = (): Promise<boolean> => {
     return new Promise((resolve) => {
