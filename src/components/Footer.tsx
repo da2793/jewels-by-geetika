@@ -9,6 +9,7 @@ const footerLinks = {
     { label: "Necklaces", href: "/collections?category=necklaces" },
     { label: "Earrings", href: "/collections?category=earrings" },
     { label: "Rings", href: "/collections?category=rings" },
+    { label: "Bracelets", href: "/collections?category=bracelets" },
     { label: "Bridal Sets", href: "/collections?category=bridal-sets" },
     { label: "Anti Tarnish", href: "/collections?category=anti-tarnish" },
   ],

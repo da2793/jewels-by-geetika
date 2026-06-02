@@ -32,12 +32,19 @@ const stockLevels: Record<string, number> = {
   "14": 2, // Ziya
   "15": 1, // Grace
   "16": 2, // Iris
+  "17": 2, // Stella
+  "18": 2, // Hope
+  "19": 2, // Luna
+  "20": 2, // Lily
+  "21": 2, // Daisy
+  "22": 2, // Zahara
 };
 
 export type Category =
   | "necklaces"
   | "earrings"
   | "rings"
+  | "bracelets"
   | "bridal-sets"
   | "anti-tarnish";
 
@@ -59,6 +66,12 @@ export const categories: { slug: Category; name: string; description: string; im
     name: "Rings",
     description: "Exquisite rings from delicate bands to bold cocktail pieces",
     image: "/products/Virasat/virasat-1.png",
+  },
+  {
+    slug: "bracelets",
+    name: "Bracelets",
+    description: "Statement bracelets and bangles crafted with premium finishes for everyday luxury",
+    image: "/products/Zahara/zahara-1.png",
   },
   {
     slug: "bridal-sets",
@@ -459,6 +472,152 @@ export const products: Product[] = [
     ],
     badge: "Anti Tarnish",
     isNew: true,
+  },
+  {
+    id: "17",
+    name: "Stella Statement Necklace",
+    category: "anti-tarnish",
+    categories: ["anti-tarnish", "necklaces"],
+    price: 2999,
+    description:
+      "Turn heads with this bold and luxurious statement necklace featuring dazzling crystal-studded layers paired with a unique sculpted pendant. Designed to make a striking fashion statement, this piece blends glamour and contemporary elegance — perfect for parties, special occasions, vacations, and evening events. The anti-tarnish finish ensures lasting shine and beauty with minimal maintenance.",
+    details: [
+      "Design: Crystal-studded multi-layered chain with sculpted pendant",
+      "Finish: Premium anti-tarnish coating for lasting radiance",
+      "Style: Bold contemporary glamour meets statement luxury",
+      "Occasion: Parties, cocktail evenings, vacations, special events",
+      "Why You'll Love It: Sparkling multi-layered design that catches light beautifully — durable, radiant, and impossible to ignore",
+    ],
+    images: [
+      "/products/Stella/stella-1.png",
+      "/products/Stella/stella-2.png",
+      "/products/Stella/stella-3.png",
+      "/products/Stella/stella-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+    isBestseller: true,
+  },
+  {
+    id: "18",
+    name: "Hope Long Necklace",
+    category: "anti-tarnish",
+    categories: ["anti-tarnish", "necklaces"],
+    price: 2499,
+    description:
+      "Inspired by the beauty of nature, this elegant long necklace features an intricate branch-inspired pendant adorned with sparkling stones. Crafted with premium Korea-imported materials and finished with advanced anti-tarnish plating, it is designed to retain its luxurious shine and beauty for years to come. A true statement piece that blends artistry with elegance.",
+    details: [
+      "Design: Branch-inspired pendant with sparkling stone accents",
+      "Material: Premium Korea-imported with anti-tarnish plating",
+      "Style: Nature-inspired artistry meets modern elegance",
+      "Occasion: Everyday styling, workwear, special occasions",
+      "Why You'll Love It: Unique nature-inspired design with long silhouette — lightweight, eye-catching, and timeless season after season",
+    ],
+    images: [
+      "/products/Hope/hope-1.png",
+      "/products/Hope/hope-2.png",
+      "/products/Hope/hope-3.png",
+      "/products/Hope/hope-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+  },
+  {
+    id: "19",
+    name: "Luna Necklace",
+    category: "anti-tarnish",
+    categories: ["anti-tarnish", "necklaces"],
+    price: 1499,
+    description:
+      "Elevate your everyday style with this elegant Korea-imported anti-tarnish necklace, designed to add a touch of effortless sophistication to any look. Featuring a stunning geometric pendant with a sparkling crystal centerpiece, this piece combines modern luxury with timeless charm. Crafted from premium-quality materials and finished with advanced anti-tarnish technology, it retains its brilliant shine wear after wear.",
+    details: [
+      "Design: Geometric pendant with sparkling crystal centerpiece",
+      "Material: Korea-imported with advanced anti-tarnish technology",
+      "Style: Modern luxury meets timeless everyday elegance",
+      "Occasion: Daily wear, office, dates, festive outings",
+      "Why You'll Love It: Premium Korean craftsmanship with refined finish — lightweight, durable, and effortlessly radiant",
+    ],
+    images: [
+      "/products/Luna/luna-1.png",
+      "/products/Luna/luna-2.png",
+      "/products/Luna/luna-3.png",
+      "/products/Luna/luna-4.png",
+    ],
+    badge: "Korea Import",
+    isNew: true,
+  },
+  {
+    id: "20",
+    name: "Lily Floral Necklace",
+    category: "anti-tarnish",
+    categories: ["anti-tarnish", "necklaces"],
+    price: 1499,
+    description:
+      "A perfect blend of elegance and modern charm, this Korea-imported anti-tarnish necklace features a stunning floral-inspired pendant with delicate tassel detailing that adds graceful movement and shine. Crafted to retain its beautiful golden finish, it is designed for everyday sophistication without losing its brilliance over time.",
+    details: [
+      "Design: Floral-inspired pendant with delicate tassel detailing",
+      "Material: Korea-imported with anti-tarnish golden finish",
+      "Style: Elegant charm with graceful movement",
+      "Occasion: Everyday wear, festive styling, casual to dressy",
+      "Why You'll Love It: Effortless versatility with statement appeal — anti-tarnish finish means lasting shine with minimal maintenance",
+    ],
+    images: [
+      "/products/Lily/lily-1.png",
+      "/products/Lily/lily-2.png",
+      "/products/Lily/lily-3.png",
+      "/products/Lily/lily-4.png",
+    ],
+    badge: "Korea Import",
+    isNew: true,
+  },
+  {
+    id: "21",
+    name: "Daisy Dolphin Bracelet",
+    category: "bracelets",
+    categories: ["bracelets", "anti-tarnish"],
+    price: 1499,
+    description:
+      "A playful yet elegant piece inspired by the beauty of the ocean. Featuring charming dolphin accents on a bamboo-inspired bangle, this bracelet is crafted from durable Korea-imported stainless steel and finished with premium PVD coating for long-lasting shine. Anti-tarnish, water-resistant, and hypoallergenic — designed to stay beautiful through daily wear while adding a touch of coastal charm to your look.",
+    details: [
+      "Design: Bamboo-inspired bangle with dolphin charm accents",
+      "Material: Korea-imported stainless steel with PVD coating",
+      "Properties: Anti-tarnish, water-resistant, hypoallergenic",
+      "Occasion: Everyday wear, beach outings, casual & dressy styling",
+      "Why You'll Love It: Premium stainless steel durability with PVD coating — water-resistant, skin-friendly, and maintains its luxurious golden finish over time",
+    ],
+    images: [
+      "/products/Daisy/daisy-1.png",
+      "/products/Daisy/daisy-2.png",
+      "/products/Daisy/daisy-3.png",
+      "/products/Daisy/daisy-4.png",
+    ],
+    badge: "Korea Import",
+    isNew: true,
+  },
+  {
+    id: "22",
+    name: "Zahara Serpent Bracelet",
+    category: "bracelets",
+    categories: ["bracelets", "anti-tarnish"],
+    price: 999,
+    description:
+      "Command attention with the timeless allure of the Zahara Bracelet. Inspired by the graceful elegance of a serpent, this Korea-imported anti-tarnish bracelet features a dazzling pavé-studded design accented with striking emerald-green stones. Crafted to blend luxury with durability, Zahara is designed to maintain its radiant shine, making it the perfect statement piece for every occasion.",
+    details: [
+      "Design: Serpent-inspired silhouette with pavé-studded detailing",
+      "Accents: Striking emerald-green stones with intricate mesh texture",
+      "Material: Korea-imported with anti-tarnish finish",
+      "Fit: Flexible wrap design for comfortable wear",
+      "Why You'll Love It: A symbol of confidence, power, and sophistication — long-lasting shine with an eye-catching silhouette that elevates any look",
+    ],
+    images: [
+      "/products/Zahara/zahara-1.png",
+      "/products/Zahara/zahara-2.png",
+      "/products/Zahara/zahara-3.png",
+      "/products/Zahara/zahara-4.png",
+    ],
+    badge: "Anti Tarnish",
+    isNew: true,
+    isBestseller: true,
   },
 ];
 
