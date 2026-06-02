@@ -229,7 +229,7 @@ export const products: Product[] = [
   },
   {
     id: "7",
-    name: "Sunehri Statement Ring",
+    name: "Sunehri Ring",
     category: "rings",
     price: 999,
     description:
@@ -251,7 +251,7 @@ export const products: Product[] = [
   },
   {
     id: "8",
-    name: "Virasat Statement Ring",
+    name: "Virasat Ring",
     category: "rings",
     price: 999,
     description:

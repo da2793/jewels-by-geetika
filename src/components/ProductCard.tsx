@@ -65,20 +65,24 @@ export default function ProductCard({ product }: ProductCardProps) {
             <WishlistButton productId={product.id} size="sm" />
           </div>
 
-          {/* Quick View */}
+          {/* Sold Out Badge */}
+          {outOfStock && (
+            <div className="absolute bottom-4 left-4 px-3 py-1.5 bg-charcoal-800/80 text-white text-[10px] font-semibold uppercase tracking-[0.15em] rounded-full backdrop-blur-sm">
+              Sold Out
+            </div>
+          )}
+
+          {/* Quick View — only when in stock */}
+          {!outOfStock && (
           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
             <button
               onClick={handleAddToCart}
-              disabled={outOfStock}
-              className={`block w-full text-center py-3 glass-subtle text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
-                outOfStock
-                  ? "text-red-500 cursor-not-allowed"
-                  : "text-charcoal-800 hover:bg-charcoal-800 hover:text-white"
-              }`}
+              className="block w-full text-center py-3 glass-subtle text-xs font-medium uppercase tracking-[0.15em] transition-colors text-charcoal-800 hover:bg-charcoal-800 hover:text-white"
             >
-              {outOfStock ? "Out of Stock" : "Add to Bag"}
+              Add to Bag
             </button>
           </div>
+          )}
         </div>
 
         {/* Info */}
