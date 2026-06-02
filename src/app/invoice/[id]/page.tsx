@@ -110,8 +110,11 @@ export default function InvoicePage() {
       </div>
       <div dangerouslySetInnerHTML={{ __html: invoiceHtml }} />
       <style jsx global>{`
-        /* Hide site navigation and footer on invoice page */
-        nav, footer, .instagram-floater, [aria-label="Chat on WhatsApp"] {
+        /* Hide site navigation, footer, and floaters on invoice page */
+        nav,
+        footer,
+        a[aria-label="Follow us on Instagram"],
+        a[aria-label="Chat on WhatsApp"] {
           display: none !important;
         }
         main {
@@ -119,7 +122,10 @@ export default function InvoicePage() {
         }
         @media print {
           .no-print { display: none !important; }
-          nav, footer, .instagram-floater, [aria-label="Chat on WhatsApp"] {
+          nav,
+          footer,
+          a[aria-label="Follow us on Instagram"],
+          a[aria-label="Chat on WhatsApp"] {
             display: none !important;
           }
           body { margin: 0; padding: 0; }
