@@ -49,7 +49,7 @@ export function generateInvoiceHTML(data: InvoiceData): string {
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Jost', sans-serif; background: #f9f6f1; padding: 40px; }
+    body { font-family: 'Jost', sans-serif; background: #f9f6f1; padding: 40px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .invoice {
       max-width: 800px;
       margin: 0 auto;
@@ -94,7 +94,7 @@ export function generateInvoiceHTML(data: InvoiceData): string {
     .customer-section .block h3 { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #787878; margin-bottom: 8px; }
     .customer-section .block p { font-size: 13px; color: #252525; line-height: 1.7; }
     .items-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    .items-table thead tr { background: #F9F6F1; }
+    .items-table thead tr { background: rgba(249, 246, 241, 0.7); }
     .items-table th { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #787878; padding: 12px 16px; text-align: left; border-bottom: 1px solid #E8D9C5; }
     .items-table th:last-child, .items-table td:last-child { text-align: right; }
     .items-table td { font-size: 13px; color: #252525; padding: 12px 16px; border-bottom: 1px solid #F3E9DC; }
