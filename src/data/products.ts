@@ -353,7 +353,7 @@ export const products: Product[] = [
   },
   {
     id: "12",
-    name: "Bella Statement Necklace",
+    name: "Bella Necklace",
     category: "anti-tarnish",
     categories: ["anti-tarnish", "necklaces"],
     price: 1999,
@@ -426,7 +426,7 @@ export const products: Product[] = [
   },
   {
     id: "15",
-    name: "Grace Floral Earrings",
+    name: "Grace Earrings",
     category: "earrings",
     categories: ["earrings", "anti-tarnish"],
     price: 1499,
@@ -451,7 +451,7 @@ export const products: Product[] = [
   },
   {
     id: "16",
-    name: "Iris Evil-Eye Earrings",
+    name: "Iris Earrings",
     category: "earrings",
     categories: ["earrings", "anti-tarnish"],
     price: 1999,
@@ -475,7 +475,7 @@ export const products: Product[] = [
   },
   {
     id: "17",
-    name: "Stella Statement Necklace",
+    name: "Stella Necklace",
     category: "anti-tarnish",
     categories: ["anti-tarnish", "necklaces"],
     price: 2999,
@@ -500,7 +500,7 @@ export const products: Product[] = [
   },
   {
     id: "18",
-    name: "Hope Long Necklace",
+    name: "Hope Necklace",
     category: "anti-tarnish",
     categories: ["anti-tarnish", "necklaces"],
     price: 2499,
@@ -548,7 +548,7 @@ export const products: Product[] = [
   },
   {
     id: "20",
-    name: "Lily Floral Necklace",
+    name: "Lily Necklace",
     category: "anti-tarnish",
     categories: ["anti-tarnish", "necklaces"],
     price: 1499,
@@ -572,7 +572,7 @@ export const products: Product[] = [
   },
   {
     id: "21",
-    name: "Daisy Dolphin Bracelet",
+    name: "Daisy Bracelet",
     category: "bracelets",
     categories: ["bracelets", "anti-tarnish"],
     price: 1499,
@@ -596,7 +596,7 @@ export const products: Product[] = [
   },
   {
     id: "22",
-    name: "Zahara Serpent Bracelet",
+    name: "Zahara Bracelet",
     category: "bracelets",
     categories: ["bracelets", "anti-tarnish"],
     price: 999,
