@@ -121,11 +121,6 @@ export function generateInvoiceHTML(data: InvoiceData): string {
       <div class="brand">
         <h1>JEWELS BY GEETIKA</h1>
         <p>Premium Hand-Curated Jewellery</p>
-        <div class="address">
-          Tower 2, H. No. 4D, AP Wonders Apartments<br>
-          Rohini Sector 5, New Delhi, 110085<br>
-          contact@jewelsbygeetika.com
-        </div>
       </div>
       <div class="invoice-meta">
         <h2>INVOICE</h2>
