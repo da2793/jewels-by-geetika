@@ -110,7 +110,6 @@ export const products: Product[] = [
       "/products/Kaveri/kaveri-4.png",
     ],
     // badge removed,
-    isNew: true,
     isBestseller: true,
   },
   {
@@ -135,7 +134,6 @@ export const products: Product[] = [
       "/products/Raahi/raahi-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "3",
@@ -159,7 +157,6 @@ export const products: Product[] = [
       "/products/Saanjh/saanjh-4.png",
     ],
     // badge removed,
-    isNew: true,
     isBestseller: true,
   },
   {
@@ -183,7 +180,6 @@ export const products: Product[] = [
       "/products/Adaa/adaa-4.png",
     ],
     // badge removed,
-    isNew: true,
     isBestseller: true,
   },
   {
@@ -207,7 +203,6 @@ export const products: Product[] = [
       "/products/Ruhani/ruhani-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "6",
@@ -231,7 +226,6 @@ export const products: Product[] = [
       "/products/Kanak/kanak-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "7",
@@ -254,7 +248,6 @@ export const products: Product[] = [
       "/products/Sunehri/sunehri-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "8",
@@ -277,7 +270,6 @@ export const products: Product[] = [
       "/products/Virasat/virasat-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "9",
@@ -301,7 +293,6 @@ export const products: Product[] = [
       "/products/Antara/antara-4.png",
     ],
     // badge removed,
-    isNew: true,
     isBestseller: true,
   },
   {
@@ -325,7 +316,6 @@ export const products: Product[] = [
       "/products/Chandni/chandni-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "11",
@@ -349,7 +339,6 @@ export const products: Product[] = [
       "/products/Rajsi/rajsi-4.png",
     ],
     // badge removed,
-    isNew: true,
   },
   {
     id: "12",
