@@ -17,6 +17,7 @@ const navLinks = [
     { href: "/collections?category=bracelets", label: "Bracelets" },
     { href: "/collections?category=bridal-sets", label: "Bridal Sets" },
     { href: "/collections?category=anti-tarnish", label: "Anti Tarnish" },
+    { href: "/collections?category=american-diamond", label: "American Diamond" },
     { href: "/collections?filter=new", label: "New Arrivals" },
   ]},
   { href: "/collections?filter=new", label: "New In" },

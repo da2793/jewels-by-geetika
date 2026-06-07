@@ -46,7 +46,8 @@ export type Category =
   | "rings"
   | "bracelets"
   | "bridal-sets"
-  | "anti-tarnish";
+  | "anti-tarnish"
+  | "american-diamond";
 
 export const categories: { slug: Category; name: string; description: string; image: string }[] = [
   {
@@ -84,6 +85,12 @@ export const categories: { slug: Category; name: string; description: string; im
     name: "Anti Tarnish",
     description: "Long-lasting jewellery with anti-tarnish coating — stays beautiful wear after wear",
     image: "/products/Bella/bella-1.png",
+  },
+  {
+    slug: "american-diamond",
+    name: "American Diamond",
+    description: "Sparkling AD stone jewellery that captures the brilliance of real diamonds",
+    image: "/products/Ruhani/ruhani-1.png",
   },
 ];
 
@@ -163,6 +170,7 @@ export const products: Product[] = [
     id: "4",
     name: "Adaa Necklace Set",
     category: "necklaces",
+    categories: ["necklaces", "american-diamond"],
     price: 3999,
     description:
       "A statement of timeless elegance, this exquisite necklace set is crafted to turn every moment into a celebration of grace and glamour. Featuring a beautifully detailed paisley-inspired pendant adorned with dazzling American Diamonds and rich ruby-toned stones — this masterpiece reflects royal charm with a modern luxury touch. The finely textured gold-finish chain adds refined richness, while the brilliant stone arrangement enhances the sparkle from every angle.",
@@ -186,6 +194,7 @@ export const products: Product[] = [
     id: "5",
     name: "Ruhani Necklace Set",
     category: "necklaces",
+    categories: ["necklaces", "american-diamond"],
     price: 3999,
     description:
       "Graceful, regal, and timeless — the Ruhani Necklace Set is crafted for women who love statement elegance with a touch of royalty. Featuring shimmering AD stones beautifully paired with rich emerald green bead strands, this luxurious set creates a perfect balance of sophistication and traditional charm. The intricately designed pendant and matching chandelier earrings are adorned with delicate detailing and emerald drop accents.",
@@ -299,6 +308,7 @@ export const products: Product[] = [
     id: "10",
     name: "Chandni Necklace Set",
     category: "necklaces",
+    categories: ["necklaces", "american-diamond"],
     price: 3999,
     description:
       "A statement of timeless sophistication, Chandni is designed for women who adore refined glamour with a modern royal touch. Featuring a dazzling circular pendant adorned with brilliant American Diamonds and a rich emerald-green centerpiece — this necklace set effortlessly blends elegance with luxury. Perfect for cocktail evenings, wedding celebrations, and elegant soirées.",
@@ -321,7 +331,7 @@ export const products: Product[] = [
     id: "11",
     name: "Rajsi Necklace Set",
     category: "necklaces",
-    categories: ["necklaces", "bridal-sets"],
+    categories: ["necklaces", "bridal-sets", "american-diamond"],
     price: 2999,
     description:
       "This exquisite peacock-inspired necklace set is a perfect blend of royal elegance and timeless craftsmanship. Adorned with shimmering AD stones, emerald green accents, and delicate pearl danglings — the intricate design beautifully captures the charm of traditional Indian jewellery with a luxurious modern finish.",
@@ -627,7 +637,13 @@ export function isInStock(productId: string): boolean {
 }
 
 export function getFeaturedProducts(): Product[] {
-  return products.filter((p) => p.isBestseller || p.isNew).slice(0, 6);
+  const featured = products.filter((p) => p.isBestseller || p.isNew);
+  // Shuffle using Fisher-Yates
+  for (let i = featured.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [featured[i], featured[j]] = [featured[j], featured[i]];
+  }
+  return featured.slice(0, 6);
 }export function getNewArrivals(): Product[] {
   return products.filter((p) => p.isNew);
 }

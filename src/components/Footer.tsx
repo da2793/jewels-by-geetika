@@ -12,6 +12,7 @@ const footerLinks = {
     { label: "Bracelets", href: "/collections?category=bracelets" },
     { label: "Bridal Sets", href: "/collections?category=bridal-sets" },
     { label: "Anti Tarnish", href: "/collections?category=anti-tarnish" },
+    { label: "American Diamond", href: "/collections?category=american-diamond" },
   ],
   company: [
     { label: "About Us", href: "/about" },
