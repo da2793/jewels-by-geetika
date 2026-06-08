@@ -57,24 +57,6 @@ export const categories: { slug: Category; name: string; description: string; im
     image: "/products/Kaveri/kaveri-1.png",
   },
   {
-    slug: "earrings",
-    name: "Earrings",
-    description: "Statement earrings that add the perfect finishing touch to every look",
-    image: "/products/Ziya/ziya-1.png",
-  },
-  {
-    slug: "rings",
-    name: "Rings",
-    description: "Exquisite rings from delicate bands to bold cocktail pieces",
-    image: "/products/Virasat/virasat-1.png",
-  },
-  {
-    slug: "bracelets",
-    name: "Bracelets",
-    description: "Statement bracelets and bangles crafted with premium finishes for everyday luxury",
-    image: "/products/Zahara/zahara-1.png",
-  },
-  {
     slug: "bridal-sets",
     name: "Bridal Sets",
     description: "Complete bridal jewellery sets for your most special day",
@@ -91,6 +73,24 @@ export const categories: { slug: Category; name: string; description: string; im
     name: "American Diamond",
     description: "Sparkling AD stone jewellery that captures the brilliance of real diamonds",
     image: "/products/Ruhani/ruhani-1.png",
+  },
+  {
+    slug: "bracelets",
+    name: "Bracelets",
+    description: "Statement bracelets and bangles crafted with premium finishes for everyday luxury",
+    image: "/products/Zahara/zahara-1.png",
+  },
+  {
+    slug: "earrings",
+    name: "Earrings",
+    description: "Statement earrings that add the perfect finishing touch to every look",
+    image: "/products/Ziya/ziya-1.png",
+  },
+  {
+    slug: "rings",
+    name: "Rings",
+    description: "Exquisite rings from delicate bands to bold cocktail pieces",
+    image: "/products/Virasat/virasat-1.png",
   },
 ];
 
